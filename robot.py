@@ -258,78 +258,78 @@ time.sleep(2)
 go_home()
 
 # Press on English
-goto(66,303,True)
+#goto(66,303,True)
 
 # Press on Australia
-goto(36,300,True)
+#goto(36,300,True)
 
 # Sleep for 10
-time.sleep(7)
+#time.sleep(7)
 
 # Press on Set Up Manually
-goto(-87,285,True)
+#goto(-87,285,True)
 
 # Sleep for 10
-time.sleep(5)
+#time.sleep(5)
 
 # Press on Gav's iPhone Network
-goto(42,285,True)
+#goto(42,285,True)
 
 # Type Hotspot password
-type_word("abcd1234")
+#type_word("abcd1234")
 
 # Press the join button
-goto(84,246,True)
+#goto(84,246,True)
 
 # Sleep for 10 seconds
-time.sleep(20)
+#time.sleep(20)
 
 # Press on Next
-goto(99,222,True)
+#goto(99,222,True)
 
 # Sleep for 30 seconds
-time.sleep(30)
+#time.sleep(30)
 
 # Press on Don't Transfer Data
-goto(3,291,True)
+#goto(3,291,True)
 
 # Press on Next
-goto(99,222,True)
+#goto(99,222,True)
 
 # Sleep 15 seconds
-time.sleep(15)
+#time.sleep(15)
 
 # Type in the username
-type_word("simp9998")
+#type_word("simp9998")
 
 # Click in the password box
-goto(27,312,True)
+#goto(27,312,True)
 
 # Type the password
-type_word("El-barto-graffiti")
+#type_word("El-barto-graffiti")
 
 # Press on Next
-goto(99,222,True)
+#goto(99,222,True)
 
 # Sleep 20 seconds
-time.sleep(20)
+#time.sleep(20)
 
 # Press Continue
-goto(-75,282,True)
+#goto(-75,282,True)
 
 # Sleep 5 seconds
-time.sleep(5)
+#time.sleep(5)
 
 # Press Enable Location Services
-goto(-75,282,True)
+#goto(-75,282,True)
 
 # Sleep 5 seconds
-time.sleep(5)
+#time.sleep(5)
 
 # Press Don't Share
-goto(-87,282,True)
+#goto(-87,282,True)
 
-go_home()
+#go_home()
 
 #time.sleep(5)
 
