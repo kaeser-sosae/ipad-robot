@@ -1,23 +1,33 @@
-
 import serial, time
 
 print('Opening serial connection')
-ser = serial.Serial('/dev/tty.usbmodem3053336934381', 115200)
+ser = serial.Serial('/dev/ttyACM0', 115200)
 
 speed = 'F4500'
 
+# CONSTANTS
+# Home button location = X124 Y254
+# Home button pressed X124 Y254 Z56
+# Z off screen travel height Z-48
+# Arm out of the way = X-226 Y0 Z6
+
+
+
+
+
 # Functions
 def goto(x, y, press):
-	if (press == True):
-		ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
-		time.sleep(.2)
-		ser.write(bytes('G00 Z-60 ' + speed + '\n', 'utf-8'))
-		time.sleep(.1)
-		ser.write(bytes('G00 Z-45 ' + speed + '\n', 'utf-8'))
-		time.sleep(1)
-	else:
-		ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
-		time.sleep(1)
+        if (press == True):
+                ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
+                time.sleep(.2)
+                ser.write(bytes('G00 Z760 ' + speed + '\n', 'utf-8'))
+                time.sleep(.1)
+                ser.write(bytes('G00 Z774 ' + speed + '\n', 'utf-8'))
+                time.sleep(1)
+        else:
+                ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
+                time.sleep(1)
+
 
 def press_letter(letter):
 	print('Typing letter ' + letter)
@@ -210,35 +220,42 @@ def press_letter(letter):
 		goto(-78,357,True)		
 
 def go_home():
-	ser.write(bytes('M1112\n', 'utf-8'))
-	time.sleep(1)
+        #ser.write(bytes('M1112\n', 'utf-8'))
+        print('Going home...')
+        ser.write(bytes('G0 X-226 Y0 Z6 ' + speed + '\n', 'utf-8'))
+        time.sleep(1)
 
-def press_home_button(x,y):
-	ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
-	ser.write(bytes('G00 Z-73 ' + speed + '\n', 'utf-8'))
-	ser.write(bytes('G00 Z-45 ' + speed + '\n', 'utf-8'))
-	time.sleep(1)
+def press_home_button():
+        print('Pressing home button...')
+        ser.write(bytes('G0 X124 Y254 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G0 Z-56 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G0 Z-48 ' + speed + '\n', 'utf-8'))
+        time.sleep(1)
 
 def type_word(word):
-	print('Typing word ' + word)
-	for char in word[ : : 1]:
-		press_letter(char)
+        print('Typing word ' + word)
+        for char in word[ : : 1]:
+                press_letter(char)
 
 def start_siri(x,y):
-	ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
-	ser.write(bytes('G00 Z-68 ' + speed + '\n', 'utf-8'))
-	time.sleep(5)
-	ser.write(bytes('G00 Z-45 ' + speed + '\n', 'utf-8'))
-	time.sleep(1)
+        ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 Z-68 ' + speed + '\n', 'utf-8'))
+        time.sleep(5)
+        ser.write(bytes('G00 Z-45 ' + speed + '\n', 'utf-8'))
+        time.sleep(1)
 
 # Go home
 go_home()
 time.sleep(1)
 
 #Press home button twice
-press_home_button(-105,282)
+press_home_button()
 time.sleep(2)
-press_home_button(-105,282)
+press_home_button()
+time.sleep(2)
+
+# Go home
+go_home()
 
 # Press on English
 goto(66,303,True)
