@@ -10,6 +10,7 @@ speed = 'F4500'
 # Home button pressed X124 Y254 Z56
 # Z off screen travel height Z-48
 # Arm out of the way = X-226 Y0 Z6
+# Button pressed location = X-136 Y326 Z-106 (press down from X-148)
 
 
 
@@ -222,15 +223,24 @@ def press_letter(letter):
 def go_home():
         #ser.write(bytes('M1112\n', 'utf-8'))
         print('Going home...')
-        ser.write(bytes('G0 X-226 Y0 Z6 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 X-226 Y0 Z6 ' + speed + '\n', 'utf-8'))
         time.sleep(1)
 
 def press_home_button():
         print('Pressing home button...')
-        ser.write(bytes('G0 X124 Y254 ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G0 Z-56 ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G0 Z-48 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 X124 Y254 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 Z-56 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 Z-48 ' + speed + '\n', 'utf-8'))
         time.sleep(1)
+
+def press_power_button(seconds):
+        print('Pressing power button for ' + seconds + 'seconds...')
+        ser.write(bytes('G00 Z-20 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 Y326 X-148 Z-106 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 X-136 ' + speed + '\n', 'utf-8'))
+        time.sleep(seconds)
+        ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 Z-20 ' + speed + '\n', 'utf-8'))
 
 def type_word(word):
         print('Typing word ' + word)
