@@ -22,6 +22,27 @@ class Dexarm:
                 else:
                     print("read：", str)
 
+    def get_current_position(self):
+        self.ser.write('M114\r'.encode())
+        while True:
+            str = self.ser.readline().decode("utf-8")
+            if len(str) > 0:
+                if str.find("X:") > -1:
+                    temp = re.findall(r"[-+]?\d*\.\d+|\d+", str)
+                    x = float(temp[0])
+                    y = float(temp[1])
+                    z = float(temp[2])
+                    e = float(temp[3])
+            if len(str) > 0:
+                if str.find("DEXARM Theta") > -1:
+                    temp = re.findall(r"[-+]?\d*\.\d+|\d+", str)
+                    a = float(temp[0])
+                    b = float(temp[1])
+                    c = float(temp[2])
+            if len(str) > 0:
+                if str.find("ok") > -1:
+                    return x,y,z,e,a,b,c
+
     def go_home(self):
         self._send_cmd("M1112\r")
 
@@ -73,26 +94,7 @@ class Dexarm:
             current_position = get_current_position()
 
 
-    def get_current_position(self):
-        self.ser.write('M114\r'.encode())
-        while True:
-            str = self.ser.readline().decode("utf-8")
-            if len(str) > 0:
-                if str.find("X:") > -1:
-                    temp = re.findall(r"[-+]?\d*\.\d+|\d+", str)
-                    x = float(temp[0])
-                    y = float(temp[1])
-                    z = float(temp[2])
-                    e = float(temp[3])
-            if len(str) > 0:
-                if str.find("DEXARM Theta") > -1:
-                    temp = re.findall(r"[-+]?\d*\.\d+|\d+", str)
-                    a = float(temp[0])
-                    b = float(temp[1])
-                    c = float(temp[2])
-            if len(str) > 0:
-                if str.find("ok") > -1:
-                    return x,y,z,e,a,b,c
+
 
     """Delay"""
     def dealy_ms(self, value):
