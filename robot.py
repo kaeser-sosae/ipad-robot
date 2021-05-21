@@ -259,11 +259,11 @@ print('My encoder position at home is ' + str(home_encoder_position))
 print('Pressing the home button...')
 press_home_button()
 while str(str(home_encoder_position[0] + 348) + ',' + str(home_encoder_position[1] - 18) + ',' + str(home_encoder_position[2] + 18)) != str(dexarm.get_encoder_position()):
-	print('|' + str(str(1910.0) + ',' + str(3997.0) + ',' + str(990.0)) + "| = |" + str(dexarm.get_encoder_position()) + "|")
+	print('|' + str(str(home_encoder_position[0] + 348) + ',' + str(home_encoder_position[1] - 18) + ',' + str(home_encoder_position[2] + 18)) + "| = |" + str(dexarm.get_encoder_position()) + "|")
 	time.sleep(.1)
 press_home_button()
 while str(str(home_encoder_position[0] + 348) + ',' + str(home_encoder_position[1] - 18) + ',' + str(home_encoder_position[2] + 18)) != str(dexarm.get_encoder_position()):
-	print('|' + str(str(1910.0) + ',' + str(3997.0) + ',' + str(990.0)) + "| = |" + str(dexarm.get_encoder_position()) + "|")
+	print('|' + str(str(home_encoder_position[0] + 348) + ',' + str(home_encoder_position[1] - 18) + ',' + str(home_encoder_position[2] + 18)) + "| = |" + str(dexarm.get_encoder_position()) + "|")
 	time.sleep(.1)
 
 # Go home
