@@ -89,7 +89,7 @@ class Dexarm:
 
         x = 0
         while x < 50:
-            print(current_position)
+            print(self.get_current_position())
             time.sleep(.1)
             x = x + 1        
 
