@@ -235,6 +235,13 @@ def press_power_button(seconds):
 		dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
 		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
 
+def screen_tap(x, y):
+	dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -40, 5000)
+	dexarm.fast_move_to(x, y, -40, 10000)
+	dexarm.fast_move_to(x, y, -52, 10000)
+	dexarm.fast_move_to(x, y, -40, 10000)
+	dexarm._send_cmd("G4 S1\n")
+
 # def type_word(word):
 #         print('Typing word ' + word)
 #         for char in word[ : : 1]:
@@ -256,9 +263,7 @@ print('Waiting for iPad to boot...')
 dexarm._send_cmd("G4 S15\n")
 
 #Press on English
-dexarm.fast_move_to(-14, 256, -52, 5000)
-dexarm.fast_move_to(-14, 256, -40, 5000)
-dexarm._send_cmd("G4 S1\n")
+screen_tap(-14, 256)
 
 # Go home
 print('Going back home...')
