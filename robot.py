@@ -265,6 +265,46 @@ dexarm._send_cmd("G4 S15\n")
 #Press on English
 screen_tap(-14, 256)
 
+# Press on Australia = 4,252
+screen_tap(4, 252)
+
+# Pause 4 seconds
+dexarm._send_cmd("G4 S5\n")
+
+# Press Set up manually = 72,252
+screen_tap(72, 252)
+
+# Press on Lindisfarne = 72,252
+screen_tap(72, 252)
+
+# Type username
+
+# Press in password box = -56,252
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Go home
 print('Going back home...')
 go_home()
