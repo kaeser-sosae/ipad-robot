@@ -237,16 +237,16 @@ def go_home():
 		#ser.write(bytes('M1112\n', 'utf-8'))
 		print('Going home...')
 		#ser.write(bytes('G00 X-226 Y0 Z6 ' + speed + '\n', 'utf-8'))
-		dexarm.fast_move_to(-226, 0, 6)
+		dexarm.fast_move_to(-226, 0, 6, 5000)
 
 def press_home_button():
 		print('Pressing home button...')
 		#ser.write(bytes('G00 X126 Y252 ' + speed + '\n', 'utf-8'))
 		#ser.write(bytes('G00 Z-56 ' + speed + '\n', 'utf-8'))
 		#ser.write(bytes('G00 Z-48 ' + speed + '\n', 'utf-8'))
-		dexarm.fast_move_to(126, 252, get_current_location('z'))
-		dexarm.fast_move_to(126, 252, -56)
-		dexarm.fast_move_to(126, 252, -48)
+		dexarm.fast_move_to(126, 252, get_current_location('z'), 5000)
+		dexarm.fast_move_to(126, 252, -56, 5000)
+		dexarm.fast_move_to(126, 252, -48, 5000)
 
 # def press_power_button(seconds):
 #         print('Pressing power button...')
