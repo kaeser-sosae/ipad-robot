@@ -92,7 +92,7 @@ class Dexarm:
         cmd = "G1"+"F" + str(feedrate) + "X"+str(x) + "Y" + str(y) + "Z" + str(z) + "\r\n"
         self._send_cmd(cmd)
 
-    def fast_move_to(self, x, y, z, feedrate=2000):
+    def fast_move_to(self, x, y, z, feedrate=6000):
         cmd = "G0"+"F" + str(feedrate) + "X"+str(x) + "Y" + str(y) + "Z" + str(z) + "\r\n"
         #current_position = self.get_current_position()
         #print('Current position inside function is ' + str(current_position))
