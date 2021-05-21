@@ -6,8 +6,8 @@ ser = serial.Serial('/dev/ttyACM0', 115200)
 speed = 'F4500'
 
 # CONSTANTS
-# Home button location = X124 Y254
-# Home button pressed X124 Y254 Z56
+# Home button location = X126 Y252
+# Home button pressed X126 Y252 Z56
 # Z off screen travel height Z-48
 # Arm out of the way = X-226 Y0 Z6
 # Button pressed location = X-136 Y326 Z-106 (press down from X-148)
@@ -228,7 +228,7 @@ def go_home():
 
 def press_home_button():
         print('Pressing home button...')
-        ser.write(bytes('G00 X124 Y254 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 X126 Y252 ' + speed + '\n', 'utf-8'))
         ser.write(bytes('G00 Z-56 ' + speed + '\n', 'utf-8'))
         ser.write(bytes('G00 Z-48 ' + speed + '\n', 'utf-8'))
         time.sleep(1)
