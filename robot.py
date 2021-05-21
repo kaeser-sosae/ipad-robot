@@ -245,7 +245,7 @@ def press_home_button():
 		#ser.write(bytes('G00 X126 Y252 ' + speed + '\n', 'utf-8'))
 		#ser.write(bytes('G00 Z-56 ' + speed + '\n', 'utf-8'))
 		#ser.write(bytes('G00 Z-48 ' + speed + '\n', 'utf-8'))
-		dexarm.move_to(126, 252, get_current_location(z))
+		dexarm.move_to(126, 252, get_current_location('z'))
 		dexarm.move_to(126, 252, -56)
 		dexarm.move_to(126, 252, -48)
 		time.sleep(1)
@@ -278,7 +278,8 @@ def press_home_button():
 print('My position is ' + str(dexarm.get_current_position()))
 
 # Go home
-go_home()
+dexarm.go_home()
+#go_home()
 time.sleep(1)
 
 # Press power button for 2 seconds
