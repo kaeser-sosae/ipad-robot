@@ -141,7 +141,7 @@ def press_power_button(seconds):
 
 def screen_tap(x, y):
 	dexarm.fast_move_to(x, y, get_current_location('z'), 10000)
-	dexarm.fast_move_to(x, y, -52, 7000)
+	dexarm.fast_move_to(x, y, -55, 7000)
 	#dexarm._send_cmd("G4 P100\n")
 	dexarm.fast_move_to(x, y, -35, 7000)
 
