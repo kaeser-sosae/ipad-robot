@@ -23,18 +23,19 @@ class Dexarm:
                 else:
                     pass
                     #print("read：", str)
-    def get_encoder_value(self, data='M893'):
-        self.ser.write(data.encode())
+    def get_encoder_position(self):
+        self.ser.write('M893\r'.encode())
         while True:
             str = self.ser.readline().decode("utf-8")
             if len(str) > 0:
-                return str
-                #if str.find("ok") > -1:
-                #    #print("read ok")
-                #    break
-                #else:
-                #    pass
-                    #print("read：", str)                    
+                if str.find("M894") > -1:
+                    temp = re.findall(r"[-+]?\d*\.\d+|\d+", str)
+                    x = float(temp[1])
+                    y = float(temp[2])
+                    z = float(temp[3])
+            if len(str) > 0:
+                if str.find("ok") > -1:
+                    return x,y,z                
 
     def get_current_position(self):
         self.ser.write('M114\r'.encode())
