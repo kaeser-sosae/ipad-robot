@@ -256,16 +256,12 @@ print('My encoder position at home is ' + str(home_encoder_position))
 # Press power button for 2 seconds
 press_power_button(2)
 
-#Press home button twice
+# Wait 15 seconds after button is pressed, then press the home button once
+dexarm._send_cmd("G4 S15\n")
+
+#Press home button once
 print('Pressing the home button...')
 press_home_button()
-#while str("(" + str(home_encoder_position[0] + 348) + ', ' + str(home_encoder_position[1] - 18) + ', ' + str(home_encoder_position[2] - 18) + ")") != str(dexarm.get_encoder_position()):
-#	print('|' + "(" + str(str(home_encoder_position[0] + 348) + ', ' + str(home_encoder_position[1] - 18) + ', ' + str(home_encoder_position[2] - 18) + ")") + "| = |" + str(dexarm.get_encoder_position()) + "|")
-#	time.sleep(.1)
-press_home_button()
-#while str("(" + str(home_encoder_position[0] + 348) + ', ' + str(home_encoder_position[1] - 18) + ', ' + str(home_encoder_position[2] - 18) + ")") != str(dexarm.get_encoder_position()):
-#	print('|' + "(" + str(str(home_encoder_position[0] + 348) + ', ' + str(home_encoder_position[1] - 18) + ', ' + str(home_encoder_position[2] - 18) + ")") + "| = |" + str(dexarm.get_encoder_position()) + "|")
-#	time.sleep(.1)
 
 # Go home
 print('Going back home...')
