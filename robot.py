@@ -3,31 +3,12 @@ from pydexarm import Dexarm
 
 dexarm = Dexarm("/dev/ttyACM0")
 
-#print('Opening serial connection')
-#ser = serial.Serial('/dev/ttyACM0', 115200)
-
-#speed = 'F4500'
-
 # CONSTANTS
 # Home button location = X126 Y252
 # Home button pressed X126 Y252 Z56
 # Z off screen travel height Z-48
 # Arm out of the way = X-226 Y0 Z6
 # Button pressed location = X-136 Y326 Z-106 (press down from X-148)
-
-# Functions
-# def goto(x, y, press):
-# 		if (press == True):
-# 				ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
-# 				time.sleep(.2)
-# 				ser.write(bytes('G00 Z760 ' + speed + '\n', 'utf-8'))
-# 				time.sleep(.1)
-# 				ser.write(bytes('G00 Z774 ' + speed + '\n', 'utf-8'))
-# 				time.sleep(1)
-# 		else:
-# 				ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
-# 				time.sleep(1)
-
 
 # def press_letter(letter):
 # 	print('Typing letter ' + letter)
@@ -234,19 +215,15 @@ def get_current_location(axis):
 	return ret_value
 
 def go_home():
-		#ser.write(bytes('M1112\n', 'utf-8'))
 		print('Going home...')
-		#ser.write(bytes('G00 X-226 Y0 Z6 ' + speed + '\n', 'utf-8'))
 		dexarm.fast_move_to(-226, 0, 6, 5000)
 
 def press_home_button():
 		print('Pressing home button...')
-		#ser.write(bytes('G00 X126 Y252 ' + speed + '\n', 'utf-8'))
-		#ser.write(bytes('G00 Z-56 ' + speed + '\n', 'utf-8'))
-		#ser.write(bytes('G00 Z-48 ' + speed + '\n', 'utf-8'))
 		dexarm.fast_move_to(126, 252, get_current_location('z'), 5000)
 		dexarm.fast_move_to(126, 252, -56, 5000)
 		dexarm.fast_move_to(126, 252, -48, 5000)
+		dexarm.fast_move_to(150, 252, -0, 5000)
 
 
 # def press_power_button(seconds):
@@ -266,111 +243,29 @@ def press_home_button():
 #         for char in word[ : : 1]:
 #                 press_letter(char)
 
-# def start_siri(x,y):
-#         ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
-#         ser.write(bytes('G00 Z-68 ' + speed + '\n', 'utf-8'))
-#         time.sleep(5)
-#         ser.write(bytes('G00 Z-45 ' + speed + '\n', 'utf-8'))
-#         time.sleep(1)
-
 # Get current position
-print('My position is ' + str(dexarm.get_current_position()))
+print('My current position is ' + str(dexarm.get_current_position()))
 print('My encoder position is ' + str(dexarm.get_encoder_position()))
 
 # Go home
 print('Moving arm to home position...')
 dexarm.go_home()
 
+# Get encoder position
+encoder_position = dexarm.get_encoder()
+print('My encoder position at home is ' + str(encoder_position))
+
 #Press home button twice
 print('Pressing the home button...')
 press_home_button()
-#print('Sleep for 2 seconds...')
-#time.sleep(2)
-#print('Press button 2nd time')
-#press_home_button()
-#print('Sleep for 2 seconds...')
-#time.sleep(2)
+while str(str(encoder_position[0]) + ',' + str(encoder_position[1]) + ',' + str(encoder_position[2])) != str(dexarm.get_encoder_position()):
+	pass
+press_home_button()
+while str(str(encoder_position[0]) + ',' + str(encoder_position[1]) + ',' + str(encoder_position[2])) != str(dexarm.get_encoder_position()):
+	pass
 
 # Go home
 print('Going back home...')
 go_home()
 
-# Press on English
-#goto(66,303,True)
-
-# Press on Australia
-#goto(36,300,True)
-
-# Sleep for 10
-#time.sleep(7)
-
-# Press on Set Up Manually
-#goto(-87,285,True)
-
-# Sleep for 10
-#time.sleep(5)
-
-# Press on Gav's iPhone Network
-#goto(42,285,True)
-
-# Type Hotspot password
-#type_word("abcd1234")
-
-# Press the join button
-#goto(84,246,True)
-
-# Sleep for 10 seconds
-#time.sleep(20)
-
-# Press on Next
-#goto(99,222,True)
-
-# Sleep for 30 seconds
-#time.sleep(30)
-
-# Press on Don't Transfer Data
-#goto(3,291,True)
-
-# Press on Next
-#goto(99,222,True)
-
-# Sleep 15 seconds
-#time.sleep(15)
-
-# Type in the username
-#type_word("simp9998")
-
-# Click in the password box
-#goto(27,312,True)
-
-# Type the password
-#type_word("El-barto-graffiti")
-
-# Press on Next
-#goto(99,222,True)
-
-# Sleep 20 seconds
-#time.sleep(20)
-
-# Press Continue
-#goto(-75,282,True)
-
-# Sleep 5 seconds
-#time.sleep(5)
-
-# Press Enable Location Services
-#goto(-75,282,True)
-
-# Sleep 5 seconds
-#time.sleep(5)
-
-# Press Don't Share
-#goto(-87,282,True)
-
-#go_home()
-
-#time.sleep(5)
-
-# print('Closing serial connection')
-# ser.close()
 print('Script finished')
