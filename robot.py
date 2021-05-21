@@ -252,7 +252,7 @@ print('Moving arm to home position...')
 dexarm.go_home()
 
 # Get encoder position
-encoder_position = dexarm.get_encoder()
+encoder_position = dexarm.get_encoder_position()
 print('My encoder position at home is ' + str(encoder_position))
 
 #Press home button twice
