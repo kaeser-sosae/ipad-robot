@@ -258,6 +258,10 @@ def start_siri(x,y):
 go_home()
 time.sleep(1)
 
+# Press power button for 2 seconds
+press_power_button(2)
+time.sleep(1)
+
 #Press home button twice
 press_home_button()
 time.sleep(2)
