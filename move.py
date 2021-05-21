@@ -10,6 +10,7 @@ z = sys.argv[2]
 print('Current pos = ' + str(dexarm.get_current_position()))
 print('Encoder pos = ' + str(dexarm.get_encoder_position()))
 print(' ')
+dexarm.fast_move_to(x, y, z)
 print('Moved to X' + x + ' Y' + y + ' Z' + z)
 print(' ')
 print('New Current pos = ' + str(dexarm.get_current_position()))
