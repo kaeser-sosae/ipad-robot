@@ -117,19 +117,19 @@ print('Waiting for iPad to boot...')
 dexarm._send_cmd("G4 S15\n")
 
 #Press on English
-screen_tap(12, 282)
+screen_tap(-8, 282)
 
 # Press on Australia = 4,252
-screen_tap(30,282)
+screen_tap(10,282)
 
 # Pause 4 seconds
 dexarm._send_cmd("G4 S5\n")
 
 # Press Set up manually = 72,252
-screen_tap(102,280)
+screen_tap(80,280)
 
 # Press on Lindisfarne = 72,252
-screen_tap(102,280)
+screen_tap(80,280)
 
 # Type username
 type_word("gavin.kennedy")
