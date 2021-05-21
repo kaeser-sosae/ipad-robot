@@ -222,9 +222,9 @@ def goto(x, y, press):
 def get_current_location(axis):
 	all_coords = dexarm.get_current_position()
 	ret_value = ''
-	x = all_coords.split(",")[0]
-	y = all_coords.split(",")[1]
-	z = all_coords.split(",")[2]
+	x = all_coords[0]
+	y = all_coords[1]
+	z = all_coords[2]
 	if axis == "x":
 		ret_value = x
 	if axis == "y":
