@@ -87,12 +87,13 @@ def press_power_button(seconds):
 		dexarm.fast_move_to(-128, get_current_location('y'), get_current_location('z'), 5000)
 		# Pull out the Z to -20 and move on
 		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
+		dexarm.go_home()
 
 def screen_tap(x, y):
-	dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -40, 5000)
-	dexarm.fast_move_to(x, y, -60, 10000)
-	dexarm.fast_move_to(x, y, -72, 3000)
-	dexarm.fast_move_to(x, y, -60, 10000)
+	dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
+	dexarm.fast_move_to(x, y, -44, 10000)
+	dexarm.fast_move_to(x, y, -54, 10000)
+	dexarm.fast_move_to(x, y, -44, 10000)
 	dexarm._send_cmd("G4 S1\n")
 
 def type_word(word):
