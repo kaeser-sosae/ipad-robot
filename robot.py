@@ -255,9 +255,10 @@ press_power_button(2)
 print('Waiting for iPad to boot...')
 dexarm._send_cmd("G4 S15\n")
 
-#Press home button once
-print('Pressing the home button...')
-press_home_button()
+#Press on English
+dexarm.fast_move_to(-14, 256, -52, 5000)
+dexarm.fast_move_to(-14, 256, -40, 5000)
+dexarm._send_cmd("G4 S1\n")
 
 # Go home
 print('Going back home...')
