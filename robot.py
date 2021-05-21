@@ -278,7 +278,7 @@ def press_home_button():
 print('My position is ' + str(dexarm.get_current_position()))
 
 # Go home
-#dexarm.go_home()
+dexarm.go_home()
 #go_home()
 time.sleep(1)
 
