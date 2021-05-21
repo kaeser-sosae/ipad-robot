@@ -89,8 +89,8 @@ class Dexarm:
 
         x = 0
         while x < 5:
-            print(current_position, x, y, z)
-            time.sleep(1)
+            print(current_position)
+            time.sleep(.1)
             x = x + 1        
 
         # Wait for the arm to finish the move
