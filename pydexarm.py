@@ -59,11 +59,11 @@ class Dexarm:
     def fast_move_to(self, x, y, z, feedrate=2000):
         cmd = "G0"+"F" + str(feedrate) + "X"+str(x) + "Y" + str(y) + "Z" + str(z) + "\r\n"
         self._send_cmd(cmd)
-        while get_current_position[0] != x:
+        while get_current_position()[0] != x:
             print('Waiting for move to finish (x)...')
-        while get_current_position[1] != y:
+        while get_current_position()[1] != y:
             print('Waiting for move to finish (y)...')
-        while get_current_position[2] != z:
+        while get_current_position()[2] != z:
             print('Waiting for move to finish (z)...')
 
 
