@@ -101,10 +101,10 @@ class Dexarm:
         self._send_cmd(cmd)
 
         x = 0
-         while x < 50:
-             print(self.get_encoder_position())
-             time.sleep(.1)
-             x = x + 1        
+        while x < 50:
+            print(self.get_encoder_position())
+            time.sleep(.1)
+            x = x + 1        
 
         # Wait for the arm to finish the move
         # while current_position[0] != x:
