@@ -84,13 +84,13 @@ class Dexarm:
 
         self._send_cmd(cmd)
         while current_position[0] != x:
-            print('Waiting for move to finish (x)...')
+            print('Waiting for move to finish (x=',x, ', current x = ' ,current_position[0],')...')
             current_position = self.get_current_position()
         while current_position[1] != y:
-            print('Waiting for move to finish (y)...')
+            print('Waiting for move to finish (y=',y, ', current y = ' ,current_position[1],')...')
             current_position = self.get_current_position()
         while current_position[2] != z:
-            print('Waiting for move to finish (z)...')
+            print('Waiting for move to finish (z=',z, ', current z = ' ,current_position[2],')...')
             current_position = self.get_current_position()
         print('FUNCTION IS FINISHED NOW')
 
