@@ -223,7 +223,7 @@ def press_home_button():
 		dexarm.fast_move_to(126, 252, get_current_location('z'), 5000)
 		dexarm.fast_move_to(126, 252, -56, 5000)
 		dexarm.fast_move_to(126, 252, -48, 5000)
-		dexarm.fast_move_to(150, 252, -0, 5000)
+		dexarm.fast_move_to(150, 252, 0, 5000)
 
 
 # def press_power_button(seconds):
@@ -252,18 +252,19 @@ print('Moving arm to home position...')
 dexarm.go_home()
 
 # Get encoder position
-encoder_position = dexarm.get_encoder_position()
+home_encoder_position = dexarm.get_encoder_position()
 print('My encoder position at home is ' + str(encoder_position))
 
 #Press home button twice
 print('Pressing the home button...')
 press_home_button()
-while str(str(1910.0) + ',' + str(3997.0) + ',' + str(990.0)) != str(dexarm.get_encoder_position()):
+while str(str(home_encoder_position[0] + 348) + ',' + str(home_encoder_position[1] - 18) + ',' + str(home_encoder_position[2] + 18)) != str(dexarm.get_encoder_position()):
 	print('|' + str(str(1910.0) + ',' + str(3997.0) + ',' + str(990.0)) + "| = |" + str(dexarm.get_encoder_position()) + "|")
 	time.sleep(.1)
 press_home_button()
-while str(str(encoder_position[0]) + ',' + str(encoder_position[1]) + ',' + str(encoder_position[2])) != str(dexarm.get_encoder_position()):
-	pass
+while str(str(home_encoder_position[0] + 348) + ',' + str(home_encoder_position[1] - 18) + ',' + str(home_encoder_position[2] + 18)) != str(dexarm.get_encoder_position()):
+	print('|' + str(str(1910.0) + ',' + str(3997.0) + ',' + str(990.0)) + "| = |" + str(dexarm.get_encoder_position()) + "|")
+	time.sleep(.1)
 
 # Go home
 print('Going back home...')
