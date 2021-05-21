@@ -4,201 +4,48 @@ from pydexarm import Dexarm
 dexarm = Dexarm("/dev/ttyACM0")
 
 # CONSTANTS
-# Home button location = X126 Y252
-# Home button pressed X126 Y252 Z56
+# Home button location = X128 Y300
+# Home button pressed X128 Y300 Z56
 # Z off screen travel height Z-48
 # Arm out of the way = X-226 Y0 Z6
-# Button pressed location = X-136 Y326 Z-106 (press down from X-148)
-
-# def press_letter(letter):
-# 	print('Typing letter ' + letter)
-# 	if (letter == "a"):
-# 		goto(-66,348,True)
-# 	if (letter == "b"):
-# 		goto(-75,285,True)
-# 	if (letter == "c"):
-# 		goto(-75,315,True)
-# 	if (letter == "d"):
-# 		goto(-63,321,True)
-# 	if (letter == "e"):
-# 		goto(-51,327,True)		
-# 	if (letter == "f"):
-# 		goto(-63,306,True)
-# 	if (letter == "g"):
-# 		goto(-63,291,True)
-# 	if (letter == "h"):
-# 		goto(-60,279,True)
-# 	if (letter == "i"):
-# 		goto(-51,258,True)
-# 	# if (letter == "j"):
-# 	# 	goto(-72,261,True)	
-# 	if (letter == "k"):
-# 		goto(-60,252,True)
-# 	if (letter == "l"):
-# 		goto(-60,237,True)
-# 	if (letter == "m"):
-# 		goto(-72,261,True)
-# 	# if (letter == "n"):
-# 	# 	goto(-48,231,True)
-# 	if (letter == "o"):
-# 		goto(-48,243,True)
-# 	if (letter == "p"):
-# 		goto(-48,228,True)
-# 	if (letter == "q"):
-# 		goto(-54,357,True)
-# 	if (letter == "r"):
-# 		goto(-51,312,True)
-# 	if (letter == "s"):
-# 		goto(-63,339,True)
-# 	if (letter == "t"):
-# 		goto(-51,300,True)
-# 	if (letter == "u"):
-# 		goto(-51,270,True)
-# 	# if (letter == "v"):
-# 	# 	goto(-63,339,True)
-# 	if (letter == "w"):
-# 		goto(-54,342,True)
-# 	# if (letter == "x"):
-# 	# 	goto(-63,339,True)
-# 	if (letter == "y"):
-# 		goto(-51,285,True)
-# 	# if (letter == "z"):
-# 	# 	goto(-63,339,True)
-
-# 	if (letter == "A"):
-# 		goto(-75,354,True)
-# 		goto(-66,348,True)
-# 	if (letter == "B"):
-# 		goto(-75,354,True)
-# 		goto(-75,285,True)
-# 	if (letter == "C"):
-# 		goto(-75,354,True)
-# 		goto(-75,315,True)
-# 	if (letter == "D"):
-# 		goto(-75,354,True)
-# 		goto(-63,321,True)
-# 	if (letter == "E"):
-# 		goto(-75,354,True)
-# 		goto(-51,327,True)	
-# 	if (letter == "F"):
-# 		goto(-75,354,True)
-# 		goto(-63,306,True)
-# 	if (letter == "G"):
-# 		goto(-75,354,True)
-# 		goto(-63,291,True)
-# 	if (letter == "H"):
-# 		goto(-75,354,True)
-# 		goto(-60,279,True)
-# 	if (letter == "I"):
-# 		goto(-75,354,True)
-# 		goto(-51,258,True)
-# 	# if (letter == "J"):
-# 	#	goto(-75,354,True)
-# 	# 	goto(-72,261,True)	
-# 	if (letter == "K"):
-# 		goto(-75,354,True)
-# 		goto(-60,252,True)
-# 	if (letter == "L"):
-# 		goto(-75,354,True)
-# 		goto(-60,237,True)
-# 	if (letter == "M"):
-# 		goto(-75,354,True)
-# 		goto(-72,261,True)
-# 	# if (letter == "N"):
-# 	#	goto(-75,354,True)
-# 	# 	goto(-48,231,True)
-# 	if (letter == "O"):
-# 		goto(-75,354,True)
-# 		goto(-48,243,True)
-# 	if (letter == "P"):
-# 		goto(-75,354,True)
-# 		goto(-48,228,True)
-# 	if (letter == "Q"):
-# 		goto(-75,354,True)
-# 		goto(-54,357,True)
-# 	if (letter == "R"):
-# 		goto(-75,354,True)
-# 		goto(-51,312,True)
-# 	if (letter == "S"):
-# 		goto(-75,354,True)
-# 		goto(-63,339,True)
-# 	if (letter == "T"):
-# 		goto(-75,354,True)
-# 		goto(-51,300,True)
-# 	if (letter == "U"):
-# 		goto(-75,354,True)
-# 		goto(-51,270,True)
-# 	# if (letter == "V"):
-# 	#	goto(-75,354,True)
-# 	# 	goto(-63,339,True)
-# 	if (letter == "W"):
-# 		goto(-75,354,True)
-# 		goto(-54,342,True)
-# 	# if (letter == "X"):
-# 	#	goto(-75,354,True)
-# 	# 	goto(-63,339,True)
-# 	if (letter == "Y"):
-# 		goto(-75,354,True)
-# 		goto(-51,285,True)
-# 	# if (letter == "Z"):
-# 	#	goto(-75,354,True)
-# 	# 	goto(-63,339,True)
+# Shift button = 128,208
+# Power button press = -106,348,-102
 
 
-# 	if (letter == "-"):
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 		goto(-75,327,True)
-# 		time.sleep(1)
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 	if (letter == "1"):
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 		goto(-51,357,True)
-# 		time.sleep(1)
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 	if (letter == "2"):
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 		goto(-51,342,True)
-# 		time.sleep(1)
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 	if (letter == "3"):
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 		goto(-51,327,True)
-# 		time.sleep(1)
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 	if (letter == "4"):
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 		goto(-51,312,True)
-# 		time.sleep(1)
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 	if (letter == "9"):
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 		goto(-48,246,True)
-# 		time.sleep(1)
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 	if (letter == "8"):
-# 		goto(-90,357,True)
-# 		time.sleep(1)
-# 		goto(-48,258,True)
-# 		time.sleep(1)
-# 		goto(-90,357,True)
-# 		time.sleep(1)
+letter_locations = {
+	"a":[(116,216)],
+	"b":[(124,278)],
+	"c":[(126,252)],
+	"d":[(112,244)],
+	"e":[(100,240)],
+	"f":[(112,258)],
+	"g":[(112,272)],
+	"h":[(110,286)],
+	"i":[(94,310)],
+	"j":[(110,300)],
+	"k":[(188,314)],
+	"l":[(108,326)],
+	"m":[(122,306)],
+	"n":[(122,292)],
+	"o":[(94,322)],
+	"p":[(94,336)],
+	"q":[(100,210)],
+	"r":[(98,254)],
+	"s":[(112,230)],
+	"t":[(98,268)],
+	"u":[(96,296)],
+	"v":[(124,264)],
+	"w":[(100,226)],
+	"x":[(126,236)],
+	"y":[(96,282)],
+	"z":[(128,222)]
+}
 
-# 	if (letter == "nums"):
-# 		goto(-90,357,True)
-# 	if (letter == "left_shift"):
-# 		goto(-78,357,True)		
+def press_letter(letter):
+	print('Typing letter ' + letter)
+
+	for tap in letter_locations[letter]:
+		screen_tap(tap[0], tap[1])
 
 def get_current_location(axis):
 	all_coords = dexarm.get_current_position()
@@ -227,25 +74,25 @@ def press_home_button():
 
 def press_power_button(seconds):
 		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
-		dexarm.fast_move_to(get_current_location('x'), 326, get_current_location('z'), 5000)
-		dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
-		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -106, 5000)
-		dexarm.fast_move_to(-136, get_current_location('y'), get_current_location('z'), 5000)
+		dexarm.fast_move_to(get_current_location('x'), 348, get_current_location('z'), 5000)
+		dexarm.fast_move_to(-115, get_current_location('y'), get_current_location('z'), 5000)
+		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -102, 5000)
+		dexarm.fast_move_to(-106, get_current_location('y'), get_current_location('z'), 5000)
 		dexarm._send_cmd("G4 S" + str(seconds) + "\n")
-		dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
+		dexarm.fast_move_to(-115, get_current_location('y'), get_current_location('z'), 5000)
 		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
 
 def screen_tap(x, y):
 	dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -40, 5000)
-	dexarm.fast_move_to(x, y, -40, 10000)
-	dexarm.fast_move_to(x, y, -52, 10000)
-	dexarm.fast_move_to(x, y, -40, 10000)
+	dexarm.fast_move_to(x, y, -60, 10000)
+	dexarm.fast_move_to(x, y, -72, 3000)
+	dexarm.fast_move_to(x, y, -60, 10000)
 	dexarm._send_cmd("G4 S1\n")
 
-# def type_word(word):
-#         print('Typing word ' + word)
-#         for char in word[ : : 1]:
-#                 press_letter(char)
+def type_word(word):
+	print('Typing word ' + word)
+	for char in word[ : : 1]:
+		press_letter(char)
 
 # Go home
 print('Moving arm to home position...')
@@ -263,21 +110,22 @@ print('Waiting for iPad to boot...')
 dexarm._send_cmd("G4 S15\n")
 
 #Press on English
-screen_tap(-14, 256)
+screen_tap(12, 282)
 
 # Press on Australia = 4,252
-screen_tap(4, 252)
+screen_tap(30,282)
 
 # Pause 4 seconds
 dexarm._send_cmd("G4 S5\n")
 
 # Press Set up manually = 72,252
-screen_tap(72, 252)
+screen_tap(102,280)
 
 # Press on Lindisfarne = 72,252
-screen_tap(72, 252)
+screen_tap(102,280)
 
 # Type username
+type_word("gavin.kennedy")
 
 # Press in password box = -56,252
 
