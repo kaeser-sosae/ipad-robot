@@ -8,5 +8,5 @@ dexarm = Dexarm("/dev/ttyACM0")
 
 while True:
 	print(dexarm.get_encoder_position())
-	sleep(.1)
+	time.sleep(.1)
 
