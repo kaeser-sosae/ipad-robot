@@ -240,7 +240,7 @@ def press_power_button(seconds):
         ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
         ser.write(bytes('G00 Z-106 ' + speed + '\n', 'utf-8'))
         ser.write(bytes('G00 X-136 ' + speed + '\n', 'utf-8'))
-        time.sleep(seconds)
+        time.sleep(5)
         ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
         ser.write(bytes('G00 Z-20 ' + speed + '\n', 'utf-8'))
 
