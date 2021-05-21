@@ -226,12 +226,12 @@ def press_home_button():
 
 
 def press_power_button(seconds):
-        print('Pressing power button...')
-        dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
-        dexarm.fast_move_to(get_current_location('x'), 326, get_current_location('z'), 5000)
-        dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
-        dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -106, 5000)
-        dexarm._send_cmd("G4 S5\n")
+		print('Pressing power button...')
+		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
+		dexarm.fast_move_to(get_current_location('x'), 326, get_current_location('z'), 5000)
+		dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
+		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -106, 5000)
+		dexarm._send_cmd("G4 S5\n")
 		dexarm.fast_move_to(-136, get_current_location('y'), get_current_location('z'), 5000)
 		dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
 		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
