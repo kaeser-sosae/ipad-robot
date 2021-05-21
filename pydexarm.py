@@ -79,7 +79,7 @@ class Dexarm:
 
     def fast_move_to(self, x, y, z, feedrate=2000):
         cmd = "G0"+"F" + str(feedrate) + "X"+str(x) + "Y" + str(y) + "Z" + str(z) + "\r\n"
-        current_position = get_current_position()
+        current_position = self.get_current_position()
         print('Current position inside function is ' + str(current_position))
 
         self._send_cmd(cmd)
