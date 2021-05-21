@@ -23,7 +23,7 @@ letter_locations = {
 	"h":[(97,278)],
 	"i":[(81,302)],
 	"j":[(97,292)],
-	"k":[(175,306)],
+	"k":[(96,306)],
 	"l":[(95,318)],
 	"m":[(109,298)],
 	"n":[(109,284)],
@@ -87,7 +87,6 @@ def press_power_button(seconds):
 		dexarm.fast_move_to(-128, get_current_location('y'), get_current_location('z'), 5000)
 		# Pull out the Z to -20 and move on
 		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
-		dexarm.go_home()
 
 def screen_tap(x, y):
 	#dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
@@ -113,9 +112,12 @@ home_encoder_position = dexarm.get_encoder_position()
 print('Pressing power button...')
 press_power_button(2)
 
+# Go to middle of screen and wait
+dexarm.fast_move_to(0,274,-44, 10000)
+
 # Wait 15 seconds after button is pressed, then press the home button once
 print('Waiting for iPad to boot...')
-dexarm._send_cmd("G4 S15\n")
+dexarm._send_cmd("G4 S20\n")
 
 #Press on English
 screen_tap(2, 282)
