@@ -226,7 +226,6 @@ def press_home_button():
 
 
 def press_power_button(seconds):
-		print('Pressing power button...')
 		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
 		dexarm.fast_move_to(get_current_location('x'), 326, get_current_location('z'), 5000)
 		dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
@@ -241,22 +240,19 @@ def press_power_button(seconds):
 #         for char in word[ : : 1]:
 #                 press_letter(char)
 
-# Get current position
-print('My current position is ' + str(dexarm.get_current_position()))
-print('My encoder position is ' + str(dexarm.get_encoder_position()))
-
 # Go home
 print('Moving arm to home position...')
 dexarm.go_home()
 
 # Get encoder position
 home_encoder_position = dexarm.get_encoder_position()
-print('My encoder position at home is ' + str(home_encoder_position))
 
 # Press power button for 2 seconds
+print('Pressing power button...')
 press_power_button(2)
 
 # Wait 15 seconds after button is pressed, then press the home button once
+print('Waiting for iPad to boot...')
 dexarm._send_cmd("G4 S15\n")
 
 #Press home button once
