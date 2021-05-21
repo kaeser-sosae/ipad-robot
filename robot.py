@@ -73,13 +73,19 @@ def press_home_button():
 
 
 def press_power_button(seconds):
+		# Set the Z to -20
 		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
-		dexarm.fast_move_to(get_current_location('x'), 348, get_current_location('z'), 5000)
-		dexarm.fast_move_to(-115, get_current_location('y'), get_current_location('z'), 5000)
-		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -102, 5000)
-		dexarm.fast_move_to(-106, get_current_location('y'), get_current_location('z'), 5000)
+		# Move to the XY
+		dexarm.fast_move_to(-128, 344, get_current_location('z'), 5000)
+		# Plunge the Z into position
+		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -84, 5000)
+		# Increase the X to press the button
+		dexarm.fast_move_to(-118, get_current_location('y'), get_current_location('z'), 5000)
+		# Hold for as long as we need
 		dexarm._send_cmd("G4 S" + str(seconds) + "\n")
-		dexarm.fast_move_to(-115, get_current_location('y'), get_current_location('z'), 5000)
+		# Reduce X to stop pressing the button
+		dexarm.fast_move_to(-128, get_current_location('y'), get_current_location('z'), 5000)
+		# Pull out the Z to -20 and move on
 		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
 
 def screen_tap(x, y):
