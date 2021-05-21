@@ -1,7 +1,7 @@
 import serial, time
 from pydexarm import Dexarm
 
-device = Dexarm("/dev/ttyACM0")
+dexarm = Dexarm("/dev/ttyACM0")
 
 #print('Opening serial connection')
 #ser = serial.Serial('/dev/ttyACM0', 115200)
