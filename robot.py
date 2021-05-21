@@ -16,17 +16,17 @@ dexarm = Dexarm("/dev/ttyACM0")
 # Button pressed location = X-136 Y326 Z-106 (press down from X-148)
 
 # Functions
-def goto(x, y, press):
-		if (press == True):
-				ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
-				time.sleep(.2)
-				ser.write(bytes('G00 Z760 ' + speed + '\n', 'utf-8'))
-				time.sleep(.1)
-				ser.write(bytes('G00 Z774 ' + speed + '\n', 'utf-8'))
-				time.sleep(1)
-		else:
-				ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
-				time.sleep(1)
+# def goto(x, y, press):
+# 		if (press == True):
+# 				ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
+# 				time.sleep(.2)
+# 				ser.write(bytes('G00 Z760 ' + speed + '\n', 'utf-8'))
+# 				time.sleep(.1)
+# 				ser.write(bytes('G00 Z774 ' + speed + '\n', 'utf-8'))
+# 				time.sleep(1)
+# 		else:
+# 				ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
+# 				time.sleep(1)
 
 
 # def press_letter(letter):
@@ -238,7 +238,6 @@ def go_home():
 		print('Going home...')
 		#ser.write(bytes('G00 X-226 Y0 Z6 ' + speed + '\n', 'utf-8'))
 		dexarm.fast_move_to(-226, 0, 6)
-		time.sleep(1)
 
 def press_home_button():
 		print('Pressing home button...')
@@ -248,7 +247,6 @@ def press_home_button():
 		dexarm.fast_move_to(126, 252, get_current_location('z'))
 		dexarm.fast_move_to(126, 252, -56)
 		dexarm.fast_move_to(126, 252, -48)
-		time.sleep(1)
 
 # def press_power_button(seconds):
 #         print('Pressing power button...')
@@ -293,7 +291,7 @@ press_home_button()
 time.sleep(2)
 
 # Go home
-#go_home()
+go_home()
 
 # Press on English
 #goto(66,303,True)
