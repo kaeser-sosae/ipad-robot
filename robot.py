@@ -258,7 +258,7 @@ print('My encoder position at home is ' + str(encoder_position))
 #Press home button twice
 print('Pressing the home button...')
 press_home_button()
-while str(str(encoder_position[0]) + ',' + str(encoder_position[1]) + ',' + str(encoder_position[2])) != str(dexarm.get_encoder_position()):
+while str(str(1910.0) + ',' + str(3997.0) + ',' + str(990.0)) != str(dexarm.get_encoder_position()):
 	pass
 press_home_button()
 while str(str(encoder_position[0]) + ',' + str(encoder_position[1]) + ',' + str(encoder_position[2])) != str(dexarm.get_encoder_position()):
