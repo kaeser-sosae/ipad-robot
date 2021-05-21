@@ -89,7 +89,7 @@ letter_locations = {
 	"+":[(132,200),(114,244),(132,200)],
 	"=":[(132,200),(114,258),(132,200)],
 	",":[(132,200),(110,314),(132,200)],
-	".":[(132,200),(110,328),(132,200)],
+	".":[(132,200),(112,328),(132,200)],
 	"_":[(132,200),(118,200),(100,250),(132,200)]
 }
 
@@ -188,7 +188,7 @@ dexarm._send_cmd("G4 S2\n")
 screen_tap(90,280)
 
 # Type username
-type_word("gavin.kennedy_anthony-gerke&")
+type_word("gavin.kEnnedy_Anthony-gerke&")
 
 # Press in password box = -56,252
 
