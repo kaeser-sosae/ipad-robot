@@ -236,7 +236,9 @@ def press_home_button():
 def press_power_button(seconds):
         print('Pressing power button...')
         ser.write(bytes('G00 Z-20 ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G00 Y326 X-148 Z-106 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 Y326 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
+        ser.write(bytes('G00 Z-106 ' + speed + '\n', 'utf-8'))
         ser.write(bytes('G00 X-136 ' + speed + '\n', 'utf-8'))
         time.sleep(seconds)
         ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
