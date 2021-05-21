@@ -23,6 +23,18 @@ class Dexarm:
                 else:
                     pass
                     #print("read：", str)
+    def get_encoder_value(self, data='M893'):
+        self.ser.write(data.encode())
+        while True:
+            str = self.ser.readline().decode("utf-8")
+            if len(str) > 0:
+                return str
+                #if str.find("ok") > -1:
+                #    #print("read ok")
+                #    break
+                #else:
+                #    pass
+                    #print("read：", str)                    
 
     def get_current_position(self):
         self.ser.write('M114\r'.encode())
@@ -86,8 +98,6 @@ class Dexarm:
 
         # Send the move command to the arm
         self._send_cmd(cmd)
-        self._send_cmd("M400")
-
 
         #x = 0
         # while x < 50:

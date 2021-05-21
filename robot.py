@@ -275,6 +275,7 @@ def press_home_button():
 
 # Get current position
 print('My position is ' + str(dexarm.get_current_position()))
+print('My encoder position is ' + str(dexarm.get_encoder_value()))
 
 # Go home
 print('Moving arm to home position...')
