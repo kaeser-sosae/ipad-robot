@@ -223,7 +223,6 @@ def press_home_button():
 		dexarm.fast_move_to(126, 252, get_current_location('z'), 5000)
 		dexarm.fast_move_to(126, 252, -56, 5000)
 		dexarm.fast_move_to(126, 252, -48, 5000)
-		dexarm.fast_move_to(150, 252, 0, 5000)
 
 
 # def press_power_button(seconds):
