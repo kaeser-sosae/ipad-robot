@@ -94,9 +94,8 @@ def screen_tap(x, y):
 	dexarm.fast_move_to(x, y, get_current_location('z'), 10000)
 	#dexarm.fast_move_to(x, y, -44, 10000)
 	dexarm.fast_move_to(x, y, -54, 2000)
-	dexarm._send_cmd("G4 P300\n")
+	dexarm._send_cmd("G4 P100\n")
 	dexarm.fast_move_to(x, y, -44, 2000)
-	dexarm._send_cmd("G4 S1\n")
 
 def type_word(word):
 	print('Typing word ' + word)
@@ -122,7 +121,7 @@ dexarm._send_cmd("G4 S15\n")
 screen_tap(2, 282)
 
 # Press on Australia = 4,252
-screen_tap(20,262)
+screen_tap(22,290)
 
 # Pause 4 seconds
 dexarm._send_cmd("G4 S5\n")
@@ -134,7 +133,7 @@ screen_tap(90,280)
 screen_tap(90,280)
 
 # Type username
-type_word("gavin.kennedy")
+type_word("abcdefghijklmnopqrstuvwxyz")
 
 # Press in password box = -56,252
 
