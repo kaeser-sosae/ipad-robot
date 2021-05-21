@@ -17,10 +17,11 @@ class Dexarm:
             str = self.ser.readline().decode("utf-8")
             if len(str) > 0:
                 if str.find("ok") > -1:
-                    print("read ok")
+                    #print("read ok")
                     break
                 else:
-                    print("read：", str)
+                    pass
+                    #print("read：", str)
 
     def get_current_position(self):
         self.ser.write('M114\r'.encode())
