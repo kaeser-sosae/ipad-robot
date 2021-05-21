@@ -3,9 +3,9 @@ from pydexarm import Dexarm
 
 dexarm = Dexarm("/dev/ttyACM0")
 
-x = sys.argv[0]
-y = sys.argv[1]
-z = sys.argv[2]
+x = sys.argv[1]
+y = sys.argv[2]
+z = sys.argv[3]
 
 print('Current pos = ' + str(dexarm.get_current_position()))
 print('Encoder pos = ' + str(dexarm.get_encoder_position()))
