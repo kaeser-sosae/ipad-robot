@@ -360,6 +360,6 @@ print('My position is ' + str(dexarm.get_current_position())
 
 #time.sleep(5)
 
-print('Closing serial connection')
-ser.close()
+# print('Closing serial connection')
+# ser.close()
 print('Script finished')
