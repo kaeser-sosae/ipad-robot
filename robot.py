@@ -231,6 +231,7 @@ def press_power_button(seconds):
         dexarm.fast_move_to(get_current_location('x'), 326, get_current_location('z'), 5000)
         dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
         dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -106, 5000)
+        dexarm._send_cmd("G4 S5\n")
 		dexarm.fast_move_to(-136, get_current_location('y'), get_current_location('z'), 5000)
 		dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
 		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
@@ -251,6 +252,9 @@ dexarm.go_home()
 # Get encoder position
 home_encoder_position = dexarm.get_encoder_position()
 print('My encoder position at home is ' + str(home_encoder_position))
+
+# Press power button for 2 seconds
+press_power_button(2)
 
 #Press home button twice
 print('Pressing the home button...')
