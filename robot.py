@@ -277,16 +277,11 @@ def press_home_button():
 print('My position is ' + str(dexarm.get_current_position()))
 
 # Go home
+print('Moving arm to home position...')
 dexarm.go_home()
-#go_home()
-time.sleep(2)
-
-# Press power button for 2 seconds
-#press_power_button(2)
-#time.sleep(1)
 
 #Press home button twice
-#print('Press button 1st time')
+print('Pressing the home button...')
 press_home_button()
 #print('Sleep for 2 seconds...')
 #time.sleep(2)
@@ -296,6 +291,7 @@ press_home_button()
 #time.sleep(2)
 
 # Go home
+print('Going back home...')
 go_home()
 
 # Press on English
