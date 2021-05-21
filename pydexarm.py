@@ -93,34 +93,8 @@ class Dexarm:
         self._send_cmd(cmd)
 
     def fast_move_to(self, x, y, z, feedrate=6000):
-        cmd = "G0"+"F" + str(feedrate) + "X"+str(x) + "Y" + str(y) + "Z" + str(z) + "\r\n"
-        #current_position = self.get_current_position()
-        #print('Current position inside function is ' + str(current_position))
-
-        # Send the move command to the arm
+        cmd = "G0 "+"F" + str(feedrate) + " X"+str(x) + " Y" + str(y) + " Z" + str(z) + "\r\n"
         self._send_cmd(cmd)
-
-        #x = 0
-        #while x < 50:
-        #    print(self.get_encoder_position())
-        #    time.sleep(.1)
-        #    x = x + 1        
-
-        # Wait for the arm to finish the move
-        # while current_position[0] != x:
-        #     print('Waiting for move to finish (x=',x, ', current x = ' ,current_position[0],')...')
-        #     current_position = self.get_current_position()
-        # while current_position[1] != y:
-        #     print('Waiting for move to finish (y=',y, ', current y = ' ,current_position[1],')...')
-        #     current_position = self.get_current_position()
-        # while current_position[2] != z:
-        #     print('Waiting for move to finish (z=',z, ', current z = ' ,current_position[2],')...')
-        #     current_position = self.get_current_position()
-        # print(current_position, x, y, z)
-        # print('FUNCTION IS FINISHED NOW')
-
-
-
 
     """Delay"""
     def dealy_ms(self, value):

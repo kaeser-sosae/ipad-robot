@@ -142,9 +142,9 @@ def press_power_button(seconds):
 
 def screen_tap(x, y):
 	dexarm.fast_move_to(x, y, get_current_location('z'), 10000)
-	dexarm.fast_move_to(x, y, -50, 10000)
+	dexarm.fast_move_to(x, y, -50, 6000)
 	dexarm._send_cmd("G4 P100\n")
-	dexarm.fast_move_to(x, y, -35, 10000)
+	dexarm.fast_move_to(x, y, -35, 6000)
 
 def type_word(word):
 	print('Typing word ' + word)
