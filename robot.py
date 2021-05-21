@@ -15,10 +15,6 @@ dexarm = Dexarm("/dev/ttyACM0")
 # Arm out of the way = X-226 Y0 Z6
 # Button pressed location = X-136 Y326 Z-106 (press down from X-148)
 
-
-
-
-
 # Functions
 def goto(x, y, press):
 		if (press == True):
@@ -268,18 +264,18 @@ def press_home_button():
 print('My position is ' + str(dexarm.get_current_position()))
 
 # Go home
-#go_home()
-#time.sleep(1)
+go_home()
+time.sleep(1)
 
 # Press power button for 2 seconds
 #press_power_button(2)
 #time.sleep(1)
 
 #Press home button twice
-#press_home_button()
-#time.sleep(2)
-#press_home_button()
-#time.sleep(2)
+press_home_button()
+time.sleep(2)
+press_home_button()
+time.sleep(2)
 
 # Go home
 #go_home()
