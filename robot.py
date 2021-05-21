@@ -219,6 +219,20 @@ def goto(x, y, press):
 # 	if (letter == "left_shift"):
 # 		goto(-78,357,True)		
 
+def get_current_location(axis):
+	all_coords = dexarm.get_current_position()
+	ret_value = ''
+	x = all_coords.split(",")[0]
+	y = all_coords.split(",")[1]
+	z = all_coords.split(",")[2]
+	if axis == "x":
+		ret_value = x
+	if axis == "y":
+		ret_value = y
+	if axis == "z":
+		ret_value = z
+	return ret_value
+
 def go_home():
 		#ser.write(bytes('M1112\n', 'utf-8'))
 		print('Going home...')
@@ -231,7 +245,7 @@ def press_home_button():
 		#ser.write(bytes('G00 X126 Y252 ' + speed + '\n', 'utf-8'))
 		#ser.write(bytes('G00 Z-56 ' + speed + '\n', 'utf-8'))
 		#ser.write(bytes('G00 Z-48 ' + speed + '\n', 'utf-8'))
-		dexarm.move_to(126, 252)
+		dexarm.move_to(126, 252, get_current_location(z))
 		dexarm.move_to(126, 252, -56)
 		dexarm.move_to(126, 252, -48)
 		time.sleep(1)
