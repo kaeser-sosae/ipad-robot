@@ -88,7 +88,7 @@ class Dexarm:
         self._send_cmd(cmd)
 
         x = 0
-        while x < 5:
+        while x < 50:
             print(current_position)
             time.sleep(.1)
             x = x + 1        
