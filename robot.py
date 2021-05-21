@@ -224,6 +224,8 @@ def go_home():
         #ser.write(bytes('M1112\n', 'utf-8'))
         print('Going home...')
         ser.write(bytes('G00 X-226 Y0 Z6 ' + speed + '\n', 'utf-8'))
+        result = ser.read(100)
+        print('Got a result ' + result)
         time.sleep(1)
 
 def press_home_button():
