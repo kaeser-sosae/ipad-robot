@@ -93,8 +93,8 @@ def screen_tap(x, y):
 	#dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
 	dexarm.fast_move_to(x, y, get_current_location('z'), 10000)
 	#dexarm.fast_move_to(x, y, -44, 10000)
-	dexarm.fast_move_to(x, y, -54, 10000)
-	dexarm.fast_move_to(x, y, -44, 10000)
+	dexarm.fast_move_to(x, y, -54, 2000)
+	dexarm.fast_move_to(x, y, -44, 2000)
 	dexarm._send_cmd("G4 S1\n")
 
 def type_word(word):
@@ -121,7 +121,7 @@ dexarm._send_cmd("G4 S15\n")
 screen_tap(2, 282)
 
 # Press on Australia = 4,252
-screen_tap(20,282)
+screen_tap(20,262)
 
 # Pause 4 seconds
 dexarm._send_cmd("G4 S5\n")
