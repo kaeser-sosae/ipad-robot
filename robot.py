@@ -1,9 +1,12 @@
 import serial, time
+from pydexarm import Dexarm
 
-print('Opening serial connection')
-ser = serial.Serial('/dev/ttyACM0', 115200)
+device = Dexarm("/dev/ttyACM0")
 
-speed = 'F4500'
+#print('Opening serial connection')
+#ser = serial.Serial('/dev/ttyACM0', 115200)
+
+#speed = 'F4500'
 
 # CONSTANTS
 # Home button location = X126 Y252
@@ -30,251 +33,256 @@ def goto(x, y, press):
                 time.sleep(1)
 
 
-def press_letter(letter):
-	print('Typing letter ' + letter)
-	if (letter == "a"):
-		goto(-66,348,True)
-	if (letter == "b"):
-		goto(-75,285,True)
-	if (letter == "c"):
-		goto(-75,315,True)
-	if (letter == "d"):
-		goto(-63,321,True)
-	if (letter == "e"):
-		goto(-51,327,True)		
-	if (letter == "f"):
-		goto(-63,306,True)
-	if (letter == "g"):
-		goto(-63,291,True)
-	if (letter == "h"):
-		goto(-60,279,True)
-	if (letter == "i"):
-		goto(-51,258,True)
-	# if (letter == "j"):
-	# 	goto(-72,261,True)	
-	if (letter == "k"):
-		goto(-60,252,True)
-	if (letter == "l"):
-		goto(-60,237,True)
-	if (letter == "m"):
-		goto(-72,261,True)
-	# if (letter == "n"):
-	# 	goto(-48,231,True)
-	if (letter == "o"):
-		goto(-48,243,True)
-	if (letter == "p"):
-		goto(-48,228,True)
-	if (letter == "q"):
-		goto(-54,357,True)
-	if (letter == "r"):
-		goto(-51,312,True)
-	if (letter == "s"):
-		goto(-63,339,True)
-	if (letter == "t"):
-		goto(-51,300,True)
-	if (letter == "u"):
-		goto(-51,270,True)
-	# if (letter == "v"):
-	# 	goto(-63,339,True)
-	if (letter == "w"):
-		goto(-54,342,True)
-	# if (letter == "x"):
-	# 	goto(-63,339,True)
-	if (letter == "y"):
-		goto(-51,285,True)
-	# if (letter == "z"):
-	# 	goto(-63,339,True)
+# def press_letter(letter):
+# 	print('Typing letter ' + letter)
+# 	if (letter == "a"):
+# 		goto(-66,348,True)
+# 	if (letter == "b"):
+# 		goto(-75,285,True)
+# 	if (letter == "c"):
+# 		goto(-75,315,True)
+# 	if (letter == "d"):
+# 		goto(-63,321,True)
+# 	if (letter == "e"):
+# 		goto(-51,327,True)		
+# 	if (letter == "f"):
+# 		goto(-63,306,True)
+# 	if (letter == "g"):
+# 		goto(-63,291,True)
+# 	if (letter == "h"):
+# 		goto(-60,279,True)
+# 	if (letter == "i"):
+# 		goto(-51,258,True)
+# 	# if (letter == "j"):
+# 	# 	goto(-72,261,True)	
+# 	if (letter == "k"):
+# 		goto(-60,252,True)
+# 	if (letter == "l"):
+# 		goto(-60,237,True)
+# 	if (letter == "m"):
+# 		goto(-72,261,True)
+# 	# if (letter == "n"):
+# 	# 	goto(-48,231,True)
+# 	if (letter == "o"):
+# 		goto(-48,243,True)
+# 	if (letter == "p"):
+# 		goto(-48,228,True)
+# 	if (letter == "q"):
+# 		goto(-54,357,True)
+# 	if (letter == "r"):
+# 		goto(-51,312,True)
+# 	if (letter == "s"):
+# 		goto(-63,339,True)
+# 	if (letter == "t"):
+# 		goto(-51,300,True)
+# 	if (letter == "u"):
+# 		goto(-51,270,True)
+# 	# if (letter == "v"):
+# 	# 	goto(-63,339,True)
+# 	if (letter == "w"):
+# 		goto(-54,342,True)
+# 	# if (letter == "x"):
+# 	# 	goto(-63,339,True)
+# 	if (letter == "y"):
+# 		goto(-51,285,True)
+# 	# if (letter == "z"):
+# 	# 	goto(-63,339,True)
 
-	if (letter == "A"):
-		goto(-75,354,True)
-		goto(-66,348,True)
-	if (letter == "B"):
-		goto(-75,354,True)
-		goto(-75,285,True)
-	if (letter == "C"):
-		goto(-75,354,True)
-		goto(-75,315,True)
-	if (letter == "D"):
-		goto(-75,354,True)
-		goto(-63,321,True)
-	if (letter == "E"):
-		goto(-75,354,True)
-		goto(-51,327,True)	
-	if (letter == "F"):
-		goto(-75,354,True)
-		goto(-63,306,True)
-	if (letter == "G"):
-		goto(-75,354,True)
-		goto(-63,291,True)
-	if (letter == "H"):
-		goto(-75,354,True)
-		goto(-60,279,True)
-	if (letter == "I"):
-		goto(-75,354,True)
-		goto(-51,258,True)
-	# if (letter == "J"):
-	#	goto(-75,354,True)
-	# 	goto(-72,261,True)	
-	if (letter == "K"):
-		goto(-75,354,True)
-		goto(-60,252,True)
-	if (letter == "L"):
-		goto(-75,354,True)
-		goto(-60,237,True)
-	if (letter == "M"):
-		goto(-75,354,True)
-		goto(-72,261,True)
-	# if (letter == "N"):
-	#	goto(-75,354,True)
-	# 	goto(-48,231,True)
-	if (letter == "O"):
-		goto(-75,354,True)
-		goto(-48,243,True)
-	if (letter == "P"):
-		goto(-75,354,True)
-		goto(-48,228,True)
-	if (letter == "Q"):
-		goto(-75,354,True)
-		goto(-54,357,True)
-	if (letter == "R"):
-		goto(-75,354,True)
-		goto(-51,312,True)
-	if (letter == "S"):
-		goto(-75,354,True)
-		goto(-63,339,True)
-	if (letter == "T"):
-		goto(-75,354,True)
-		goto(-51,300,True)
-	if (letter == "U"):
-		goto(-75,354,True)
-		goto(-51,270,True)
-	# if (letter == "V"):
-	#	goto(-75,354,True)
-	# 	goto(-63,339,True)
-	if (letter == "W"):
-		goto(-75,354,True)
-		goto(-54,342,True)
-	# if (letter == "X"):
-	#	goto(-75,354,True)
-	# 	goto(-63,339,True)
-	if (letter == "Y"):
-		goto(-75,354,True)
-		goto(-51,285,True)
-	# if (letter == "Z"):
-	#	goto(-75,354,True)
-	# 	goto(-63,339,True)
+# 	if (letter == "A"):
+# 		goto(-75,354,True)
+# 		goto(-66,348,True)
+# 	if (letter == "B"):
+# 		goto(-75,354,True)
+# 		goto(-75,285,True)
+# 	if (letter == "C"):
+# 		goto(-75,354,True)
+# 		goto(-75,315,True)
+# 	if (letter == "D"):
+# 		goto(-75,354,True)
+# 		goto(-63,321,True)
+# 	if (letter == "E"):
+# 		goto(-75,354,True)
+# 		goto(-51,327,True)	
+# 	if (letter == "F"):
+# 		goto(-75,354,True)
+# 		goto(-63,306,True)
+# 	if (letter == "G"):
+# 		goto(-75,354,True)
+# 		goto(-63,291,True)
+# 	if (letter == "H"):
+# 		goto(-75,354,True)
+# 		goto(-60,279,True)
+# 	if (letter == "I"):
+# 		goto(-75,354,True)
+# 		goto(-51,258,True)
+# 	# if (letter == "J"):
+# 	#	goto(-75,354,True)
+# 	# 	goto(-72,261,True)	
+# 	if (letter == "K"):
+# 		goto(-75,354,True)
+# 		goto(-60,252,True)
+# 	if (letter == "L"):
+# 		goto(-75,354,True)
+# 		goto(-60,237,True)
+# 	if (letter == "M"):
+# 		goto(-75,354,True)
+# 		goto(-72,261,True)
+# 	# if (letter == "N"):
+# 	#	goto(-75,354,True)
+# 	# 	goto(-48,231,True)
+# 	if (letter == "O"):
+# 		goto(-75,354,True)
+# 		goto(-48,243,True)
+# 	if (letter == "P"):
+# 		goto(-75,354,True)
+# 		goto(-48,228,True)
+# 	if (letter == "Q"):
+# 		goto(-75,354,True)
+# 		goto(-54,357,True)
+# 	if (letter == "R"):
+# 		goto(-75,354,True)
+# 		goto(-51,312,True)
+# 	if (letter == "S"):
+# 		goto(-75,354,True)
+# 		goto(-63,339,True)
+# 	if (letter == "T"):
+# 		goto(-75,354,True)
+# 		goto(-51,300,True)
+# 	if (letter == "U"):
+# 		goto(-75,354,True)
+# 		goto(-51,270,True)
+# 	# if (letter == "V"):
+# 	#	goto(-75,354,True)
+# 	# 	goto(-63,339,True)
+# 	if (letter == "W"):
+# 		goto(-75,354,True)
+# 		goto(-54,342,True)
+# 	# if (letter == "X"):
+# 	#	goto(-75,354,True)
+# 	# 	goto(-63,339,True)
+# 	if (letter == "Y"):
+# 		goto(-75,354,True)
+# 		goto(-51,285,True)
+# 	# if (letter == "Z"):
+# 	#	goto(-75,354,True)
+# 	# 	goto(-63,339,True)
 
 
-	if (letter == "-"):
-		goto(-90,357,True)
-		time.sleep(1)
-		goto(-75,327,True)
-		time.sleep(1)
-		goto(-90,357,True)
-		time.sleep(1)
-	if (letter == "1"):
-		goto(-90,357,True)
-		time.sleep(1)
-		goto(-51,357,True)
-		time.sleep(1)
-		goto(-90,357,True)
-		time.sleep(1)
-	if (letter == "2"):
-		goto(-90,357,True)
-		time.sleep(1)
-		goto(-51,342,True)
-		time.sleep(1)
-		goto(-90,357,True)
-		time.sleep(1)
-	if (letter == "3"):
-		goto(-90,357,True)
-		time.sleep(1)
-		goto(-51,327,True)
-		time.sleep(1)
-		goto(-90,357,True)
-		time.sleep(1)
-	if (letter == "4"):
-		goto(-90,357,True)
-		time.sleep(1)
-		goto(-51,312,True)
-		time.sleep(1)
-		goto(-90,357,True)
-		time.sleep(1)
-	if (letter == "9"):
-		goto(-90,357,True)
-		time.sleep(1)
-		goto(-48,246,True)
-		time.sleep(1)
-		goto(-90,357,True)
-		time.sleep(1)
-	if (letter == "8"):
-		goto(-90,357,True)
-		time.sleep(1)
-		goto(-48,258,True)
-		time.sleep(1)
-		goto(-90,357,True)
-		time.sleep(1)
+# 	if (letter == "-"):
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 		goto(-75,327,True)
+# 		time.sleep(1)
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 	if (letter == "1"):
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 		goto(-51,357,True)
+# 		time.sleep(1)
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 	if (letter == "2"):
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 		goto(-51,342,True)
+# 		time.sleep(1)
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 	if (letter == "3"):
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 		goto(-51,327,True)
+# 		time.sleep(1)
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 	if (letter == "4"):
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 		goto(-51,312,True)
+# 		time.sleep(1)
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 	if (letter == "9"):
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 		goto(-48,246,True)
+# 		time.sleep(1)
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 	if (letter == "8"):
+# 		goto(-90,357,True)
+# 		time.sleep(1)
+# 		goto(-48,258,True)
+# 		time.sleep(1)
+# 		goto(-90,357,True)
+# 		time.sleep(1)
 
-	if (letter == "nums"):
-		goto(-90,357,True)
-	if (letter == "left_shift"):
-		goto(-78,357,True)		
+# 	if (letter == "nums"):
+# 		goto(-90,357,True)
+# 	if (letter == "left_shift"):
+# 		goto(-78,357,True)		
 
 def go_home():
         #ser.write(bytes('M1112\n', 'utf-8'))
         print('Going home...')
-        ser.write(bytes('G00 X-226 Y0 Z6 ' + speed + '\n', 'utf-8'))
-        result = ser.read(100)
-        print('Got a result ' + result)
+        #ser.write(bytes('G00 X-226 Y0 Z6 ' + speed + '\n', 'utf-8'))
+        dexarm.move_to(-226, 0, 6)
         time.sleep(1)
 
 def press_home_button():
         print('Pressing home button...')
-        ser.write(bytes('G00 X126 Y252 ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G00 Z-56 ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G00 Z-48 ' + speed + '\n', 'utf-8'))
+        #ser.write(bytes('G00 X126 Y252 ' + speed + '\n', 'utf-8'))
+        #ser.write(bytes('G00 Z-56 ' + speed + '\n', 'utf-8'))
+        #ser.write(bytes('G00 Z-48 ' + speed + '\n', 'utf-8'))
+        dexarm.move_to(126, 252)
+		dexarm.move_to(126, 252, -56)
+		dexarm.move_to(126, 252, -48)
         time.sleep(1)
 
-def press_power_button(seconds):
-        print('Pressing power button...')
-        ser.write(bytes('G00 Z-20 ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G00 Y326 ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G00 Z-106 ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G00 X-136 ' + speed + '\n', 'utf-8'))
-        print('Should be sleeping now...')
-        time.sleep(5)
-        ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G00 Z-20 ' + speed + '\n', 'utf-8'))
+# def press_power_button(seconds):
+#         print('Pressing power button...')
+#         ser.write(bytes('G00 Z-20 ' + speed + '\n', 'utf-8'))
+#         ser.write(bytes('G00 Y326 ' + speed + '\n', 'utf-8'))
+#         ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
+#         ser.write(bytes('G00 Z-106 ' + speed + '\n', 'utf-8'))
+#         ser.write(bytes('G00 X-136 ' + speed + '\n', 'utf-8'))
+#         print('Should be sleeping now...')
+#         time.sleep(5)
+#         ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
+#         ser.write(bytes('G00 Z-20 ' + speed + '\n', 'utf-8'))
 
-def type_word(word):
-        print('Typing word ' + word)
-        for char in word[ : : 1]:
-                press_letter(char)
+# def type_word(word):
+#         print('Typing word ' + word)
+#         for char in word[ : : 1]:
+#                 press_letter(char)
 
-def start_siri(x,y):
-        ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
-        ser.write(bytes('G00 Z-68 ' + speed + '\n', 'utf-8'))
-        time.sleep(5)
-        ser.write(bytes('G00 Z-45 ' + speed + '\n', 'utf-8'))
-        time.sleep(1)
+# def start_siri(x,y):
+#         ser.write(bytes('G00 X' + str(x) + ' Y' + str(y) + ' ' + speed + '\n', 'utf-8'))
+#         ser.write(bytes('G00 Z-68 ' + speed + '\n', 'utf-8'))
+#         time.sleep(5)
+#         ser.write(bytes('G00 Z-45 ' + speed + '\n', 'utf-8'))
+#         time.sleep(1)
+
+# Get current position
+print('My position is ' + dexarm.get_current_position())
 
 # Go home
-go_home()
-time.sleep(1)
+#go_home()
+#time.sleep(1)
 
 # Press power button for 2 seconds
-press_power_button(2)
-time.sleep(1)
+#press_power_button(2)
+#time.sleep(1)
 
 #Press home button twice
-press_home_button()
-time.sleep(2)
-press_home_button()
-time.sleep(2)
+#press_home_button()
+#time.sleep(2)
+#press_home_button()
+#time.sleep(2)
 
 # Go home
-go_home()
+#go_home()
 
 # Press on English
 #goto(66,303,True)
