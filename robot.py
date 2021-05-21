@@ -225,17 +225,15 @@ def press_home_button():
 		dexarm.fast_move_to(126, 252, -48, 5000)
 
 
-# def press_power_button(seconds):
-#         print('Pressing power button...')
-#         ser.write(bytes('G00 Z-20 ' + speed + '\n', 'utf-8'))
-#         ser.write(bytes('G00 Y326 ' + speed + '\n', 'utf-8'))
-#         ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
-#         ser.write(bytes('G00 Z-106 ' + speed + '\n', 'utf-8'))
-#         ser.write(bytes('G00 X-136 ' + speed + '\n', 'utf-8'))
-#         print('Should be sleeping now...')
-#         time.sleep(5)
-#         ser.write(bytes('G00 X-148 ' + speed + '\n', 'utf-8'))
-#         ser.write(bytes('G00 Z-20 ' + speed + '\n', 'utf-8'))
+def press_power_button(seconds):
+        print('Pressing power button...')
+        dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
+        dexarm.fast_move_to(get_current_location('x'), 326, get_current_location('z'), 5000)
+        dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
+        dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -106, 5000)
+		dexarm.fast_move_to(-136, get_current_location('y'), get_current_location('z'), 5000)
+		dexarm.fast_move_to(-148, get_current_location('y'), get_current_location('z'), 5000)
+		dexarm.fast_move_to(get_current_location('x'), get_current_location('y'), -20, 5000)
 
 # def type_word(word):
 #         print('Typing word ' + word)
