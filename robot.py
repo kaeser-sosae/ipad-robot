@@ -259,48 +259,48 @@ dexarm.fast_move_to(62,300,-12, 10000)
 cont = True
 row_number = 0
 x = 1
-# while cont:
-# 	for returned_strings in get_ocr_text({"areas":[
-# 		{"x1":652,"x2":1445,"y1":261,"y2":348,"rotation":168},
-# 		{"x1":652,"x2":1445,"y1":439,"y2":531,"rotation":168},
-# 		{"x1":652,"x2":1445,"y1":609,"y2":703,"rotation":168},
-# 		{"x1":652,"x2":1445,"y1":786,"y2":877,"rotation":168},
-# 		{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotation":168},
-# 		{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotation":168},
-# 		{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotation":168}
-# 		]}):
-# 		if "lindisfarne" in lower(returned_strings):
-# 			# Proceed
-# 			cont = False
-# 			row_number = x
-# 			break
-# 		x = x + 1
-
-index_number = 0
-
 while cont:
-	try:
-		index_number = get_ocr_text({"areas":[
-			{"x1":652,"x2":1445,"y1":261,"y2":348,"rotation":168},
-			{"x1":652,"x2":1445,"y1":439,"y2":531,"rotation":168},
-			{"x1":652,"x2":1445,"y1":609,"y2":703,"rotation":168},
-			{"x1":652,"x2":1445,"y1":786,"y2":877,"rotation":168},
-			{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotation":168},
-			{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotation":168},
-			{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotation":168}
-			]}).index("lindisfarne")
-		break
-	except:
-		pass	
+	for returned_strings in get_ocr_text({"areas":[
+		{"x1":652,"x2":1445,"y1":261,"y2":348,"rotation":168},
+		{"x1":652,"x2":1445,"y1":439,"y2":531,"rotation":168},
+		{"x1":652,"x2":1445,"y1":609,"y2":703,"rotation":168},
+		{"x1":652,"x2":1445,"y1":786,"y2":877,"rotation":168},
+		{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotation":168},
+		{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotation":168},
+		{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotation":168}
+		]}):
+		if "lindisfarne" in lower(returned_strings):
+			# Proceed
+			cont = False
+			row_number = x
+			break
+		x = x + 1
+
+#index_number = 0
+
+# while cont:
+# 	try:
+# 		index_number = get_ocr_text({"areas":[
+# 			{"x1":652,"x2":1445,"y1":261,"y2":348,"rotation":168},
+# 			{"x1":652,"x2":1445,"y1":439,"y2":531,"rotation":168},
+# 			{"x1":652,"x2":1445,"y1":609,"y2":703,"rotation":168},
+# 			{"x1":652,"x2":1445,"y1":786,"y2":877,"rotation":168},
+# 			{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotation":168},
+# 			{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotation":168},
+# 			{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotation":168}
+# 			]}).index("lindisfarne")
+# 		break
+# 	except:
+# 		pass	
 
 # Press the appropriate row
-if index_number == 1: screen_tap(12,280)
-if index_number == 2: screen_tap(24,280)
-if index_number == 3: screen_tap(38,280)
-if index_number == 4: screen_tap(52,280)
-if index_number == 5: screen_tap(64,280)
-if index_number == 6: screen_tap(76,280)
-if index_number == 7: screen_tap(88,280)
+if row_number == 1: screen_tap(12,280)
+if row_number == 2: screen_tap(24,280)
+if row_number == 3: screen_tap(38,280)
+if row_number == 4: screen_tap(52,280)
+if row_number == 5: screen_tap(64,280)
+if row_number == 6: screen_tap(76,280)
+if row_number == 7: screen_tap(88,280)
 
 # Pause 2 seconds
 dexarm._send_cmd("G4 S2\n")
