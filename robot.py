@@ -161,11 +161,13 @@ def screen_tap(x, y):
 	dexarm.fast_move_to(x, y, get_current_location('z'), 10000)
 	dexarm.fast_move_to(x, y, -54, 10000)
 	dexarm.fast_move_to(x, y, -35, 10000)
+	dexarm._send_cmd("G4 P50\n")
 
 def type_word(word):
 	print('Typing word ' + word)
 	for char in word[ : : 1]:
 		press_letter(char)
+	dexarm._send_cmd("G4 P50\n")
 
 def get_ocr_text(dict_coords):
 
@@ -199,6 +201,9 @@ def get_ocr_text(dict_coords):
 
 	# return the list of strings ("data variable")
 	return data["strings"]
+
+def pause(milliseconds):
+	dexarm._send_cmd("G4 P" + str(milliseconds) + "\n")
 
 # Go home
 print('Moving arm to home position...')
@@ -253,7 +258,6 @@ screen_tap(90,280)
 
 # Pause 10 seconds
 dexarm._send_cmd("G4 S10\n")
-
 
 
 connected_to_correct_wifi = False
