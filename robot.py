@@ -319,13 +319,15 @@ while connected_to_correct_wifi == False:
 		print('Row number is 7')
 		screen_tap(88,280)
 
-	# Pause 4 seconds
-	dexarm._send_cmd("G4 S4\n")
-
 	# Check that we pressed the correct wifi network
 	# If the word lindisfarne is not found, press the back button
 	# Move arm to -68,348,-12
+	print('Checking that we pressed the right Wifi network')
 	dexarm.fast_move_to(-68,348,-12, 10000)
+	
+	# Pause 4 seconds
+	dexarm._send_cmd("G4 S4\n")
+
 	print("Looking for the word 'Lindisfarne'")
 	cont = True
 	while cont:
