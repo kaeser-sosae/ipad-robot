@@ -417,6 +417,8 @@ screen_tap(-40,318)
 # Send arm to 74,300,-12
 # Crop image at 541, 1200, 720, 811, 166
 
+dexarm.fast_move_to(74,300,-12, 10000)
+
 print("Looking for the word 'Transfer'")
 cont = True
 while cont:
