@@ -163,7 +163,7 @@ def go_home():
 def press_home_button():
 		print('Pressing home button...')
 		dexarm.fast_move_to(144, 272, get_current_location('z'), 5000)
-		dexarm.fast_move_to(144, 272, -60, 5000)
+		dexarm.fast_move_to(144, 272, -58, 5000)
 		dexarm.fast_move_to(144, 272, -40, 5000)
 
 def press_power_button(seconds):
@@ -467,6 +467,7 @@ while cont:
 
 
 # Press Next
+print('Pressing next')
 screen_tap(-52,326)
 
 # Type username
