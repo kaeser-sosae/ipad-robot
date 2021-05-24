@@ -246,6 +246,13 @@ def get_ocr_text(dict_coords):
 def pause(milliseconds):
 	dexarm._send_cmd("G4 P" + str(milliseconds) + "\n")
 
+def get_single_string(x1,x2,y1,y2,rotation):
+	for returned_strings in get_ocr_text({"areas":[{"x1":x1,"x2":x2,"y1":y1,"y2":y2,"rotate":rotation}]}):
+		if returned_strings != "":
+			return returned_strings
+		else:
+			return ""
+
 # Go home
 print('Moving arm to home position...')
 dexarm.go_home()
@@ -257,15 +264,15 @@ home_encoder_position = dexarm.get_encoder_position()
 print('Pressing power button...')
 press_power_button(3)
 
-# Go to middle of screen and wait 20 seconds to take picture
+# Go to middle of screen and wait 13 seconds to take picture
 print('Waiting for iPad to boot...')
 dexarm.fast_move_to(0,274,-12, 10000)
-dexarm._send_cmd("G4 S20\n")
+dexarm._send_cmd("G4 S13\n")
 
 #If the word English is found, continue, if not, wait 5 seconds
 # Move arm to 0,300,-12
-dexarm.fast_move_to(0,300,-12, 10000)
 print("Looking for the word 'english'")
+dexarm.fast_move_to(0,300,-12, 10000)
 cont = True
 have_i_waited_once = False
 while cont:
@@ -320,8 +327,8 @@ while connected_to_correct_wifi == False:
 	# move arm to 62, 300, -12
 	dexarm.fast_move_to(62,300,-12, 10000)
 
-	# Pause 2 seconds
-	dexarm._send_cmd("G4 S2\n")
+	# Pause 1 second
+	dexarm._send_cmd("G4 S1\n")
 
 	cont = True
 	row_number = 0
@@ -426,21 +433,22 @@ screen_tap(-40,318)
 # Start searching for the word "Transfer"
 # Send arm to 74,300,-12
 # Crop image at 541, 1200, 720, 811, 166
-
-dexarm.fast_move_to(74,300,-12, 10000)
-
 print("Looking for the word 'Transfer'")
-cont = True
-while cont:
-	for returned_strings in get_ocr_text({"areas":[{"x1":541,"x2":1200,"y1":720,"y2":811,"rotate":166}]}):
-		print('Returned strings: ' + returned_strings)
-		if "Transfer" not in returned_strings:
-			# Pause 1 second
-			dexarm._send_cmd("G4 S1\n")
-			# Loop back around
-		else:
-			# Proceed with script
-			cont = False
+dexarm.fast_move_to(74,300,-12, 10000)
+while "Transfer" not in get_single_string(541,1200,720,811,166):
+	pass
+
+# cont = True
+# while cont:
+# 	for returned_strings in get_ocr_text({"areas":[{"x1":541,"x2":1200,"y1":720,"y2":811,"rotate":166}]}):
+# 		print('Returned strings: ' + returned_strings)
+# 		if "Transfer" not in returned_strings:
+# 			# Pause 1 second
+# 			dexarm._send_cmd("G4 S1\n")
+# 			# Loop back around
+# 		else:
+# 			# Proceed with script
+# 			cont = False
 
 # Press on the Don't Transfer option
 screen_tap(54,300)
@@ -448,22 +456,22 @@ screen_tap(54,300)
 # Look for the Next button
 # Arm at -52,362,-12
 # Crop at 960, 1148, 720, 800, 188
-
-dexarm.fast_move_to(-52,362,-12, 10000)
-
 print("Looking for the word 'Next'")
-
-cont = True
-while cont:
-	for returned_strings in get_ocr_text({"areas":[{"x1":960,"x2":1148,"y1":720,"y2":800,"rotate":188}]}):
-		print('Returned strings: ' + returned_strings)
-		if "Next" not in returned_strings:
-			# Pause 1 second
-			dexarm._send_cmd("G4 S1\n")
-			# Loop back around
-		else:
-			# Proceed with script
-			cont = False
+dexarm.fast_move_to(-52,362,-12, 10000)
+while "Next" not in get_single_string(960,1148,720,800,188):
+	pass
+	
+# cont = True
+# while cont:
+# 	for returned_strings in get_ocr_text({"areas":[{"x1":960,"x2":1148,"y1":720,"y2":800,"rotate":188}]}):
+# 		print('Returned strings: ' + returned_strings)
+# 		if "Next" not in returned_strings:
+# 			# Pause 1 second
+# 			dexarm._send_cmd("G4 S1\n")
+# 			# Loop back around
+# 		else:
+# 			# Proceed with script
+# 			cont = False
 
 
 # Press Next
