@@ -297,8 +297,8 @@ dexarm._send_cmd("G4 S5\n")
 print('Pressing on Set Up Manually')
 screen_tap(90,280)
 
-# Pause 10 seconds
-dexarm._send_cmd("G4 S10\n")
+# Pause 2 seconds
+dexarm._send_cmd("G4 S2\n")
 
 
 connected_to_correct_wifi = False
