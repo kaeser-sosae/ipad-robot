@@ -45,7 +45,7 @@ letter_locations = {
 	"i":[(81,81,302,302)],
 	"j":[(97,97,292,292)],
 	"k":[(96,96,306,306)],
-	"l":[(95,95,318,218)],
+	"l":[(95,95,318,318)],
 	"m":[(109,109,298,298)],
 	"n":[(109,109,284,284)],
 	"o":[(81,81,314,314)],
@@ -400,6 +400,20 @@ screen_tap(-36,262)
 
 # Type password
 type_word("El-barto-graffiti")
+
+pause(200)
+
+# Press the join button
+# -68,318
+screen_tap(-68,318)
+
+pause(3000)
+
+# Press the Trust button
+# -40 318
+screen_tap(-40,318)
+
+
 
 
 
