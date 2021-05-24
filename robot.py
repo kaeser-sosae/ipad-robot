@@ -267,19 +267,23 @@ dexarm._send_cmd("G4 S20\n")
 dexarm.fast_move_to(0,300,-12, 10000)
 print("Looking for the word 'english'")
 cont = True
+have_i_waited_once = False
 while cont:
-	have_i_waited_once = False
 	for returned_strings in get_ocr_text({"areas":[{"x1":587,"x2":960,"y1":842,"y2":960,"rotate":180}]}):
 		print('Returned strings: ' + returned_strings)
 		if "English" in returned_strings:
+			print('Found English on screen')
 			# Proceed with the script, no need to hit home button
 			cont = False
 			break
 		# Didn't find English in the string
 		else:
+			print('Did not find English on screen')
+			print('have_i_waited_once=' + str(have_i_waited_once))
 			# Pause for 5 seconds
 			dexarm._send_cmd("G4 S5\n")
 			if have_i_waited_once == True:
+				print('have_i_waited_once is True! Pressing the home button!')
 				# Press the home button, then move on with the script
 				press_home_button()		
 				dexarm._send_cmd("G4 S1\n")		
@@ -464,6 +468,51 @@ while cont:
 
 # Press Next
 screen_tap(-52,326)
+
+# Type username
+type_word("simp9998")
+
+# Press in the password box
+screen_tap(-8,244)
+
+# Type password
+type_word("El-barto-graffiti")
+
+# Press Next
+screen_tap(-82,326)
+
+# Pause for 2 seconds
+pause(2000)
+
+# Press don't have apple ID
+# 44,274
+screen_tap(44,274)
+pause(1000)
+
+# Press setup later in settings
+# 4,274
+screen_tap(4,274)
+pause(1000)
+
+# Press Don't use
+# 36, 286
+screen_tap(36,286)
+pause(1000)
+
+# Press continue
+# 78,286
+screen_tap(78,286)
+pause(1000)
+
+# Press enable location services
+# 78,286
+screen_tap(78,286)
+pause(1000)
+
+# Press Don't share
+# 90,276
+screen_tap(90,276)
+pause(1000)
 
 
 
