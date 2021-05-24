@@ -407,11 +407,8 @@ while connected_to_correct_wifi == False:
 # Type username
 type_word("simp9998")
 
-# Pause 1 second
-dexarm._send_cmd("G4 S1\n")
-
-# Press in password box = -56,252
-screen_tap(-36,262)
+# Press the Next button
+screen_tap(94,342)
 
 # Type password
 type_word("El-barto-graffiti")
