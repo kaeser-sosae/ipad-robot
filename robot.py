@@ -225,7 +225,7 @@ cont = True
 while cont:
 	have_i_waited_once = False
 	for returned_strings in get_ocr_text({"areas":[{"x1":587,"x2":960,"y1":842,"y2":960,"rotation":180}]}):
-		if "english" in lower(returned_strings):
+		if "English" in returned_strings:
 			# Proceed
 			cont = False
 		# not english	
@@ -253,7 +253,7 @@ screen_tap(90,280)
 dexarm._send_cmd("G4 S2\n")
 
 # Search for the Lindisfarne Wifi Network
-print("Looking for the word 'lindisfarne'")
+print("Looking for the word 'Lindisfarne'")
 # move arm to 62, 300, -12
 dexarm.fast_move_to(62,300,-12, 10000)
 cont = True
