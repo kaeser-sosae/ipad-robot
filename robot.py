@@ -167,12 +167,12 @@ def type_word(word):
 	for char in word[ : : 1]:
 		press_letter(char)
 
-def get_ocr_text(arm_x, arm_y, dict_coords):
+def get_ocr_text(dict_coords):
 
-	print('Taking a picture at x: ' + str(arm_x) + " y:" + str(arm_y))
+	#print('Taking a picture at x: ' + str(arm_x) + " y:" + str(arm_y))
 
 	#Move camera to good location for taking pictures
-	dexarm.fast_move_to(arm_x, arm_y, -12, 7000)
+	#dexarm.fast_move_to(arm_x, arm_y, -12, 7000)
 	
 	#Set up the API call
 	parameters = {
