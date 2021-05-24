@@ -270,15 +270,21 @@ cont = True
 while cont:
 	have_i_waited_once = False
 	for returned_strings in get_ocr_text({"areas":[{"x1":587,"x2":960,"y1":842,"y2":960,"rotate":180}]}):
+		print('Returned strings: ' + returned_strings)
 		if "English" in returned_strings:
-			# Proceed
+			# Proceed with the script, no need to hit home button
 			cont = False
-		# not english	
+			break
+		# Didn't find English in the string
 		else:
-			# Press the home button
+			# Pause for 5 seconds
 			dexarm._send_cmd("G4 S5\n")
-			if have_i_waited_once == False:
+			if have_i_waited_once == True:
+				# Press the home button, then move on with the script
+				press_home_button()		
+				dexarm._send_cmd("G4 S1\n")		
 				cont = False
+				break
 			have_i_waited_once = True
 
 
@@ -435,8 +441,29 @@ while cont:
 # Press on the Don't Transfer option
 screen_tap(54,300)
 
+# Look for the Next button
+# Arm at -52,362,-12
+# Crop at 960, 1148, 720, 800, 188
+
+dexarm.fast_move_to(-52,362,-12, 10000)
+
+print("Looking for the word 'Next'")
+
+cont = True
+while cont:
+	for returned_strings in get_ocr_text({"areas":[{"x1":960,"x2":1148,"y1":720,"y2":800,"rotate":188}]}):
+		print('Returned strings: ' + returned_strings)
+		if "Next" not in returned_strings:
+			# Pause 1 second
+			dexarm._send_cmd("G4 S1\n")
+			# Loop back around
+		else:
+			# Proceed with script
+			cont = False
 
 
+# Press Next
+screen_tap(-52,326)
 
 
 
