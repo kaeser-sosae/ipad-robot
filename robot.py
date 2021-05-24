@@ -12,7 +12,24 @@ dexarm = Dexarm("/dev/ttyACM0")
 # Special characters button = 132,200
 # Special characters alt button = 118,200
 # Power button press = -106,348,-102
-
+# Z height for best photo = -12
+# Row arm xy press coordinates
+	# 1st row = 12, 280
+	# 2nd row = 24, 280
+	# 3rd row = 38, 280
+	# 4th row = 52, 280
+	# 5th row = 64, 280
+	# 6th row = 76, 280
+	# 7th row = 88, 280
+# Row image xy coordinates (x1, x2, y1, y2, rotation)
+# Arm is at position 62, 300, -12
+	# 1st row = 652, 1445, 261, 348, 168
+	# 2nd row = 652, 1445, 439, 531, 168
+	# 3rd row = 652, 1445, 609, 703, 168
+	# 4th row = 652, 1445, 786, 877, 168
+	# 5th row = 652, 1445, 962, 1050, 168
+	# 6th row = 652, 1445, 1132, 1238, 168
+	# 7th row = 652, 1445, 1320, 1440, 168
 
 letter_locations = {
 	"a":[(103,208)],
@@ -150,6 +167,42 @@ def type_word(word):
 	for char in word[ : : 1]:
 		press_letter(char)
 
+def get_ocr_text(arm_x, arm_y, dict_coords):
+
+	print('Taking a picture at x: ' + str(arm_x) + " y:" + str(arm_y))
+
+	#Move camera to good location for taking pictures
+	dexarm.fast_move_to(arm_x, arm_y, -12, 7000)
+	
+	#Set up the API call
+	parameters = {
+		"url": f"http://assets.lindisfarne.nsw.edu.au/api/v1/accessories/{accessory['id']}/checkout",
+		"headers": {
+			"Authorization": "Bearer eyJ0eXAiOiJKV1"
+		},
+		"json": dict_coords
+	}
+	
+	#Get the response code
+	response = requests.get(**parameters)
+
+	data = {}
+
+	#If response is 200, then get the data in JSON and assign to the "data" variable
+	if response.status_code == 200:
+		try:
+			data = response.json()
+		except:
+			return [""]
+
+	#If response isn't 200, then return blank string
+	else:
+		# function failed
+		return [""]
+
+	# return the list of strings ("data variable")
+	return data["strings"]
+
 # Go home
 print('Moving arm to home position...')
 dexarm.go_home()
@@ -157,16 +210,34 @@ dexarm.go_home()
 # Get encoder position
 home_encoder_position = dexarm.get_encoder_position()
 
-# Press power button for 2 seconds
+# Press power button for 3 seconds
 print('Pressing power button...')
-press_power_button(2)
+press_power_button(3)
 
-# Go to middle of screen and wait
-dexarm.fast_move_to(0,274,-44, 10000)
-
-# Wait 15 seconds after button is pressed, then press the home button once
+# Go to middle of screen and wait 20 seconds to take picture
 print('Waiting for iPad to boot...')
+dexarm.fast_move_to(0,274,-12, 10000)
 dexarm._send_cmd("G4 S20\n")
+
+#If the word English is found, continue, if not, wait 5 seconds
+# Move arm to 0,300,-12
+dexarm.fast_move_to(0,300,-12, 10000)
+print("Looking for the word 'english'")
+cont = True
+while cont:
+	have_i_waited_once = False
+	for returned_strings in get_ocr_text({"areas":[{"x1":587,"x2":960,"y1":842,"y2":960,"rotation":180}]}):
+		if "english" in lower(returned_strings):
+			# Proceed
+			cont = False
+		# not english	
+		else:
+			# Press the home button
+			dexarm._send_cmd("G4 S5\n")
+			if have_i_waited_once == False:
+				cont = False
+			have_i_waited_once = True
+
 
 #Press on English
 screen_tap(2, 282)
@@ -174,8 +245,8 @@ screen_tap(2, 282)
 # Press on Australia = 4,252
 screen_tap(22,290)
 
-# Pause 2 seconds
-dexarm._send_cmd("G4 S2\n")
+# Pause 5 seconds
+dexarm._send_cmd("G4 S5\n")
 
 # Press Set up manually = 72,252
 screen_tap(90,280)
@@ -183,13 +254,70 @@ screen_tap(90,280)
 # Pause 2 seconds
 dexarm._send_cmd("G4 S2\n")
 
-# Press on Lindisfarne = 72,252
-screen_tap(90,280)
+# Search for the Lindisfarne Wifi Network
+print("Looking for the word 'lindisfarne'")
+# move arm to 62, 300, -12
+dexarm.fast_move_to(62,300,-12, 10000)
+cont = True
+row_number = 0
+x = 1
+# while cont:
+# 	for returned_strings in get_ocr_text({"areas":[
+# 		{"x1":652,"x2":1445,"y1":261,"y2":348,"rotation":168},
+# 		{"x1":652,"x2":1445,"y1":439,"y2":531,"rotation":168},
+# 		{"x1":652,"x2":1445,"y1":609,"y2":703,"rotation":168},
+# 		{"x1":652,"x2":1445,"y1":786,"y2":877,"rotation":168},
+# 		{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotation":168},
+# 		{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotation":168},
+# 		{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotation":168}
+# 		]}):
+# 		if "lindisfarne" in lower(returned_strings):
+# 			# Proceed
+# 			cont = False
+# 			row_number = x
+# 			break
+# 		x = x + 1
+
+index_number = 0
+
+while cont:
+	try:
+		index_number = get_ocr_text({"areas":[
+			{"x1":652,"x2":1445,"y1":261,"y2":348,"rotation":168},
+			{"x1":652,"x2":1445,"y1":439,"y2":531,"rotation":168},
+			{"x1":652,"x2":1445,"y1":609,"y2":703,"rotation":168},
+			{"x1":652,"x2":1445,"y1":786,"y2":877,"rotation":168},
+			{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotation":168},
+			{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotation":168},
+			{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotation":168}
+			]}).index("lindisfarne")
+		break
+	except:
+		pass	
+
+# Press the appropriate row
+if index_number == 1: screen_tap(12,280)
+if index_number == 2: screen_tap(24,280)
+if index_number == 3: screen_tap(38,280)
+if index_number == 4: screen_tap(52,280)
+if index_number == 5: screen_tap(64,280)
+if index_number == 6: screen_tap(76,280)
+if index_number == 7: screen_tap(88,280)
+
+# Pause 2 seconds
+dexarm._send_cmd("G4 S2\n")
 
 # Type username
-type_word("gavin.kEnnedy_Anthony-gerke&")
+type_word("simp9998")
+
+# Pause 1 second
+dexarm._send_cmd("G4 S1\n")
 
 # Press in password box = -56,252
+screen_tap(-56,252)
+
+# Type password
+type_word("El-barto-graffiti")
 
 
 
