@@ -238,15 +238,18 @@ while cont:
 
 
 #Press on English
+print('Pressing on english')
 screen_tap(2, 282)
 
 # Press on Australia = 4,252
+print('Pressing on Australia')
 screen_tap(22,290)
 
 # Pause 5 seconds
 dexarm._send_cmd("G4 S5\n")
 
 # Press Set up manually = 72,252
+print('Pressing on Set Up Manually')
 screen_tap(90,280)
 
 # Pause 2 seconds
@@ -260,6 +263,7 @@ cont = True
 row_number = 0
 x = 1
 while cont:
+	print('Taking picture and checking for Lindisfarne...')
 	for returned_strings in get_ocr_text({"areas":[
 		{"x1":652,"x2":1445,"y1":261,"y2":348,"rotation":168},
 		{"x1":652,"x2":1445,"y1":439,"y2":531,"rotation":168},
@@ -269,12 +273,14 @@ while cont:
 		{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotation":168},
 		{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotation":168}
 		]}):
-		if "lindisfarne" in lower(returned_strings):
+		print('Returned string: ' + returned_strings)
+		if "Lindisfarne" in returned_strings:
 			# Proceed
 			cont = False
 			row_number = x
 			break
 		x = x + 1
+	time.sleep(.5)
 
 #index_number = 0
 
