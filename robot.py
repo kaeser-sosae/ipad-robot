@@ -1,5 +1,6 @@
 import serial, time
 from pydexarm import Dexarm
+import requests
 
 dexarm = Dexarm("/dev/ttyACM0")
 
@@ -176,10 +177,7 @@ def get_ocr_text(dict_coords):
 	
 	#Set up the API call
 	parameters = {
-		"url": f"http://assets.lindisfarne.nsw.edu.au/api/v1/accessories/{accessory['id']}/checkout",
-		"headers": {
-			"Authorization": "Bearer eyJ0eXAiOiJKV1"
-		},
+		"url": "http://10.151.3.184/ocr",
 		"json": dict_coords
 	}
 	
