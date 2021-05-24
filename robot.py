@@ -396,7 +396,7 @@ type_word("simp9998")
 dexarm._send_cmd("G4 S1\n")
 
 # Press in password box = -56,252
-screen_tap(-56,252)
+screen_tap(-36,262)
 
 # Type password
 type_word("El-barto-graffiti")
