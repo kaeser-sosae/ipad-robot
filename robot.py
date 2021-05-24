@@ -413,11 +413,25 @@ pause(3000)
 # -40 318
 screen_tap(-40,318)
 
+# Start searching for the word "Transfer"
+# Send arm to 74,300,-12
+# Crop image at 541, 1200, 720, 811, 166
 
+print("Looking for the word 'Transfer'")
+cont = True
+while cont:
+	for returned_strings in get_ocr_text({"areas":[{"x1":541,"x2":1200,"y1":720,"y2":811,"rotate":166}]}):
+		print('Returned strings: ' + returned_strings)
+		if "Transfer" not in returned_strings:
+			# Pause 1 second
+			dexarm._send_cmd("G4 S1\n")
+			# Loop back around
+		else:
+			# Proceed with script
+			cont = False
 
-
-
-
+# Press on the Don't Transfer option
+screen_tap(54,300)
 
 
 
