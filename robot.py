@@ -137,8 +137,6 @@ letter_locations = {
 }
 
 def press_letter(letter):
-	print('Typing letter ' + letter)
-
 	for tap in letter_locations[letter]:
 		screen_drag(tap[0], tap[1], tap[2], tap[3])
 
@@ -269,7 +267,7 @@ print('Waiting for iPad to boot...')
 dexarm.fast_move_to(0,274,-12, 10000)
 dexarm._send_cmd("G4 S13\n")
 
-#If the word English is found, continue, if not, wait 5 seconds
+# If the word English is found, continue, if not, wait 5 seconds
 # Move arm to 0,300,-12
 print("Looking for the word 'english'")
 dexarm.fast_move_to(0,300,-12, 10000)
@@ -298,7 +296,7 @@ while cont:
 				break
 			have_i_waited_once = True
 
-#Press on English
+# Press on English
 print('Pressing on english')
 screen_tap(2, 282)
 
@@ -413,13 +411,17 @@ screen_tap(94,342)
 # Type password
 type_word("El-barto-graffiti")
 
-pause(200)
-
 # Press the join button
-# -68,318
-screen_tap(-68,318)
+# 96,342
+screen_tap(96,342)
 
-pause(3000)
+# Look for the word "lindisfarne"
+# Send arm to 0,300,-12
+# Crop photo to 710, 1440, 555, 628, 180
+print("Looking for the word 'lindisfarne'")
+dexarm.fast_move_to(0,300,-12, 10000)
+while "Transfer" not in get_single_string(710,1440,555,628,180):
+	pass
 
 # Press the Trust button
 # -40 318
@@ -493,15 +495,26 @@ pause(1000)
 screen_tap(90,276)
 pause(1000)
 
+# Press the settings button
+# 44,238
+screen_tap(44,238)
 
+# Press about
+# -68,290
+screen_tap(-68,290)
 
+pause(2000)
 
-
-
-
-
-
-
+# Get the serial number
+# Send arm to -12,376,-12
+# Crop photo to 730, 1163, 510, 590, 181
+print("Looking for the serial number")
+dexarm.fast_move_to(-12,376,-12, 10000)
+x = 1
+while x < 6:
+	print(get_single_string(730,1163,510,590,181))
+	pause(1000)
+	x = x + 1
 
 
 
