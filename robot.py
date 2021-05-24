@@ -224,7 +224,7 @@ print("Looking for the word 'english'")
 cont = True
 while cont:
 	have_i_waited_once = False
-	for returned_strings in get_ocr_text({"areas":[{"x1":587,"x2":960,"y1":842,"y2":960,"rotation":180}]}):
+	for returned_strings in get_ocr_text({"areas":[{"x1":587,"x2":960,"y1":842,"y2":960,"rotate":180}]}):
 		if "English" in returned_strings:
 			# Proceed
 			cont = False
@@ -265,13 +265,13 @@ x = 1
 while cont:
 	print('Taking picture and checking for Lindisfarne...')
 	for returned_strings in get_ocr_text({"areas":[
-		{"x1":652,"x2":1445,"y1":261,"y2":348,"rotation":168},
-		{"x1":652,"x2":1445,"y1":439,"y2":531,"rotation":168},
-		{"x1":652,"x2":1445,"y1":609,"y2":703,"rotation":168},
-		{"x1":652,"x2":1445,"y1":786,"y2":877,"rotation":168},
-		{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotation":168},
-		{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotation":168},
-		{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotation":168}
+		{"x1":652,"x2":1445,"y1":261,"y2":348,"rotate":168},
+		{"x1":652,"x2":1445,"y1":439,"y2":531,"rotate":168},
+		{"x1":652,"x2":1445,"y1":609,"y2":703,"rotate":168},
+		{"x1":652,"x2":1445,"y1":786,"y2":877,"rotate":168},
+		{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotate":168},
+		{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotate":168},
+		{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotate":168}
 		]}):
 		print('Returned string: ' + returned_strings)
 		if "Lindisfarne" in returned_strings:
