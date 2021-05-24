@@ -282,22 +282,9 @@ while cont:
 		x = x + 1
 	time.sleep(.5)
 
-#index_number = 0
-
-# while cont:
-# 	try:
-# 		index_number = get_ocr_text({"areas":[
-# 			{"x1":652,"x2":1445,"y1":261,"y2":348,"rotation":168},
-# 			{"x1":652,"x2":1445,"y1":439,"y2":531,"rotation":168},
-# 			{"x1":652,"x2":1445,"y1":609,"y2":703,"rotation":168},
-# 			{"x1":652,"x2":1445,"y1":786,"y2":877,"rotation":168},
-# 			{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotation":168},
-# 			{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotation":168},
-# 			{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotation":168}
-# 			]}).index("lindisfarne")
-# 		break
-# 	except:
-# 		pass	
+# Go home
+print('Moving arm to home position...')
+dexarm.go_home()	
 
 # Press the appropriate row
 if row_number == 1: screen_tap(12,280)
