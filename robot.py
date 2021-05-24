@@ -255,66 +255,99 @@ screen_tap(90,280)
 # Pause 10 seconds
 dexarm._send_cmd("G4 S10\n")
 
-# Search for the Lindisfarne Wifi Network
-print("Looking for the word 'Lindisfarne'")
-# move arm to 62, 300, -12
-dexarm.fast_move_to(62,300,-12, 10000)
 
-# Pause 2 seconds
-dexarm._send_cmd("G4 S2\n")
 
-cont = True
-row_number = 0
-x = 1
-while cont:
-	print('Taking picture and checking for Lindisfarne...')
-	for returned_strings in get_ocr_text({"areas":[
-		{"x1":652,"x2":1445,"y1":261,"y2":348,"rotate":168},
-		{"x1":652,"x2":1445,"y1":439,"y2":531,"rotate":168},
-		{"x1":652,"x2":1445,"y1":609,"y2":703,"rotate":168},
-		{"x1":652,"x2":1445,"y1":786,"y2":877,"rotate":168},
-		{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotate":168},
-		{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotate":168},
-		{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotate":168}
-		]}):
-		print('Returned string: ' + returned_strings)
-		if "Lindisfarne" in returned_strings:
-			# Proceed
-			cont = False
-			row_number = x
-			break
-		x = x + 1
-	time.sleep(.5)
+connected_to_correct_wifi = False
 
-# Go home
-print('Moving arm to home position...')
-dexarm.go_home()	
+while connected_to_correct_wifi == False:
 
-# Press the appropriate row
-if row_number == 1:
-	print('Row number is 1')
-	screen_tap(12,280)
-if row_number == 2:
-	print('Row number is 2')
-	screen_tap(24,280)
-if row_number == 3:
-	print('Row number is 3')
-	screen_tap(38,280)
-if row_number == 4:
-	print('Row number is 4')
-	screen_tap(52,280)
-if row_number == 5:
-	print('Row number is 5')
-	screen_tap(64,280)
-if row_number == 6:
-	print('Row number is 6')
-	screen_tap(76,280)
-if row_number == 7:
-	print('Row number is 7')
-	screen_tap(88,280)
+	# Search for the Lindisfarne Wifi Network
+	print("Looking for the word 'Lindisfarne'")
+	# move arm to 62, 300, -12
+	dexarm.fast_move_to(62,300,-12, 10000)
 
-# Pause 2 seconds
-dexarm._send_cmd("G4 S2\n")
+	# Pause 2 seconds
+	dexarm._send_cmd("G4 S2\n")
+
+	cont = True
+	row_number = 0
+	x = 1
+	while cont:
+		print('Taking picture and checking for Lindisfarne...')
+		for returned_strings in get_ocr_text({"areas":[
+			{"x1":652,"x2":1445,"y1":261,"y2":348,"rotate":168},
+			{"x1":652,"x2":1445,"y1":439,"y2":531,"rotate":168},
+			{"x1":652,"x2":1445,"y1":609,"y2":703,"rotate":168},
+			{"x1":652,"x2":1445,"y1":786,"y2":877,"rotate":168},
+			{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotate":168},
+			{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotate":168},
+			{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotate":168}
+			]}):
+			print('Returned string: ' + returned_strings)
+			if "Lindisfarne" in returned_strings:
+				# Proceed
+				cont = False
+				row_number = x
+				break
+			x = x + 1
+		time.sleep(.5)
+
+	# Go home
+	print('Moving arm to home position...')
+	dexarm.go_home()	
+
+	# Press the appropriate row
+	if row_number == 1:
+		print('Row number is 1')
+		screen_tap(12,280)
+	if row_number == 2:
+		print('Row number is 2')
+		screen_tap(24,280)
+	if row_number == 3:
+		print('Row number is 3')
+		screen_tap(38,280)
+	if row_number == 4:
+		print('Row number is 4')
+		screen_tap(52,280)
+	if row_number == 5:
+		print('Row number is 5')
+		screen_tap(64,280)
+	if row_number == 6:
+		print('Row number is 6')
+		screen_tap(76,280)
+	if row_number == 7:
+		print('Row number is 7')
+		screen_tap(88,280)
+
+	# Pause 4 seconds
+	dexarm._send_cmd("G4 S4\n")
+
+	# Check that we pressed the correct wifi network
+	# If the word lindisfarne is not found, press the back button
+	# Move arm to -68,348,-12
+	dexarm.fast_move_to(-68,348,-12, 10000)
+	print("Looking for the word 'Lindisfarne'")
+	cont = True
+	while cont:
+		for returned_strings in get_ocr_text({"areas": [
+	        {
+	            "x1": 110,
+	            "y1": 560,
+	            "x2": 900,
+	            "y2": 650,
+	            "rotate": 191
+	        }
+	    ]}):
+			if "Lindisfarne" not in returned_strings:
+				screen_tap(-66,230)
+				# Pause 2 seconds
+				dexarm._send_cmd("G4 S2\n")
+				# Proceed
+				cont = False
+			else:
+				cont = False
+				connected_to_correct_wifi = True
+
 
 # Type username
 type_word("simp9998")
