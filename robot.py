@@ -298,7 +298,6 @@ while cont:
 				break
 			have_i_waited_once = True
 
-
 #Press on English
 print('Pressing on english')
 screen_tap(2, 282)
@@ -316,7 +315,6 @@ screen_tap(90,280)
 
 # Pause 2 seconds
 dexarm._send_cmd("G4 S2\n")
-
 
 connected_to_correct_wifi = False
 
@@ -430,49 +428,24 @@ pause(3000)
 # -40 318
 screen_tap(-40,318)
 
-# Start searching for the word "Transfer"
+# Look for the word "Transfer"
 # Send arm to 74,300,-12
-# Crop image at 541, 1200, 720, 811, 166
+# Crop photo to 541, 1200, 720, 811, 166
 print("Looking for the word 'Transfer'")
 dexarm.fast_move_to(74,300,-12, 10000)
 while "Transfer" not in get_single_string(541,1200,720,811,166):
 	pass
 
-# cont = True
-# while cont:
-# 	for returned_strings in get_ocr_text({"areas":[{"x1":541,"x2":1200,"y1":720,"y2":811,"rotate":166}]}):
-# 		print('Returned strings: ' + returned_strings)
-# 		if "Transfer" not in returned_strings:
-# 			# Pause 1 second
-# 			dexarm._send_cmd("G4 S1\n")
-# 			# Loop back around
-# 		else:
-# 			# Proceed with script
-# 			cont = False
-
 # Press on the Don't Transfer option
 screen_tap(54,300)
 
-# Look for the Next button
-# Arm at -52,362,-12
-# Crop at 960, 1148, 720, 800, 188
+# Look for the word "Next"
+# Send arm to -52,362,-12
+# Crop photo to 960, 1148, 720, 800, 188
 print("Looking for the word 'Next'")
 dexarm.fast_move_to(-52,362,-12, 10000)
 while "Next" not in get_single_string(960,1148,720,800,188):
 	pass
-	
-# cont = True
-# while cont:
-# 	for returned_strings in get_ocr_text({"areas":[{"x1":960,"x2":1148,"y1":720,"y2":800,"rotate":188}]}):
-# 		print('Returned strings: ' + returned_strings)
-# 		if "Next" not in returned_strings:
-# 			# Pause 1 second
-# 			dexarm._send_cmd("G4 S1\n")
-# 			# Loop back around
-# 		else:
-# 			# Proceed with script
-# 			cont = False
-
 
 # Press Next
 print('Pressing next')
@@ -481,10 +454,8 @@ screen_tap(-52,326)
 # Type username
 type_word("simp9998")
 
-# Press in the password box
-screen_tap(-8,240)
-screen_tap(-8,240)
-screen_tap(-8,240)
+# Press the return key
+screen_tap(96,344)
 
 # Type password
 type_word("El-barto-graffiti")
