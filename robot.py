@@ -259,6 +259,10 @@ dexarm._send_cmd("G4 S2\n")
 print("Looking for the word 'Lindisfarne'")
 # move arm to 62, 300, -12
 dexarm.fast_move_to(62,300,-12, 10000)
+
+# Pause 2 seconds
+dexarm._send_cmd("G4 S2\n")
+
 cont = True
 row_number = 0
 x = 1
@@ -287,13 +291,27 @@ print('Moving arm to home position...')
 dexarm.go_home()	
 
 # Press the appropriate row
-if row_number == 1: screen_tap(12,280)
-if row_number == 2: screen_tap(24,280)
-if row_number == 3: screen_tap(38,280)
-if row_number == 4: screen_tap(52,280)
-if row_number == 5: screen_tap(64,280)
-if row_number == 6: screen_tap(76,280)
-if row_number == 7: screen_tap(88,280)
+if row_number == 1:
+	print('Row number is 1')
+	screen_tap(12,280)
+if row_number == 2:
+	print('Row number is 2')
+	screen_tap(24,280)
+if row_number == 3:
+	print('Row number is 3')
+	screen_tap(38,280)
+if row_number == 4:
+	print('Row number is 4')
+	screen_tap(52,280)
+if row_number == 5:
+	print('Row number is 5')
+	screen_tap(64,280)
+if row_number == 6:
+	print('Row number is 6')
+	screen_tap(76,280)
+if row_number == 7:
+	print('Row number is 7')
+	screen_tap(88,280)
 
 # Pause 2 seconds
 dexarm._send_cmd("G4 S2\n")
