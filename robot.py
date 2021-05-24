@@ -5,8 +5,8 @@ import requests
 dexarm = Dexarm("/dev/ttyACM0")
 
 # CONSTANTS
-# Home button location = X128 Y300
-# Home button pressed X128 Y300 Z56
+# Home button location = X144 Y272
+# Home button pressed X144 Y272 Z56
 # Z off screen travel height Z-48
 # Arm out of the way = X-226 Y0 Z6
 # Shift button = 118,200
@@ -162,9 +162,9 @@ def go_home():
 
 def press_home_button():
 		print('Pressing home button...')
-		dexarm.fast_move_to(126, 252, get_current_location('z'), 5000)
-		dexarm.fast_move_to(126, 252, -56, 5000)
-		dexarm.fast_move_to(126, 252, -48, 5000)
+		dexarm.fast_move_to(144, 272, get_current_location('z'), 5000)
+		dexarm.fast_move_to(144, 272, -60, 5000)
+		dexarm.fast_move_to(144, 272, -40, 5000)
 
 def press_power_button(seconds):
 		# Set the Z to -20
@@ -473,7 +473,9 @@ screen_tap(-52,326)
 type_word("simp9998")
 
 # Press in the password box
-screen_tap(-8,244)
+screen_tap(-8,240)
+screen_tap(-8,240)
+screen_tap(-8,240)
 
 # Type password
 type_word("El-barto-graffiti")
