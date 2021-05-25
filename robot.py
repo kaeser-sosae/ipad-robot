@@ -4,6 +4,9 @@ import requests
 
 dexarm = Dexarm("/dev/ttyACM0")
 
+main_username = "simp9998"
+main_password = ""
+
 # CONSTANTS
 # Home button location = X144 Y272
 # Home button pressed X144 Y272 Z56
@@ -136,6 +139,32 @@ letter_locations = {
 	"_":[(132,132,200,200),(118,118,200,200),(100,100,250,250),(132,132,200,200)]
 }
 
+def get_password(username):
+
+	passwd = ""
+
+	url = "https://credentials.api.lindisfarne.nsw.edu.au/items"
+
+	payload = json.dumps({
+		"username": username
+	})
+	headers = {
+		'Authorization': 'Bearer dfghdjfghjsdlfhgso980sy54890ghysurfhgjshfosiyf97ovsyg4yuoghfsjuhfgjsdfhgsodhfgso9348ygso34hgskoerhgs0e5ygos45hgiushergsy45yhsgtu5hgushrughsoureg',
+		'Content-Type': 'application/json'
+	}
+
+	response = requests.request("GET", url, headers=headers, data=payload)
+
+	response_dict = response.json()
+
+	for entry_id,entry in response_dict.items():
+		passwd = entry["password"]
+		break
+
+	return passwd
+
+print(response.text)
+
 def press_letter(letter):
 	for tap in letter_locations[letter]:
 		screen_drag(tap[0], tap[1], tap[2], tap[3])
@@ -184,7 +213,7 @@ def screen_tap(x, y):
 	# Move above the location
 	dexarm.fast_move_to(x, y, get_current_location('z'), 10000)
 	# Drop the Z height
-	dexarm.fast_move_to(x, y, -54, 10000)
+	dexarm.fast_move_to(x, y, -53, 10000)
 	# Raise the Z height
 	dexarm.fast_move_to(x, y, -40, 10000)
 	# Tiny pause
@@ -252,6 +281,13 @@ def get_single_string(x1,x2,y1,y2,rotation):
 		else:
 			print('Found string: ' + returned_strings)
 			return ""
+# Get the password
+while main_password = "":
+	print('get_password(' + main_username + ') is blank...')
+	main_password = get_password(main_username)
+	pause(100)
+
+print('Got the password!')
 
 # Go home
 print('Moving arm to home position...')
@@ -405,13 +441,13 @@ while connected_to_correct_wifi == False:
 
 
 # Type username
-type_word("simp9998")
+type_word(main_username)
 
 # Press the Next button
 screen_tap(94,342)
 
 # Type password
-type_word("El-barto-graffiti")
+type_word(main_password)
 
 # Press the join button
 # 96,342
@@ -453,13 +489,13 @@ print('Pressing next')
 screen_tap(-52,326)
 
 # Type username
-type_word("simp9998")
+type_word(main_username)
 
 # Press the return key
 screen_tap(96,344)
 
 # Type password
-type_word("El-barto-graffiti")
+type_word(main_password)
 
 # Press Next
 screen_tap(-82,326)
@@ -514,7 +550,7 @@ print("Looking for the serial number")
 dexarm.fast_move_to(-12,376,-12, 10000)
 x = 1
 while x < 6:
-	print(get_single_string(730,1163,510,590,181))
+	serial_number = get_single_string(730,1163,510,590,181)
 	pause(1000)
 	x = x + 1
 
