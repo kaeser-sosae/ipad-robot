@@ -163,8 +163,6 @@ def get_password(username):
 
 	return passwd
 
-print(response.text)
-
 def press_letter(letter):
 	for tap in letter_locations[letter]:
 		screen_drag(tap[0], tap[1], tap[2], tap[3])
