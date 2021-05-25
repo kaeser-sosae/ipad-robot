@@ -354,7 +354,7 @@ screen_tap(22,290)
 # Crop photo to {"x1": 895, "x2": 1380, "y1": 683, "y2": 820, "rotate": 159}
 print("Looking for the word 'Manually'")
 dexarm.fast_move_to(112,298,-12, 10000)
-while "Manually" not in get_single_string(862,1308,541,710,170):
+while "Manually" not in get_single_string(862,1308,541,710,159):
 	pass
 
 # Press Set up manually = 72,252
