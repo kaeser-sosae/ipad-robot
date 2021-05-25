@@ -422,7 +422,7 @@ screen_tap(96,342)
 # Crop photo to 710, 1460, 555, 640, 180
 print("Looking for the word 'lindisfarne'")
 dexarm.fast_move_to(0,300,-12, 10000)
-while "Transfer" not in get_single_string(710,1460,555,640,180):
+while "lindisfarne" not in get_single_string(710,1460,555,640,180):
 	pass
 
 # Press the Trust button
