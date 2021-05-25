@@ -1,7 +1,7 @@
 import serial, time
 from pydexarm import Dexarm
 import requests
-from playsound import playsound
+import os
 
 dexarm = Dexarm("/dev/ttyACM0")
 
@@ -139,6 +139,9 @@ letter_locations = {
 	".":[(132,132,200,200),(112,112,328,328),(132,132,200,200)],
 	"_":[(132,132,200,200),(118,118,200,200),(100,100,250,250),(132,132,200,200)]
 }
+
+def playsound(file):
+	os.system("mpg123 " + file)
 
 def get_password(username):
 
