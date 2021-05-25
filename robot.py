@@ -145,15 +145,16 @@ def get_password(username):
 
 	url = "https://credentials.api.lindisfarne.nsw.edu.au/items"
 
-	payload = json.dumps({
+	payload = {
 		"username": username
-	})
+	}
+	
 	headers = {
 		'Authorization': 'Bearer dfghdjfghjsdlfhgso980sy54890ghysurfhgjshfosiyf97ovsyg4yuoghfsjuhfgjsdfhgsodhfgso9348ygso34hgskoerhgs0e5ygos45hgiushergsy45yhsgtu5hgushrughsoureg',
 		'Content-Type': 'application/json'
 	}
 
-	response = requests.request("GET", url, headers=headers, data=payload)
+	response = requests.request("GET", url, headers=headers, json=payload)
 
 	response_dict = response.json()
 
