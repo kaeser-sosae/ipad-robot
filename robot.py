@@ -247,8 +247,10 @@ def pause(milliseconds):
 def get_single_string(x1,x2,y1,y2,rotation):
 	for returned_strings in get_ocr_text({"areas":[{"x1":x1,"x2":x2,"y1":y1,"y2":y2,"rotate":rotation}]}):
 		if returned_strings != "":
+			print('Found string: ' + returned_strings)
 			return returned_strings
 		else:
+			print('Found string: ' + returned_strings)
 			return ""
 
 # Go home
