@@ -417,10 +417,10 @@ screen_tap(96,342)
 
 # Look for the word "lindisfarne"
 # Send arm to 0,300,-12
-# Crop photo to 710, 1440, 555, 628, 180
+# Crop photo to 710, 1460, 555, 640, 180
 print("Looking for the word 'lindisfarne'")
 dexarm.fast_move_to(0,300,-12, 10000)
-while "Transfer" not in get_single_string(710,1440,555,628,180):
+while "Transfer" not in get_single_string(710,1460,555,640,180):
 	pass
 
 # Press the Trust button
@@ -515,13 +515,6 @@ while x < 6:
 	print(get_single_string(730,1163,510,590,181))
 	pause(1000)
 	x = x + 1
-
-
-
-
-
-
-
 
 # Go home
 print('Going back home...')
