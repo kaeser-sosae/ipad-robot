@@ -337,19 +337,32 @@ while cont:
 print('Pressing on english')
 screen_tap(2, 282)
 
+# Look for the word "Australia"
+# Send arm to 48,272,-12
+# Crop photo to {"x1": 862, "x2": 1308, "y1": 541, "y2": 710, "rotate": 170}
+print("Looking for the word 'Australia'")
+dexarm.fast_move_to(48,272,-12, 10000)
+while "Australia" not in get_single_string(862,1308,541,710,170):
+	pass
+
 # Press on Australia = 4,252
 print('Pressing on Australia')
 screen_tap(22,290)
 
-# Pause 5 seconds
-dexarm._send_cmd("G4 S5\n")
+# Look for the word "Manually"
+# Send arm to 112,298,-12
+# Crop photo to {"x1": 895, "x2": 1380, "y1": 683, "y2": 820, "rotate": 159}
+print("Looking for the word 'Manually'")
+dexarm.fast_move_to(112,298,-12, 10000)
+while "Manually" not in get_single_string(862,1308,541,710,170):
+	pass
 
 # Press Set up manually = 72,252
 print('Pressing on Set Up Manually')
 screen_tap(90,280)
 
 # Pause 2 seconds
-dexarm._send_cmd("G4 S2\n")
+#dexarm._send_cmd("G4 S2\n")
 
 connected_to_correct_wifi = False
 
@@ -476,11 +489,11 @@ while "Transfer" not in get_single_string(541,1200,720,811,166):
 screen_tap(54,300)
 
 # Look for the word "Next"
-# Send arm to -52,362,-12
-# Crop photo to 960, 1148, 720, 800, 188
+# Send arm to -52,364,-12
+# Crop photo to {"x1": 934, "x2": 1130, "y1": 715, "y2": 804, "rotate": 188}
 print("Looking for the word 'Next'")
-dexarm.fast_move_to(-52,362,-12, 10000)
-while "Next" not in get_single_string(960,1148,720,800,188):
+dexarm.fast_move_to(-52,364,-12, 10000)
+while "Next" not in get_single_string(934,1130,715,804,188):
 	pass
 
 # Press Next
@@ -499,8 +512,14 @@ type_word(main_password)
 # Press Next
 screen_tap(-82,326)
 
-# Pause for 2 seconds
-pause(2000)
+
+# Look for the word "password"
+# Send arm to 42,312,-12
+# Crop photo to {"x1": 408, "x2": 1640, "y1": 872, "y2": 1016, "rotate": 172}
+print("Looking for the word 'password'")
+dexarm.fast_move_to(42,312,-12, 10000)
+while "password" not in get_single_string(408,1640,872,1016,172):
+	pass
 
 # Press don't have apple ID
 # 44,274
