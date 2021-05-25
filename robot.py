@@ -282,7 +282,7 @@ def get_single_string(x1,x2,y1,y2,rotation):
 			print('Found string: ' + returned_strings)
 			return ""
 # Get the password
-while main_password = "":
+while main_password == "":
 	print('get_password(' + main_username + ') is blank...')
 	main_password = get_password(main_username)
 	pause(100)
