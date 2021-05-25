@@ -148,13 +148,13 @@ def get_password(username):
 	payload = {
 		"username": username
 	}
-	
+
 	headers = {
 		'Authorization': 'Bearer dfghdjfghjsdlfhgso980sy54890ghysurfhgjshfosiyf97ovsyg4yuoghfsjuhfgjsdfhgsodhfgso9348ygso34hgskoerhgs0e5ygos45hgiushergsy45yhsgtu5hgushrughsoureg',
 		'Content-Type': 'application/json'
 	}
 
-	response = requests.request("GET", url, headers=headers, json=payload)
+	response = requests.request("GET", url, headers=headers, json=payload, verify=False)
 
 	response_dict = response.json()
 
