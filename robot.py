@@ -8,34 +8,6 @@ dexarm = Dexarm("/dev/ttyACM0")
 main_username = "simp9998"
 main_password = ""
 
-# CONSTANTS
-# Home button location = X144 Y272
-# Home button pressed X144 Y272 Z56
-# Z off screen travel height Z-48
-# Arm out of the way = X-226 Y0 Z6
-# Shift button = 118,200
-# Special characters button = 132,200
-# Special characters alt button = 118,200
-# Power button press = -106,348,-102
-# Z height for best photo = -12
-# Row arm xy press coordinates
-	# 1st row = 12, 280
-	# 2nd row = 24, 280
-	# 3rd row = 38, 280
-	# 4th row = 52, 280
-	# 5th row = 64, 280
-	# 6th row = 76, 280
-	# 7th row = 88, 280
-# Row image xy coordinates (x1, x2, y1, y2, rotation)
-# Arm is at position 62, 300, -12
-	# 1st row = 652, 1445, 261, 348, 168
-	# 2nd row = 652, 1445, 439, 531, 168
-	# 3rd row = 652, 1445, 609, 703, 168
-	# 4th row = 652, 1445, 786, 877, 168
-	# 5th row = 652, 1445, 962, 1050, 168
-	# 6th row = 652, 1445, 1132, 1238, 168
-	# 7th row = 652, 1445, 1320, 1440, 168
-
 # Letter locations are defined as x_start, x_finish, y_start, y_finish
 letter_locations = {
 	"a":[(103,103,208,208)],
@@ -243,11 +215,6 @@ def type_word(word):
 
 def get_ocr_text(dict_coords):
 
-	#print('Taking a picture at x: ' + str(arm_x) + " y:" + str(arm_y))
-
-	#Move camera to good location for taking pictures
-	#dexarm.fast_move_to(arm_x, arm_y, -12, 7000)
-	
 	#Set up the API call
 	parameters = {
 		"url": "http://10.151.3.184/ocr",
@@ -280,14 +247,23 @@ def get_ocr_text(dict_coords):
 def pause(milliseconds):
 	dexarm._send_cmd("G4 P" + str(milliseconds) + "\n")
 
-def get_single_string(x1,x2,y1,y2,rotation):
-	for returned_strings in get_ocr_text({"areas":[{"x1":x1,"x2":x2,"y1":y1,"y2":y2,"rotate":rotation}]}):
-		if returned_strings != "":
-			print('Found string: ' + returned_strings)
-			return returned_strings
-		else:
-			print('Found string: ' + returned_strings)
-			return ""
+def get_single_string(x1,x2,y1,y2,rotation,is_serial=False):
+	if is_serial == True:
+		for returned_strings in get_ocr_text({"areas":[{"x1":x1,"x2":x2,"y1":y1,"y2":y2,"rotate":rotation,"whitelist":"0123456789ABCDEFGHIJKLMNPQRSTUVWXYZ"}]}):
+			if returned_strings != "":
+				print('Found string: ' + returned_strings)
+				return returned_strings
+			else:
+				print('Found string: ' + returned_strings)
+				return ""
+	else:
+		for returned_strings in get_ocr_text({"areas":[{"x1":x1,"x2":x2,"y1":y1,"y2":y2,"rotate":rotation}]}):
+			if returned_strings != "":
+				print('Found string: ' + returned_strings)
+				return returned_strings
+			else:
+				print('Found string: ' + returned_strings)
+				return ""
 # Get the password
 while main_password == "":
 	print('get_password(' + main_username + ') is blank...')
@@ -576,7 +552,7 @@ print("Looking for the serial number")
 dexarm.fast_move_to(-12,376,-12, 10000)
 x = 1
 while x < 6:
-	serial_number = get_single_string(730,1163,510,590,181)
+	serial_number = get_single_string(730,1163,510,590,181,True)
 	pause(1000)
 	x = x + 1
 
