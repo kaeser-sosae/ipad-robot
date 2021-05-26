@@ -3,7 +3,7 @@ from pydexarm import Dexarm
 import requests
 import os
 
-dexarm = Dexarm("/dev/ttyACM0")
+#dexarm = Dexarm("/dev/ttyACM0")
 
 main_username = "simp9998"
 main_password = ""
@@ -274,6 +274,6 @@ def get_jamf_username_from_serial(serial_number):
 
 	response = requests.request("GET", url, headers=headers, data=payload)
 
-	print(response)
+	print(response.json())
 
 get_jamf_username_from_serial("FVFDVGT7Q6L4")
