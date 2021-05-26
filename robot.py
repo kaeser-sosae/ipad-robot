@@ -607,6 +607,35 @@ dexarm.fast_move_to(144, 272, get_current_location('z'), 5000)
 dexarm.fast_move_to(144, 272, -56, 5000)
 pause(1000)
 dexarm.fast_move_to(144, 272, -40, 5000)
+# Tap on Use Siri
+screen_tap(104,272)
+# Tap on Not Now
+screen_tap(118,272)
+# Press the home button
+press_home_button()
+
+# Press settings
+screen_tap(44,238)
+# Press Display and Brightness
+screen_tap(94,226)
+# Press auto lock
+screen_tap(34,298)
+# Press Never
+screen_tap(-32,298)
+# Press Display and brightness
+screen_tap(-86,274)
+# Press the brightness slider
+screen_tap(0,334)
+screen_tap(0,334)
+screen_tap(0,334)
+# Press the home button
+press_home_button()
+
+# Turn on Siri
+dexarm.fast_move_to(144, 272, get_current_location('z'), 5000)
+dexarm.fast_move_to(144, 272, -56, 5000)
+pause(1000)
+dexarm.fast_move_to(144, 272, -40, 5000)
 
 
 
