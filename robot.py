@@ -329,6 +329,49 @@ def does_device_have_app_installed(serial_number, application_name):
 		print('API call failed with status code ' + str(response.status_code))
 		return False
 
+def get_jamf_device_id_from_device_serial(serial_number):
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevices/serialnumber/" + serial_number
+
+	payload = ""
+	headers = {
+		'Accept': 'application/json',
+		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0'
+	}
+
+	response = requests.request("GET", url, headers=headers, json=payload)
+
+	if response.status_code == 200:
+		#print(response.json()["mobile_device"]["location"]["username"])
+		return str(response.json()["mobile_device"]["general"]["id"])
+
+	else:
+		print('API call failed with status code ' + str(response.status_code))
+		return ""
+
+def add_device_to_static_group(serial_number, group_name):
+
+	device_id = get_jamf_device_id_from_device_serial(serial_number)
+	print(device_id)
+	print(group_name)
+
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevicegroups/name/Tier 1 Software That Needs Configuring"
+
+	payload = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<mobile_device_group>\n\t<name>" + group_name + "</name>\n\t<is_smart>False</is_smart>\n\t<mobile_device_additions>\n\t\t<mobile_device>\n\t\t\t<id>" + device_id + "</id>\n\t\t</mobile_device>\n\t</mobile_device_additions>\n</mobile_device_group>"
+	headers = {
+		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0',
+		'Content-Type': 'application/json'
+	}
+
+	response = requests.request("PUT", url, headers=headers, data=payload)
+
+	if response.status_code == 201:
+		#print(response.json()["mobile_device"]["location"]["username"])
+		return True
+
+	else:
+		print('API call failed with status code ' + str(response.status_code))
+		return False		
+
 # Get the password
 while main_password == "":
 	print('get_password(' + main_username + ') is blank...')
@@ -643,6 +686,11 @@ while True:
 # If we get to here, I am satified that we
 # have the correct serial number for the iPad
 
+# Add the iPad to the static group
+while add_device_to_static_group("F9GDNCVTQ1GC", "Tier 1 Software That Needs Configuring") == False:
+	print('Adding to group failed, trying again')
+print('Added to the group')
+
 # Press the home button
 press_home_button()
 
@@ -678,16 +726,14 @@ screen_tap(0,334)
 # Press the home button
 press_home_button()
 
-pause(2000)
-
-# Drag down the home screen
-screen_drag(44,64,300,300)
-
 # Wait for the Vivi app to be installed
 while does_device_have_app_installed(serial_number, "Vivi") == False:
 	print('Vivi not found. Waiting...')
 	pause(1000)
 	pass
+
+# Drag down the home screen
+screen_drag(44,64,300,300)
 
 # Search for the Vivi App
 type_word("vivi")
@@ -709,8 +755,10 @@ screen_tap(-30,278)
 # Type username
 type_word(main_username)
 
-# Press the return key
-screen_tap(96,344)
+# Tap in the password box
+screen_tap(-62,244)
+screen_tap(-62,244)
+screen_tap(-62,244)
 
 # Type password
 type_word(main_password)
