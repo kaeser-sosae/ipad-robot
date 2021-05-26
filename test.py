@@ -279,7 +279,7 @@ def get_jamf_username_from_serial(serial_number):
 		print(response.json()["computer"]["location"]["username"])
 
 	else:
-		print('API call failed with status code ' + response.status_code)
+		print('API call failed with status code ' + str(response.status_code))
 		return ""
 
 get_jamf_username_from_serial("FVFDVGT7Q6L4")
