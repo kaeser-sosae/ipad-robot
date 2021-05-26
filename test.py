@@ -269,11 +269,16 @@ def get_jamf_username_from_serial(serial_number):
 
 	payload = ""
 	headers = {
-	  'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0'
+		'Accept': 'application/json',
+		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0'
 	}
 
-	response = requests.request("GET", url, headers=headers, data=payload)
+	response = requests.request("GET", url, headers=headers, json=payload)
 
-	print(response.xml())
+	if response.status_code == "200":
+		print(response.json())
+	else:
+		print('API call failed with status code ' + response.status_code)
+		return ""
 
 get_jamf_username_from_serial("FVFDVGT7Q6L4")
