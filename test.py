@@ -326,7 +326,7 @@ def does_device_have_app_installed(serial_number, applicattion):
 		print('API call failed with status code ' + str(response.status_code))
 		return ""
 
-does_device_have_app_installed(response.json()["mobile_device"]["applications"])
+does_device_have_app_installed("F9GDNCVTQ1GC", "Vivi")
 
 
 
