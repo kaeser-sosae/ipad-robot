@@ -320,13 +320,15 @@ def does_device_have_app_installed(serial_number, applicattion):
 
 	if response.status_code == 200:
 		for app in response.json()["mobile_device"]["applications"]:
-			print(app)
+			if app["application_name"] == "Vivi"
+				return True
+		return False
 
 	else:
 		print('API call failed with status code ' + str(response.status_code))
-		return ""
+		return False
 
-does_device_have_app_installed("F9GDNCVTQ1GC", "Vivi")
+print(does_device_have_app_installed("F9GDNCVTQ1GC", "Vivi"))
 
 
 
