@@ -165,7 +165,7 @@ def go_home():
 def press_home_button():
 		print('Pressing home button...')
 		dexarm.fast_move_to(144, 272, get_current_location('z'), 5000)
-		dexarm.fast_move_to(144, 272, -58, 5000)
+		dexarm.fast_move_to(144, 272, -56, 5000)
 		dexarm.fast_move_to(144, 272, -40, 5000)
 
 def press_power_button(seconds):
@@ -297,7 +297,11 @@ serial_number = ""
 while True:
 	serial_number = get_single_string(730,1163,510,590,181,True)
 	if serial_number == "":
+		print('I think the screen is off, pressing the home button twice')
 		press_home_button()
+		press_home_button()
+		print('Moving the arm back into position')
+		dexarm.fast_move_to(-12,376,-12, 10000)
 	print('Matching serial ' + serial_number + ' to username ' + main_username)
 	serial_username = get_jamf_username_from_device_serial(serial_number)
 	if serial_username == main_username:
