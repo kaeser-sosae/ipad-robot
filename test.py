@@ -294,14 +294,16 @@ serial_number = ""
 # OCR the serial number, and match the usernames by
 # making an API call to Jamf Pro Mobile Devices. If
 # we find a match, continue with the script.
+x = 0
 while True:
 	serial_number = get_single_string(730,1163,510,590,181,True)
-	if serial_number == "":
-		print('I think the screen is off, pressing the home button twice')
-		press_home_button()
-		press_home_button()
-		print('Moving the arm back into position')
-		dexarm.fast_move_to(-12,376,-12, 10000)
+	if x > 2:
+		if serial_number == "":
+			print('I think the screen is off, pressing the home button twice')
+			press_home_button()
+			press_home_button()
+			print('Moving the arm back into position')
+			dexarm.fast_move_to(-12,376,-12, 10000)
 	print('Matching serial ' + serial_number + ' to username ' + main_username)
 	serial_username = get_jamf_username_from_device_serial(serial_number)
 	if serial_username == main_username:
@@ -310,6 +312,7 @@ while True:
 	else:
 		print("Does not match! '" + serial_username + "' does not equal '" + main_username + "'")
 	pause(1000)
+	x = x + 1
 
 
 
