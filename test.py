@@ -304,7 +304,7 @@ def get_student_yearlevel(username):
 
 
 
-
+get_student_yearlevel("simp9998")
 
 
 
