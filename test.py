@@ -359,7 +359,7 @@ def add_device_to_static_group(serial_number, group_name):
 		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0'
 	}
 
-	response = requests.request("GET", url, headers=headers, xml=payload)
+	response = requests.request("GET", url, headers=headers, data=payload)
 
 	if response.status_code == 200:
 		#print(response.json()["mobile_device"]["location"]["username"])
