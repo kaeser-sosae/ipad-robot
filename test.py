@@ -284,23 +284,28 @@ def get_jamf_username_from_device_serial(serial_number):
 		return ""
 
 def get_student_yearlevel(username):
-	url = "https://query.lindisfarne.nsw.edu.au/query?id=tass-enrolled-students"
-
-	payload = ""
-	headers = {
-		'Accept': 'application/json',
-		'Authorization': 'Bearer LKJHASDJKLhasdlkjAHSDlKJASHdASdkjHWDPOQHdQKWJdhLWKDjhASdkljHASDlkJASHDLKASJdhLKASdhALSDUHYWQPDWQdqwd8790qwd897q6wd*W&dqwdqwdqwed76d9a8s7dt6asdjhgasda(S8dasdashgdaisdaysgtduasgduygas'
-	}
-
-	response = requests.request("GET", url, headers=headers, json=payload, verify=False)
-
-	if response.status_code == 200:
-		print(response.json())
-		#return response.json()["mobile_device"]["location"]["username"]
-
+	
+	if username == "simp9998":
+		return "6"
 	else:
-		print('API call failed with status code ' + str(response.status_code))
-		#return ""
+
+		url = "https://query.lindisfarne.nsw.edu.au/query?id=tass-enrolled-students"
+
+		payload = ""
+		headers = {
+			'Accept': 'application/json',
+			'Authorization': 'Bearer LKJHASDJKLhasdlkjAHSDlKJASHdASdkjHWDPOQHdQKWJdhLWKDjhASdkljHASDlkJASHDLKASJdhLKASdhALSDUHYWQPDWQdqwd8790qwd897q6wd*W&dqwdqwdqwed76d9a8s7dt6asdjhgasda(S8dasdashgdaisdaysgtduasgduygas'
+		}
+
+		response = requests.request("GET", url, headers=headers, json=payload, verify=False)
+
+		if response.status_code == 200:
+			for student in response.json()["results"]:
+				if student["stdent_cafe_username"] == username:
+					return student["year_group"]
+		else:
+			print('API call failed with status code ' + str(response.status_code))
+			#return ""
 
 
 
