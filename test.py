@@ -328,7 +328,50 @@ def does_device_have_app_installed(serial_number, application_name):
 		print('API call failed with status code ' + str(response.status_code))
 		return False
 
-print(does_device_have_app_installed("F9GDNCVTQ1GC", "Vivi2"))
+def get_jamf_device_id_from_device_serial(serial_number):
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevices/serialnumber/" + serial_number
+
+	payload = ""
+	headers = {
+		'Accept': 'application/json',
+		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0'
+	}
+
+	response = requests.request("GET", url, headers=headers, json=payload)
+
+	if response.status_code == 200:
+		#print(response.json()["mobile_device"]["location"]["username"])
+		return response.json()["mobile_device"]["general"]["id"]
+
+	else:
+		print('API call failed with status code ' + str(response.status_code))
+		return ""
+
+def add_device_to_static_group(serial_number, group_name):
+
+	device_id = get_jamf_device_id_from_device_serial(serial_number)
+
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevicegroups/name/" + group_name
+
+	payload = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><mobile_device_group><name>" + group_name + "</name><is_smart>False</is_smart><mobile_device_additions><mobile_device><id>" + device_id + "</id></mobile_device></mobile_device_additions></mobile_device_group>"
+	headers = {
+		'Accept': 'application/json',
+		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0'
+	}
+
+	response = requests.request("GET", url, headers=headers, xml=payload)
+
+	if response.status_code == 200:
+		#print(response.json()["mobile_device"]["location"]["username"])
+		return True
+
+	else:
+		print('API call failed with status code ' + str(response.status_code))
+		return False
+
+
+
+print(add_device_to_static_group("F9GDNCVTQ1GC", "Tier 1 Software That Needs Configuring"))
 
 
 
