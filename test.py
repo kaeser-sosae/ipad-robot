@@ -301,7 +301,7 @@ def get_student_yearlevel(username):
 
 		if response.status_code == 200:
 			for student in response.json()["results"]:
-				if student["stdent_cafe_username"] == username:
+				if student["student_cafe_username"] == username:
 					return student["year_group"]
 		else:
 			print('API call failed with status code ' + str(response.status_code))
