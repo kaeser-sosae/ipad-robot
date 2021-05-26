@@ -283,37 +283,26 @@ def get_jamf_username_from_device_serial(serial_number):
 		print('API call failed with status code ' + str(response.status_code))
 		return ""
 
-# Press the home button
-press_home_button()
+def get_student_yearlevel(username):
+	url = "https://query.lindisfarne.nsw.edu.au/query?id=tass-enrolled-students"
 
-# Turn on Siri
-dexarm.fast_move_to(144, 272, get_current_location('z'), 5000)
-dexarm.fast_move_to(144, 272, -56, 5000)
-pause(1000)
-dexarm.fast_move_to(144, 272, -40, 5000)
-# Tap on Use Siri
-screen_tap(104,272)
-# Tap on Not Now
-screen_tap(118,272)
-# Press the home button
-press_home_button()
+	payload = ""
+	headers = {
+		'Accept': 'application/json',
+		'Authorization': 'Bearer LKJHASDJKLhasdlkjAHSDlKJASHdASdkjHWDPOQHdQKWJdhLWKDjhASdkljHASDlkJASHDLKASJdhLKASdhALSDUHYWQPDWQdqwd8790qwd897q6wd*W&dqwdqwdqwed76d9a8s7dt6asdjhgasda(S8dasdashgdaisdaysgtduasgduygas'
+	}
 
-# Press settings
-screen_tap(44,238)
-# Press Display and Brightness
-screen_tap(94,226)
-# Press auto lock
-screen_tap(34,298)
-# Press Never
-screen_tap(-32,298)
-# Press Display and brightness
-screen_tap(-86,274)
-# Press the brightness slider
-screen_tap(0,334)
-screen_tap(0,334)
-screen_tap(0,334)
-# Press the home button
-press_home_button()
+	response = requests.request("GET", url, headers=headers, json=payload)
+
+	if response.status_code == 200:
+		print(response.json())
+		#return response.json()["mobile_device"]["location"]["username"]
+
+	else:
+		print('API call failed with status code ' + str(response.status_code))
+		#return ""
+
+
 
 
 
