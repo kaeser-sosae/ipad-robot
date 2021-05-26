@@ -574,11 +574,12 @@ serial_number = ""
 while True:
 	serial_number = get_single_string(730,1163,510,590,181,True)
 	print('Matching serial ' + serial_number + ' to username ' + main_username)
-	if get_jamf_username_from_device_serial(serial_number) == main_username:
+	serial_username = get_jamf_username_from_device_serial(serial_number)
+	if serial_username == main_username:
 		print('Found a match!')
 		break
 	else:
-		print('Does not match!')
+		print("Does not match! '" + serial_username + "' does not equal '" + main_username + "'")
 	pause(1000)
 
 # Go home
