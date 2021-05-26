@@ -265,7 +265,7 @@ def get_single_string(x1,x2,y1,y2,rotation,is_serial=False):
 				return ""
 
 def get_jamf_username_from_device_serial(serial_number):
-	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/computers/serialnumber/" + serial_number
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevices/serialnumber/" + serial_number
 
 	payload = ""
 	headers = {
