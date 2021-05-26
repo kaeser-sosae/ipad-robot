@@ -307,9 +307,26 @@ def get_student_yearlevel(username):
 			print('API call failed with status code ' + str(response.status_code))
 			#return ""
 
+def does_device_have_app_installed(serial_number, applicattion):
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevices/serialnumber/" + serial_number
 
+	payload = ""
+	headers = {
+		'Accept': 'application/json',
+		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0'
+	}
 
-print(get_student_yearlevel("coco.carey"))
+	response = requests.request("GET", url, headers=headers, json=payload)
+
+	if response.status_code == 200:
+		for app in response.json()["mobile_device"]["applications"]:
+			print(app)
+
+	else:
+		print('API call failed with status code ' + str(response.status_code))
+		return ""
+
+does_device_have_app_installed(response.json()["mobile_device"]["applications"])
 
 
 
