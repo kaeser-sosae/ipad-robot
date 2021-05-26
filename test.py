@@ -309,7 +309,7 @@ def get_student_yearlevel(username):
 
 
 
-print(get_student_yearlevel("simp9998"))
+print(get_student_yearlevel("coco.carey"))
 
 
 
