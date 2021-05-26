@@ -350,6 +350,7 @@ def get_jamf_device_id_from_device_serial(serial_number):
 def add_device_to_static_group(serial_number, group_name):
 
 	device_id = get_jamf_device_id_from_device_serial(serial_number)
+	print(device_id)
 
 	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevicegroups/name/" + group_name
 
