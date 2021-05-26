@@ -341,7 +341,6 @@ def get_jamf_device_id_from_device_serial(serial_number):
 	response = requests.request("GET", url, headers=headers, json=payload)
 
 	if response.status_code == 200:
-		#print(response.json()["mobile_device"]["location"]["username"])
 		return str(response.json()["mobile_device"]["general"]["id"])
 
 	else:
@@ -351,9 +350,7 @@ def get_jamf_device_id_from_device_serial(serial_number):
 def add_device_to_static_group(serial_number, group_name):
 
 	device_id = get_jamf_device_id_from_device_serial(serial_number)
-	print(device_id)
-	print(group_name)
-
+	
 	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevicegroups/name/Tier 1 Software That Needs Configuring"
 
 	payload = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<mobile_device_group>\n\t<name>" + group_name + "</name>\n\t<is_smart>False</is_smart>\n\t<mobile_device_additions>\n\t\t<mobile_device>\n\t\t\t<id>" + device_id + "</id>\n\t\t</mobile_device>\n\t</mobile_device_additions>\n</mobile_device_group>"
@@ -365,7 +362,6 @@ def add_device_to_static_group(serial_number, group_name):
 	response = requests.request("PUT", url, headers=headers, data=payload)
 
 	if response.status_code == 201:
-		#print(response.json()["mobile_device"]["location"]["username"])
 		return True
 
 	else:
@@ -462,8 +458,8 @@ while connected_to_correct_wifi == False:
 
 	# Search for the Lindisfarne Wifi Network
 	print("Looking for the word 'Lindisfarne'")
-	# move arm to 62, 300, -12
-	dexarm.fast_move_to(62,300,-12, 10000)
+	# move arm to 70, 280, -12
+	dexarm.fast_move_to(70,280,-12, 10000)
 
 	# Pause 1 second
 	dexarm._send_cmd("G4 S1\n")
@@ -474,13 +470,14 @@ while connected_to_correct_wifi == False:
 	while cont:
 		print('Taking picture and checking for Lindisfarne...')
 		for returned_strings in get_ocr_text({"areas":[
-			{"x1":652,"x2":1445,"y1":261,"y2":348,"rotate":168},
-			{"x1":652,"x2":1445,"y1":439,"y2":531,"rotate":168},
-			{"x1":652,"x2":1445,"y1":609,"y2":703,"rotate":168},
-			{"x1":652,"x2":1445,"y1":786,"y2":877,"rotate":168},
-			{"x1":652,"x2":1445,"y1":962,"y2":1050,"rotate":168},
-			{"x1":652,"x2":1445,"y1":1132,"y2":1238,"rotate":168},
-			{"x1":652,"x2":1445,"y1":1320,"y2":1440,"rotate":168}
+			{"x1":868,"x2":1729,"y1":183,"y2":303,"rotate":166}, # 183,303
+			{"x1":868,"x2":1729,"y1":371,"y2":488,"rotate":166}, # 371,488
+			{"x1":868,"x2":1729,"y1":539,"y2":662,"rotate":166}, # 539,662
+			{"x1":868,"x2":1729,"y1":715,"y2":840,"rotate":166}, # 715,840
+			{"x1":868,"x2":1729,"y1":889,"y2":1010,"rotate":166}, # 889,1010
+			{"x1":868,"x2":1729,"y1":1066,"y2":1191,"rotate":166}, # 1066,1191
+			{"x1":868,"x2":1729,"y1":1244,"y2":1360,"rotate":166} # 868,1729,1244,1360
+
 			]}):
 			print('Returned string: ' + returned_strings)
 			if "Lindisfarne" in returned_strings:
