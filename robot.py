@@ -684,7 +684,7 @@ while True:
 # have the correct serial number for the iPad
 
 # Add the iPad to the static group
-while add_device_to_static_group("F9GDNCVTQ1GC", "Tier 1 Software That Needs Configuring") == False:
+while add_device_to_static_group(serial_number, "Tier 1 Software That Needs Configuring") == False:
 	print('Adding to group failed, trying again')
 print('Added to the group')
 
