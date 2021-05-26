@@ -111,7 +111,7 @@ while connected_to_correct_wifi == False:
 	x = 1
 	while cont:
 		print('Taking picture and checking for Lindisfarne...')
-		for returned_strings in get_ocr_text({"areas":[
+		for returned_strings in functions.get_ocr_text({"areas":[
 			{"x1":868,"x2":1729,"y1":183,"y2":303,"rotate":166}, # 183,303
 			{"x1":868,"x2":1729,"y1":371,"y2":488,"rotate":166}, # 371,488
 			{"x1":868,"x2":1729,"y1":539,"y2":662,"rotate":166}, # 539,662
