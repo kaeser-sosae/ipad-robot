@@ -354,9 +354,19 @@ def add_device_to_static_group(serial_number, group_name):
 	print(group_name)
 
 
-	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevicegroups/name/" + group_name
+	# url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevicegroups/name/" + group_name
 
-	payload = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><mobile_device_group><name>" + group_name + "</name><is_smart>False</is_smart><mobile_device_additions><mobile_device><id>" + device_id + "</id></mobile_device></mobile_device_additions></mobile_device_group>"
+	# payload = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><mobile_device_group><name>" + group_name + "</name><is_smart>False</is_smart><mobile_device_additions><mobile_device><id>" + device_id + "</id></mobile_device></mobile_device_additions></mobile_device_group>"
+	# headers = {
+	# 	'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0',
+	# 	'Content-Type': 'application/json'
+	# }
+
+	# response = requests.request("PUT", url, headers=headers, data=payload)
+
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevicegroups/name/Tier 1 Software That Needs Configuring"
+
+	payload = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<mobile_device_group>\n\t<name>" + group_name + "</name>\n\t<is_smart>False</is_smart>\n\t<mobile_device_additions>\n\t\t<mobile_device>\n\t\t\t<id>" + device_id + "</id>\n\t\t</mobile_device>\n\t</mobile_device_additions>\n</mobile_device_group>"
 	headers = {
 		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0',
 		'Content-Type': 'application/json'
