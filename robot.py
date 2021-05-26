@@ -41,7 +41,7 @@ dexarm.fast_move_to(0,300,-12, 10000)
 cont = True
 have_i_waited_once = False
 while cont:
-	for returned_strings in get_ocr_text({"areas":[{"x1":587,"x2":960,"y1":842,"y2":960,"rotate":180}]}):
+	for returned_strings in functions.get_ocr_text({"areas":[{"x1":587,"x2":960,"y1":842,"y2":960,"rotate":180}]}):
 		print('Returned strings: ' + returned_strings)
 		if "English" in returned_strings:
 			print('Found English on screen')
@@ -57,7 +57,7 @@ while cont:
 			if have_i_waited_once == True:
 				print('have_i_waited_once is True! Pressing the home button!')
 				# Press the home button, then move on with the script
-				press_home_button()		
+				functions.press_home_button()		
 				dexarm._send_cmd("G4 S1\n")		
 				cont = False
 				break
