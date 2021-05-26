@@ -276,7 +276,10 @@ def get_jamf_username_from_serial(serial_number):
 	response = requests.request("GET", url, headers=headers, json=payload)
 
 	if response.status_code == 200:
-		print(response.json())
+		print(response.json()["computer"]["general"]["id"])
+
+
+
 	else:
 		print('API call failed with status code ' + response.status_code)
 		return ""
