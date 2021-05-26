@@ -292,7 +292,7 @@ def get_student_yearlevel(username):
 		'Authorization': 'Bearer LKJHASDJKLhasdlkjAHSDlKJASHdASdkjHWDPOQHdQKWJdhLWKDjhASdkljHASDlkJASHDLKASJdhLKASdhALSDUHYWQPDWQdqwd8790qwd897q6wd*W&dqwdqwdqwed76d9a8s7dt6asdjhgasda(S8dasdashgdaisdaysgtduasgduygas'
 	}
 
-	response = requests.request("GET", url, headers=headers, json=payload)
+	response = requests.request("GET", url, headers=headers, json=payload, verify=False)
 
 	if response.status_code == 200:
 		print(response.json())
