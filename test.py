@@ -358,8 +358,8 @@ def add_device_to_static_group(serial_number, group_name):
 
 	payload = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><mobile_device_group><name>" + group_name + "</name><is_smart>False</is_smart><mobile_device_additions><mobile_device><id>" + device_id + "</id></mobile_device></mobile_device_additions></mobile_device_group>"
 	headers = {
-		'Accept': 'application/json',
-		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0'
+		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0',
+		'Content-Type': 'application/json'
 	}
 
 	response = requests.request("PUT", url, headers=headers, data=payload)
