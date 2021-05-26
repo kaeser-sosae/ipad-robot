@@ -137,25 +137,25 @@ while connected_to_correct_wifi == False:
 	# Press the appropriate row
 	if row_number == 1:
 		print('Row number is 1')
-		screen_tap(12,280)
+		functions.screen_tap(12,280)
 	if row_number == 2:
 		print('Row number is 2')
-		screen_tap(24,280)
+		functions.screen_tap(24,280)
 	if row_number == 3:
 		print('Row number is 3')
-		screen_tap(38,280)
+		functions.screen_tap(38,280)
 	if row_number == 4:
 		print('Row number is 4')
-		screen_tap(52,280)
+		functions.screen_tap(52,280)
 	if row_number == 5:
 		print('Row number is 5')
-		screen_tap(64,280)
+		functions.screen_tap(64,280)
 	if row_number == 6:
 		print('Row number is 6')
-		screen_tap(76,280)
+		functions.screen_tap(76,280)
 	if row_number == 7:
 		print('Row number is 7')
-		screen_tap(88,280)
+		functions.screen_tap(88,280)
 
 	# Check that we pressed the correct wifi network
 	# If the word lindisfarne is not found, press the back button
