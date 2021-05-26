@@ -169,11 +169,11 @@ while connected_to_correct_wifi == False:
 	print("Looking for the word 'Lindisfarne'")
 	cont = True
 	while cont:
-		for returned_strings in get_ocr_text({"areas":[{"x1":110,"x2":900,"y1":560,"y2":650,"rotate":191}]}):
+		for returned_strings in functions.get_ocr_text({"areas":[{"x1":110,"x2":900,"y1":560,"y2":650,"rotate":191}]}):
 		#for returned_strings in get_ocr_text({"areas":[{"x1":587,"x2":960,"y1":842,"y2":960,"rotate":180}]}):
 			print('Returned strings: ' + returned_strings)
 			if "Lindisfarne" not in returned_strings:
-				screen_tap(-66,230)
+				functions.screen_tap(-66,230)
 				# Pause 2 seconds
 				dexarm._send_cmd("G4 S2\n")
 				# Proceed
