@@ -284,6 +284,30 @@ def get_jamf_username_from_device_serial(serial_number):
 		print('API call failed with status code ' + str(response.status_code))
 		return ""
 
+def get_student_yearlevel(username):
+	
+	if username == "simp9998":
+		return "6"
+	else:
+
+		url = "https://query.lindisfarne.nsw.edu.au/query?id=tass-enrolled-students"
+
+		payload = ""
+		headers = {
+			'Accept': 'application/json',
+			'Authorization': 'Bearer LKJHASDJKLhasdlkjAHSDlKJASHdASdkjHWDPOQHdQKWJdhLWKDjhASdkljHASDlkJASHDLKASJdhLKASdhALSDUHYWQPDWQdqwd8790qwd897q6wd*W&dqwdqwdqwed76d9a8s7dt6asdjhgasda(S8dasdashgdaisdaysgtduasgduygas'
+		}
+
+		response = requests.request("GET", url, headers=headers, json=payload, verify=False)
+
+		if response.status_code == 200:
+			for student in response.json()["results"]:
+				if student["student_cafe_username"] == username:
+					return student["year_group"]
+		else:
+			print('API call failed with status code ' + str(response.status_code))
+			#return ""
+
 
 # Get the password
 while main_password == "":
@@ -609,11 +633,14 @@ pause(1000)
 dexarm.fast_move_to(144, 272, -40, 5000)
 # Tap on Use Siri
 screen_tap(104,272)
+# Tap on Voice 2
+screen_tap(-4,270)
+# Press on Next
+screen_tap(-82,332)
 # Tap on Not Now
 screen_tap(118,272)
 # Press the home button
 press_home_button()
-
 # Press settings
 screen_tap(44,238)
 # Press Display and Brightness
@@ -631,16 +658,49 @@ screen_tap(0,334)
 # Press the home button
 press_home_button()
 
-# Turn on Siri
-dexarm.fast_move_to(144, 272, get_current_location('z'), 5000)
-dexarm.fast_move_to(144, 272, -56, 5000)
+pause(2000)
+
+# Drag down the home screen
+screen_drag(44,64,300,300)
+
+# Search for the Vivi App
+type_word("vivi")
+
+# Press go button
+screen_tap(96,344)
+
 pause(1000)
-dexarm.fast_move_to(144, 272, -40, 5000)
 
+# type word lindis
+type_word("lindis")
 
+# Tap the lindisfarne button
+screen_tap(-38,278)
 
+# Tap the login button
+screen_tap(-30,278)
 
+# Type username
+type_word(main_username)
 
+# Press the return key
+screen_tap(96,344)
+
+# Type password
+type_word(main_password)
+
+# Press the return key
+screen_tap(96,344)
+
+if int(get_student_yearlevel(main_username)) > 4:
+	# Press Mahers Lane button
+	screen_tap(-36,266)
+else:
+	# Press Sunshine Avenue button
+	screen_tap(-24,266)
+
+# Press home button
+press_home_button()
 
 
 
