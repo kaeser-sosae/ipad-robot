@@ -341,7 +341,7 @@ def get_jamf_device_id_from_device_serial(serial_number):
 
 	if response.status_code == 200:
 		#print(response.json()["mobile_device"]["location"]["username"])
-		return response.json()["mobile_device"]["general"]["id"]
+		return str(response.json()["mobile_device"]["general"]["id"])
 
 	else:
 		print('API call failed with status code ' + str(response.status_code))
