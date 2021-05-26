@@ -263,6 +263,26 @@ def get_single_string(x1,x2,y1,y2,rotation,is_serial=False):
 			else:
 				print('Found string: ' + returned_strings)
 				return ""
+
+def get_jamf_username_from_device_serial(serial_number):
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevices/serialnumber/" + serial_number
+
+	payload = ""
+	headers = {
+		'Accept': 'application/json',
+		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0'
+	}
+
+	response = requests.request("GET", url, headers=headers, json=payload)
+
+	if response.status_code == 200:
+		print(response.json()["mobile_device"]["location"]["username"])
+
+	else:
+		print('API call failed with status code ' + str(response.status_code))
+		return ""
+
+
 # Get the password
 while main_password == "":
 	print('get_password(' + main_username + ') is blank...')
@@ -550,10 +570,16 @@ pause(2000)
 print("Looking for the serial number")
 dexarm.fast_move_to(-12,376,-12, 10000)
 x = 1
-while x < 6:
+serial_number = ""
+while True:
 	serial_number = get_single_string(730,1163,510,590,181,True)
+	print('Matching serial ' + serial_number + ' to username ' + main_username)
+	if get_jamf_username_from_device_serial(serial_number) == main_username:
+		print('Found a match!')
+		break
+	else:
+		print('Does not match!')
 	pause(1000)
-	x = x + 1
 
 # Go home
 print('Going back home...')
