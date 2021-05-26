@@ -264,8 +264,8 @@ def get_single_string(x1,x2,y1,y2,rotation,is_serial=False):
 				print('Found string: ' + returned_strings)
 				return ""
 
-def get_jamf_username_from_serial(serial_number):
-	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResosurce/computers/serialnumber/" + serial_number
+def get_jamf_username_from_device_serial(serial_number):
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/computers/serialnumber/" + serial_number
 
 	payload = ""
 	headers = {
@@ -276,10 +276,10 @@ def get_jamf_username_from_serial(serial_number):
 	response = requests.request("GET", url, headers=headers, json=payload)
 
 	if response.status_code == 200:
-		print(response.json()["computer"]["location"]["username"])
+		print(response.json()["mobile_device"]["location"]["username"])
 
 	else:
 		print('API call failed with status code ' + str(response.status_code))
 		return ""
 
-get_jamf_username_from_serial("FVFDVGT7Q6L4")
+get_jamf_username_from_device_serial("F9GDNNZSQ1GC")
