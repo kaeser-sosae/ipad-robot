@@ -307,7 +307,7 @@ def get_student_yearlevel(username):
 			print('API call failed with status code ' + str(response.status_code))
 			#return ""
 
-def does_device_have_app_installed(serial_number, applicattion_name):
+def does_device_have_app_installed(serial_number, application_name):
 	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevices/serialnumber/" + serial_number
 
 	payload = ""
