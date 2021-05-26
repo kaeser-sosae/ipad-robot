@@ -274,6 +274,6 @@ def get_jamf_username_from_serial(serial_number):
 
 	response = requests.request("GET", url, headers=headers, data=payload)
 
-	print(response.json())
+	print(response.xml())
 
 get_jamf_username_from_serial("FVFDVGT7Q6L4")
