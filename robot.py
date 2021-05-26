@@ -308,6 +308,26 @@ def get_student_yearlevel(username):
 			print('API call failed with status code ' + str(response.status_code))
 			#return ""
 
+def does_device_have_app_installed(serial_number, application_name):
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevices/serialnumber/" + serial_number
+
+	payload = ""
+	headers = {
+		'Accept': 'application/json',
+		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0'
+	}
+
+	response = requests.request("GET", url, headers=headers, json=payload)
+
+	if response.status_code == 200:
+		for app in response.json()["mobile_device"]["applications"]:
+			if app["application_name"] == application_name:
+				return True
+		return False
+
+	else:
+		print('API call failed with status code ' + str(response.status_code))
+		return False
 
 # Get the password
 while main_password == "":
@@ -662,6 +682,12 @@ pause(2000)
 
 # Drag down the home screen
 screen_drag(44,64,300,300)
+
+# Wait for the Vivi app to be installed
+while does_device_have_app_installed(serial_number, "Vivi") == False:
+	print('Vivi not found. Waiting...')
+	pause(1000)
+	pass
 
 # Search for the Vivi App
 type_word("vivi")
