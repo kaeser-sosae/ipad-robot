@@ -276,4 +276,4 @@ def get_jamf_username_from_serial(serial_number):
 
 	print(data)
 
-get_jamf_username_from_serial(FVFDVGT7Q6L4)
+get_jamf_username_from_serial("FVFDVGT7Q6L4")

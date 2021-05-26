@@ -143,7 +143,6 @@ def get_password(username):
 def press_letter(letter):
 	for tap in letter_locations[letter]:
 		screen_drag(tap[0], tap[1], tap[2], tap[3])
-		playsound("key_press.mp3")
 
 def get_current_location(axis):
 	all_coords = dexarm.get_current_position()
@@ -222,7 +221,7 @@ def get_ocr_text(dict_coords):
 	}
 	
 	# Play sond
-	playsound("shutter.mp3")
+	#playsound("shutter.mp3")
 
 	#Get the response code
 	response = requests.get(**parameters)
