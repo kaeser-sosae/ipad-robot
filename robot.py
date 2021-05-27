@@ -334,24 +334,24 @@ while has_enrolled == False:
 			# Press the ok button
 			functions.screen_tap(32,368)
 			# tap in the username box
-			screen_tap(-21,292)
-			screen_tap(-21,292)
-			screen_tap(-21,292)
+			functions.screen_tap(-21,292)
+			functions.screen_tap(-21,292)
+			functions.screen_tap(-21,292)
 
 			# press backspace a heap of times
 			press_count = 0
 			while press_count < 25:
-				screen_tap(82,346)
+				functions.screen_tap(82,346)
 
 			# tap in the password box
-			screen_tap(-8,292)
-			screen_tap(-8,292)
-			screen_tap(-8,292)
+			functions.screen_tap(-8,292)
+			functions.screen_tap(-8,292)
+			functions.screen_tap(-8,292)
 
 			# tap in the username box
-			screen_tap(-21,292)
-			screen_tap(-21,292)
-			screen_tap(-21,292)			
+			functions.screen_tap(-21,292)
+			functions.screen_tap(-21,292)
+			functions.screen_tap(-21,292)			
 
 			wait_time = 0
 			break
