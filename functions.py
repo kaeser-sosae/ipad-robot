@@ -108,7 +108,7 @@ letter_locations = {
 	"(":[(97 + x_start_offset,107 + x_finish_offset,278 + y_start_offset,278 + y_finish_offset)],
 	")":[(97 + x_start_offset,107 + x_finish_offset,292 + y_start_offset,292 + y_finish_offset)],
 	"%":[(115 + x_start_offset,125 + x_finish_offset,214 + y_start_offset,214 + y_finish_offset)],
-	"-":[(113 + x_start_offset,123 + x_finish_offset,228 + y_start_offset,228 + y_finish_offset)],
+	"-":[(113 + x_start_offset,129 + x_finish_offset,228 + y_start_offset,228 + y_finish_offset)],
 	"+":[(113 + x_start_offset,123 + x_finish_offset,244 + y_start_offset,244 + y_finish_offset)],
 	"=":[(111 + x_start_offset,121 + x_finish_offset,256 + y_start_offset,256 + y_finish_offset)],
 
