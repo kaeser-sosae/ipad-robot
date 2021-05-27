@@ -36,7 +36,7 @@ dexarm._send_cmd("G4 S13\n")
 
 # If the word English is found, continue, if not, wait 5 seconds
 # Move arm to 0,300,-12
-print("Looking for the word 'english'")
+print("Looking for the word 'English'")
 dexarm.fast_move_to(0,300,-12, 10000)
 cont = True
 have_i_waited_once = False
@@ -374,7 +374,16 @@ functions.pause(1000)
 
 # Press the settings button
 # 44,238
-functions.screen_tap(44,238, -51, -40)
+#functions.screen_tap(44,238, -51, -40)
+
+# Drag down the home screen
+functions.screen_drag(44,64,300,300)
+
+# Search for the Classroom App
+functions.type_word("setti")
+
+# Press go button
+functions.screen_tap(96,344)
 
 # Press about
 # -68,290
