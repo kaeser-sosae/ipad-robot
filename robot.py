@@ -195,12 +195,20 @@ functions.type_word(main_password)
 # 96,342
 functions.screen_tap(96,342)
 
+# TEMP CODE
+functions.pause(60000)
+
 # Look for the word "lindisfarne"
 # Send arm to 0,300,-12
 # Crop photo to 710, 1460, 555, 640, 180
 print("Looking for the word 'lindisfarne'")
 dexarm.fast_move_to(0,300,-12, 10000)
+x = 0
 while "lindisfarne" not in functions.get_single_string(710,1460,555,640,180):
+	if x > 10:
+		print('We don\'t seem to be connected to wifi, we need to try again')
+	functions.pause(1000)
+	x = x + 1
 	pass
 
 # Press the Trust button
@@ -381,7 +389,7 @@ functions.screen_tap(96,344)
 functions.pause(1000)
 
 # type word lindis
-functions.type_word("lindis")
+functions.type_word("lindi")
 
 # Tap the lindisfarne button
 functions.screen_tap(-38,278)
@@ -426,7 +434,7 @@ print('Chrome found!')
 functions.screen_drag(44,64,300,300)
 
 # Search for the Chrome App
-functions.type_word("chrome")
+functions.type_word("chr")
 
 # Press go button
 functions.screen_tap(96,344)
@@ -449,7 +457,7 @@ print('Classroom found!')
 functions.screen_drag(44,64,300,300)
 
 # Search for the Classroom App
-functions.type_word("class")
+functions.type_word("cl")
 
 # Press go button
 functions.screen_tap(96,344)
@@ -472,7 +480,7 @@ print('Drive found!')
 functions.screen_drag(44,64,300,300)
 
 # Search for the Drive App
-functions.type_word("drive")
+functions.type_word("dr")
 
 # Press go button
 functions.screen_tap(96,344)
@@ -495,7 +503,7 @@ print('Gmail found!')
 functions.screen_drag(44,64,300,300)
 
 # Search for the Gmail App
-functions.type_word("gmail")
+functions.type_word("g")
 
 # Press go button
 functions.screen_tap(96,344)
@@ -518,7 +526,7 @@ print('Docs found!')
 functions.screen_drag(44,64,300,300)
 
 # Search for the Docs App
-functions.type_word("docs")
+functions.type_word("do")
 
 # Press go button
 functions.screen_tap(96,344)
@@ -541,7 +549,7 @@ print('Sheets found!')
 functions.screen_drag(44,64,300,300)
 
 # Search for the Sheets App
-functions.type_word("sheets")
+functions.type_word("shee")
 
 # Press go button
 functions.screen_tap(96,344)
@@ -564,7 +572,7 @@ print('Slides found!')
 functions.screen_drag(44,64,300,300)
 
 # Search for the Slides App
-functions.type_word("slides")
+functions.type_word("sl")
 
 # Press go button
 functions.screen_tap(96,344)
