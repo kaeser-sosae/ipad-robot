@@ -112,9 +112,9 @@ letter_locations = {
 	"+":[(113 + x_start_offset,123 + x_finish_offset,244 + y_start_offset,244 + y_finish_offset)],
 	"=":[(111 + x_start_offset,121 + x_finish_offset,256 + y_start_offset,256 + y_finish_offset)],
 
-	",":[(132 + x_start_offset,132 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset),(110 + x_start_offset,110 + x_finish_offset,314 + y_start_offset,314 + y_finish_offset),(132 + x_start_offset,132 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset)],
-	".":[(110 + x_start_offset,110 + x_finish_offset,328 + y_start_offset,328 + y_finish_offset)],
-	"_":[(132 + x_start_offset,132 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset),(118 + x_start_offset,118 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset),(100 + x_start_offset,100 + x_finish_offset,250 + y_start_offset,250 + y_finish_offset),(132 + x_start_offset,132 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset)]
+	",":[(130 + x_start_offset,130 + x_finish_offset,202 + y_start_offset,202 + y_finish_offset),(110 + x_start_offset,110 + x_finish_offset,314 + y_start_offset,314 + y_finish_offset),(130 + x_start_offset,130 + x_finish_offset,202 + y_start_offset,202 + y_finish_offset)],
+	".":[(130 + x_start_offset,130 + x_finish_offset,202 + y_start_offset,202 + y_finish_offset),(112 + x_start_offset,112 + x_finish_offset,328 + y_start_offset,328 + y_finish_offset),(130 + x_start_offset,130 + x_finish_offset,202 + y_start_offset,202 + y_finish_offset)],
+	"_":[(130 + x_start_offset,130 + x_finish_offset,202 + y_start_offset,202 + y_finish_offset),(118 + x_start_offset,118 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset),(100 + x_start_offset,100 + x_finish_offset,250 + y_start_offset,250 + y_finish_offset),(130 + x_start_offset,130 + x_finish_offset,202 + y_start_offset,202 + y_finish_offset)]
 }
 
 def playsound(file):
@@ -199,7 +199,7 @@ def screen_tap(x, y, z_down=-53, z_up=-40):
 	# Tiny pause
 	dexarm._send_cmd("G4 P50\n")
 
-def screen_drag(x_start, x_finish, y_start, y_finish, z_down=-56, z_up=-40):
+def screen_drag(x_start, x_finish, y_start, y_finish, z_down=-55, z_up=-40):
 	# Move above the starting location
 	dexarm.fast_move_to(x_start, y_start, get_current_location('z'), 10000)
 	# Drop the Z height
