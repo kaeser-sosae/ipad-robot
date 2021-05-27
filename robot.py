@@ -63,7 +63,14 @@ while cont:
 				break
 			have_i_waited_once = True
 
-# Press on English
+# Look for the word English
+# Send arm to 1, 294, -12
+# Crop photo to 670,1501,853,958, 180
+print("Looking for the word 'English'")
+dexarm.fast_move_to(1,294,-12, 10000)
+while "English" not in functions.get_single_string(670,1501,853,958,180):
+	pass
+
 print('Pressing on english')
 functions.screen_tap(2, 282)
 
@@ -93,6 +100,7 @@ functions.screen_tap(90,280)
 
 pressed_on_correct_wifi = False
 connected_to_correct_wifi = False
+have_trusted_cert_already = False
 
 while connected_to_correct_wifi == False:
 	while pressed_on_correct_wifi == False:
@@ -200,17 +208,23 @@ while connected_to_correct_wifi == False:
 	# 96,342
 	functions.screen_tap(96,342)
 
-	# Look for the word "lindisfarne"
-	# Send arm to 0,300,-12
-	# Crop photo to 710, 1460, 555, 640, 180
-	print("Looking for the word 'lindisfarne'")
-	dexarm.fast_move_to(0,300,-12, 10000)
-	while "lindisfarne" not in functions.get_single_string(710,1460,555,640,180):
-		pass
+	if have_trusted_cert_already == False:
+		# Look for the word "lindisfarne"
+		# Send arm to 0,300,-12
+		# Crop photo to 710, 1460, 555, 640, 180
+		print("Looking for the word 'lindisfarne'")
+		dexarm.fast_move_to(0,300,-12, 10000)
+		while "lindisfarne" not in functions.get_single_string(710,1460,555,640,180):
+			pass
 
-	# Press the Trust button
-	# -40 318
-	functions.screen_tap(-40,318)
+		# Press the Trust button
+		# -40 318
+		functions.screen_tap(-40,318)
+	else:
+		# This may be a subsequent attempt, look for the Next
+		# button, if we don't find that, look for the word "Lindisfarne"
+		# in the header again
+
 
 	# Look for the word "Transfer"
 	# Send arm to 74,300,-12
@@ -223,6 +237,7 @@ while connected_to_correct_wifi == False:
 		if x > 10:
 			# We haven't found the word Transfer for 10 seconds, it's probably not working
 			print('We don\'t seem to be connected to the internet, we need to try again')
+			pressed_on_correct_wifi = False
 			connected_to_correct_wifi = False
 			break
 		functions.pause(1000)
@@ -233,17 +248,22 @@ while connected_to_correct_wifi == False:
 		# Press the OK button
 		functions.screen_tap(30,274)
 		# Turn off the iPad
+		print('Turning off the iPad to reset things')
 		functions.press_power_button(4)
 		functions.screen_drag(-74,-74,252,296)
 		# Wait for 10 seconds
 		functions.pause(10000)
 		# Turn on the iPad
+		print('Turning on the iPad')
 		functions.press_power_button(3)
-		# Wait 15 seconds
-		functions.pause(15000)
-		# Press on English
-		print('Pressing on english')
-		functions.screen_tap(2, 282)
+
+		# Look for the word English
+		# Send arm to 1, 294, -12
+		# Crop photo to 670,1501,853,958, 180
+		print("Looking for the word 'English'")
+		dexarm.fast_move_to(1,294,-12, 10000)
+		while "English" not in functions.get_single_string(670,1501,853,958,180):
+			pass
 
 		# Look for the word "Australia"
 		# Send arm to 48,272,-12
