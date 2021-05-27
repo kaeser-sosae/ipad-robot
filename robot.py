@@ -308,7 +308,7 @@ functions.screen_tap(-52,326)
 
 has_enrolled = False
 
-while has_enrolled = False
+while has_enrolled == False
 	# Type username
 	functions.type_word(main_username)
 
