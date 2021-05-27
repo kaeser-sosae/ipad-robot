@@ -221,7 +221,7 @@ while connected_to_correct_wifi == False:
 		# -40 318
 		functions.screen_tap(-40,318)
 		have_trusted_cert_already = True
-	else:
+	#else:
 		# This may be a subsequent attempt, look for the Next
 		# button, if we don't find that, look for the word "Lindisfarne"
 		# in the header again
