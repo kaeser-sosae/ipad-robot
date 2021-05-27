@@ -420,7 +420,7 @@ def setup_ipad(main_username):
 
 	# Get the serial number
 	# Send arm to -12,376,-12
-	# Crop photo to 730, 1163, 510, 590, 181
+	# Crop photo to {"x1": 572, "x2": 1176, "y1": 518, "y2": 625, "rotate": 180}
 	print("Looking for the serial number")
 	dexarm.fast_move_to(-12,376,-12, 10000)
 	x = 1
@@ -430,7 +430,7 @@ def setup_ipad(main_username):
 	# we find a match, continue with the script.
 	x = 0
 	while True:
-		serial_number = functions.get_single_string(730,1163,510,590,181,True)
+		serial_number = functions.get_single_string(572,1176,518,625,180,True)
 		if x > 2:
 			if serial_number == "":
 				print('I think the screen is off, pressing the home button twice')

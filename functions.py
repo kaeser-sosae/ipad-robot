@@ -199,7 +199,7 @@ def screen_tap(x, y, z_down=-53, z_up=-40):
 	# Tiny pause
 	dexarm._send_cmd("G4 P50\n")
 
-def screen_drag(x_start, x_finish, y_start, y_finish, z_down=-54, z_up=-40):
+def screen_drag(x_start, x_finish, y_start, y_finish, z_down=-56, z_up=-40):
 	# Move above the starting location
 	dexarm.fast_move_to(x_start, y_start, get_current_location('z'), 10000)
 	# Drop the Z height
