@@ -220,7 +220,7 @@ while connected_to_correct_wifi == False:
 
 		# Press the Trust button
 		# -40 318
-		functions.screen_tap(-40,318)
+		functions.screen_tap(-41,318, -55)
 		have_trusted_cert_already = True
 
 	# Look for the word "Transfer"
