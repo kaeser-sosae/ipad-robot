@@ -113,7 +113,7 @@ letter_locations = {
 	"=":[(111 + x_start_offset,121 + x_finish_offset,256 + y_start_offset,256 + y_finish_offset)],
 
 	",":[(132 + x_start_offset,132 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset),(110 + x_start_offset,110 + x_finish_offset,314 + y_start_offset,314 + y_finish_offset),(132 + x_start_offset,132 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset)],
-	".":[(132 + x_start_offset,132 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset),(112 + x_start_offset,112 + x_finish_offset,328 + y_start_offset,328 + y_finish_offset),(132 + x_start_offset,132 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset)],
+	".":[(110 + x_start_offset,110 + x_finish_offset,328 + y_start_offset,328 + y_finish_offset)],
 	"_":[(132 + x_start_offset,132 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset),(118 + x_start_offset,118 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset),(100 + x_start_offset,100 + x_finish_offset,250 + y_start_offset,250 + y_finish_offset),(132 + x_start_offset,132 + x_finish_offset,200 + y_start_offset,200 + y_finish_offset)]
 }
 
