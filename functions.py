@@ -206,7 +206,6 @@ def screen_drag(x_start, x_finish, y_start, y_finish, z_down=-54, z_up=-40):
 	dexarm._send_cmd("G4 P50\n")
 
 def type_word(word):
-	print('Typing word ' + word)
 	for char in word[ : : 1]:
 		press_letter(char)
 	dexarm._send_cmd("G4 P50\n")
@@ -244,6 +243,7 @@ def get_ocr_text(dict_coords):
 
 def pause(milliseconds):
 	dexarm._send_cmd("G4 P" + str(milliseconds) + "\n")
+	pass
 
 def get_single_string(x1,x2,y1,y2,rotation,is_serial=False):
 	if is_serial == True:

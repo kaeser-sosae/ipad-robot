@@ -247,8 +247,8 @@ while connected_to_correct_wifi == False:
 	x = 0
 	connected_to_correct_wifi = True
 	while "Transfer" not in functions.get_single_string(541,1200,720,811,166):
-		if x > 10:
-			# We haven't found the word Transfer for 10 seconds, it's probably not working
+		if x > 20:
+			# We haven't found the word Transfer for 20 seconds, it's probably not working
 			print('We don\'t seem to be connected to the internet, we need to try again')
 			pressed_on_correct_wifi = False
 			connected_to_correct_wifi = False
