@@ -291,7 +291,8 @@ while connected_to_correct_wifi == False:
 
 
 # Press on the Don't Transfer option
-functions.screen_tap(54,300)
+functions.screen_tap(54,290, -56)
+functions.screen_tap(54,290, -56)
 
 # Look for the word "Next"
 # Send arm to -52,364,-12
@@ -305,26 +306,63 @@ while "Next" not in functions.get_single_string(934,1130,715,804,188):
 print('Pressing next')
 functions.screen_tap(-52,326)
 
-# Type username
-functions.type_word(main_username)
+has_enrolled = False
 
-# Press the return key
-functions.screen_tap(96,344)
+while has_enrolled = False
+	# Type username
+	functions.type_word(main_username)
 
-# Type password
-functions.type_word(main_password)
+	# Press the return key
+	functions.screen_tap(96,344)
 
-# Press Next
-functions.screen_tap(-82,326)
+	# Type password
+	functions.type_word(main_password)
+
+	# Press Next
+	functions.screen_tap(-82,326)
+
+	# Look for the word "password"
+	# Send arm to 42,312,-12
+	# Crop photo to {"x1": 408, "x2": 1640, "y1": 872, "y2": 1016, "rotate": 172}
+	print("Looking for the word 'password'")
+	dexarm.fast_move_to(42,312,-12, 10000)
+	wait_time = 0
+	while "password" not in functions.get_single_string(408,1640,872,1016,172):
+		print('Wait time is ' + wait_time)
+		if wait_time == 20:
+			# we have waited too long, doesn't look like it has enroled properly
+			# Press the ok button
+			functions.screen_tap(32,368)
+			# tap in the username box
+			screen_tap(-21,292)
+			screen_tap(-21,292)
+			screen_tap(-21,292)
+
+			# press backspace a heap of times
+			press_count = 0
+			while press_count < 25:
+				screen_tap(82,346)
+
+			# tap in the password box
+			screen_tap(-8,292)
+			screen_tap(-8,292)
+			screen_tap(-8,292)
+
+			# tap in the username box
+			screen_tap(-21,292)
+			screen_tap(-21,292)
+			screen_tap(-21,292)			
+
+			wait_time = 0
+			break
+
+		wait_time = wait_time + 1
+		functions.pause(1000)
+		pass
+
+	has_enrolled = True
 
 
-# Look for the word "password"
-# Send arm to 42,312,-12
-# Crop photo to {"x1": 408, "x2": 1640, "y1": 872, "y2": 1016, "rotate": 172}
-print("Looking for the word 'password'")
-dexarm.fast_move_to(42,312,-12, 10000)
-while "password" not in functions.get_single_string(408,1640,872,1016,172):
-	pass
 
 # Press don't have apple ID
 # 44,274
