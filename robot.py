@@ -807,5 +807,5 @@ def setup_ipad(main_username):
 	print('Going back home...')
 	functions.go_home()
 
-setup_ipad("coco.carey")
+setup_ipad("pepper.carey")
 
