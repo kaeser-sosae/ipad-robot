@@ -6,7 +6,7 @@ import functions
 
 dexarm = Dexarm("/dev/ttyACM0")
 
-def setup_ipad(main_username)
+def setup_ipad(main_username):
 	
 	main_password = ""
 	serial_number = ""
