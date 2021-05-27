@@ -283,7 +283,7 @@ functions.pause(1000)
 
 # Press the settings button
 # 44,238
-functions.screen_tap(44,238)
+functions.screen_tap(44,238, -51, -40)
 
 # Press about
 # -68,290
@@ -329,6 +329,18 @@ while functions.add_device_to_static_group(serial_number, "Tier 1 Software That 
 	print('Adding to group failed, trying again')
 print('Added to the group')
 
+# Press Display and Brightness
+functions.screen_tap(94,226)
+# Press auto lock
+functions.screen_tap(34,298)
+# Press Never
+functions.screen_tap(-32,298)
+# Press Display and brightness
+functions.screen_tap(-86,274)
+# Press the brightness slider
+functions.screen_tap(-2,334)
+functions.screen_tap(0,334)
+functions.screen_tap(-1,334)
 # Press the home button
 functions.press_home_button()
 
@@ -348,21 +360,7 @@ functions.screen_tap(118,272)
 # Press the home button
 functions.press_home_button()
 # Press settings
-functions.screen_tap(44,238,-52,-40)
-# Press Display and Brightness
-functions.screen_tap(94,226)
-# Press auto lock
-functions.screen_tap(34,298)
-# Press Never
-functions.screen_tap(-32,298)
-# Press Display and brightness
-functions.screen_tap(-86,274)
-# Press the brightness slider
-functions.screen_tap(-2,334)
-functions.screen_tap(0,334)
-functions.screen_tap(-1,334)
-# Press the home button
-functions.press_home_button()
+#functions.screen_tap(44,238,-52,-40)
 
 # Wait for the Vivi app to be installed
 while functions.does_device_have_app_installed(serial_number, "Vivi") == False:
