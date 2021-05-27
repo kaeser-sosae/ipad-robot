@@ -263,7 +263,7 @@ while connected_to_correct_wifi == False:
 			pass
 
 		print('Pressing on english')
-		functions.screen_tap(2, 282)
+		functions.screen_tap(2, 282, -55)
 
 		# Look for the word "Australia"
 		# Send arm to 48,272,-12
