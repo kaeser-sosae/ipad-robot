@@ -255,18 +255,18 @@ def get_single_string(x1,x2,y1,y2,rotation,is_serial=False):
 	if is_serial == True:
 		for returned_strings in get_ocr_text({"areas":[{"x1":x1,"x2":x2,"y1":y1,"y2":y2,"rotate":rotation,"whitelist":"0123456789ABCDEFGHIJKLMNPQRSTUVWXYZ"}]}):
 			if returned_strings != "":
-				print('Found string: ' + returned_strings)
+				#print('Found string: ' + returned_strings)
 				return returned_strings
 			else:
-				print('Found string: ' + returned_strings)
+				#print('Found string: ' + returned_strings)
 				return ""
 	else:
 		for returned_strings in get_ocr_text({"areas":[{"x1":x1,"x2":x2,"y1":y1,"y2":y2,"rotate":rotation}]}):
 			if returned_strings != "":
-				print('Found string: ' + returned_strings)
+				#print('Found string: ' + returned_strings)
 				return returned_strings
 			else:
-				print('Found string: ' + returned_strings)
+				#print('Found string: ' + returned_strings)
 				return ""
 
 def get_jamf_username_from_device_serial(serial_number):
@@ -366,6 +366,7 @@ def add_device_to_static_group(serial_number, group_name):
 	response = requests.request("PUT", url, headers=headers, data=payload)
 
 	if response.status_code == 201:
+		print('API call succeeded with status code ' + str(response.status_code))
 		return True
 
 	else:
