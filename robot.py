@@ -184,7 +184,6 @@ while connected_to_correct_wifi == False:
 		cont = True
 		while cont:
 			for returned_strings in functions.get_ocr_text({"areas":[{"x1":110,"x2":900,"y1":560,"y2":650,"rotate":191}]}):
-				print('Returned strings: ' + returned_strings)
 				if "Lindisfarne" not in returned_strings:
 					functions.screen_tap(-66,230)
 					# Pause 2 seconds
@@ -196,12 +195,14 @@ while connected_to_correct_wifi == False:
 					pressed_on_correct_wifi = True
 
 	# Type username
+	print('Typing the username...')
 	functions.type_word(main_username)
 
 	# Press the Next button
 	functions.screen_tap(94,342)
 
 	# Type password
+	print('Typing the password...')
 	functions.type_word(main_password)
 
 	# Press the join button
@@ -221,23 +222,6 @@ while connected_to_correct_wifi == False:
 		# -40 318
 		functions.screen_tap(-40,318)
 		have_trusted_cert_already = True
-	#else:
-		# This may be a subsequent attempt, look for the Next
-		# button, if we don't find that, look for the word "Lindisfarne"
-		# in the header again
-		
-		# Look for the word "Next"
-		# Send arm to -52,364,-12
-		# Crop photo to {"x1": 934, "x2": 1130, "y1": 715, "y2": 804, "rotate": 188}
-		#print("Looking for the word 'Next', because we have already trusted")
-		#dexarm.fast_move_to(-52,364,-12, 10000)
-		#while "Next" not in functions.get_single_string(934,1130,715,804,188):
-		#	pass
-
-		# Press Next
-		#print('Pressing next')
-		#functions.screen_tap(-52,326)
-
 
 	# Look for the word "Transfer"
 	# Send arm to 74,300,-12
@@ -561,6 +545,34 @@ functions.type_word("ch")
 
 # Press go button
 functions.screen_tap(96,344)
+
+# Untick the box
+
+# Press Accept and Continue
+
+# Press Add Account
+
+# Tap in the email box
+
+# Type the email address
+functions.type_word(main_email)
+
+# Press the return key
+
+# Tap in the password box
+
+# Type the password
+functions.type_word(main_password)
+
+# Press the Go button
+
+# Search for the word "Yes" down the bottom right
+
+# Press the Yes, I'm In button
+
+# Press Accept and Sign In
+
+# Press Allow While Using App
 
 functions.pause(1000)
 
