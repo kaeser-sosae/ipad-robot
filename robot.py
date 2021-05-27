@@ -808,4 +808,3 @@ def setup_ipad(main_username):
 	functions.go_home()
 
 setup_ipad("pepper.carey")
-
