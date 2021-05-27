@@ -91,137 +91,184 @@ while "Manually" not in functions.get_single_string(895,1380,683,820,159):
 print('Pressing on Set Up Manually')
 functions.screen_tap(90,280)
 
-# Pause 2 seconds
-#dexarm._send_cmd("G4 S2\n")
-
+pressed_on_correct_wifi = False
 connected_to_correct_wifi = False
 
 while connected_to_correct_wifi == False:
+	while pressed_on_correct_wifi == False:
 
-	# Search for the Lindisfarne Wifi Network
-	print("Looking for the word 'Lindisfarne'")
-	# move arm to 70, 280, -12
-	dexarm.fast_move_to(70,280,-12, 10000)
+		# Search for the Lindisfarne Wifi Network
+		print("Looking for the word 'Lindisfarne'")
+		# move arm to 70, 280, -12
+		dexarm.fast_move_to(70,280,-12, 10000)
 
-	# Pause 1 second
-	dexarm._send_cmd("G4 S1\n")
+		# Pause 1 second
+		dexarm._send_cmd("G4 S1\n")
 
-	cont = True
-	row_number = 0
-	x = 1
-	while cont:
-		print('Taking picture and checking for Lindisfarne...')
-		for returned_strings in functions.get_ocr_text({"areas":[
-			{"x1":868,"x2":1729,"y1":183,"y2":303,"rotate":166}, # 183,303
-			{"x1":868,"x2":1729,"y1":371,"y2":488,"rotate":166}, # 371,488
-			{"x1":868,"x2":1729,"y1":539,"y2":662,"rotate":166}, # 539,662
-			{"x1":868,"x2":1729,"y1":715,"y2":840,"rotate":166}, # 715,840
-			{"x1":868,"x2":1729,"y1":889,"y2":1010,"rotate":166}, # 889,1010
-			{"x1":868,"x2":1729,"y1":1066,"y2":1191,"rotate":166}, # 1066,1191
-			{"x1":868,"x2":1729,"y1":1244,"y2":1360,"rotate":166} # 868,1729,1244,1360
+		cont = True
+		row_number = 0
+		x = 1
+		time_waited = 0
+		while cont:
+			if time_waited > 20:
+				# we've been waiting a while, we should tap on the screen
+				# to keep it alive
+				functions.screen_tap(-74,274)			
+			print('Taking picture and checking for Lindisfarne...')
+			for returned_strings in functions.get_ocr_text({"areas":[
+				{"x1":868,"x2":1729,"y1":183,"y2":303,"rotate":166}, # 183,303
+				{"x1":868,"x2":1729,"y1":371,"y2":488,"rotate":166}, # 371,488
+				{"x1":868,"x2":1729,"y1":539,"y2":662,"rotate":166}, # 539,662
+				{"x1":868,"x2":1729,"y1":715,"y2":840,"rotate":166}, # 715,840
+				{"x1":868,"x2":1729,"y1":889,"y2":1010,"rotate":166}, # 889,1010
+				{"x1":868,"x2":1729,"y1":1066,"y2":1191,"rotate":166}, # 1066,1191
+				{"x1":868,"x2":1729,"y1":1244,"y2":1360,"rotate":166} # 868,1729,1244,1360
 
-			]}):
-			print('Returned string: ' + returned_strings)
-			if "Lindisfarne" in returned_strings:
-				# Proceed
-				cont = False
-				row_number = x
-				break
-			x = x + 1
-		time.sleep(.5)
+				]}):
+				print('Returned string: ' + returned_strings)
+				if "Lindisfarne" in returned_strings:
+					# Proceed
+					cont = False
+					row_number = x
+					break
+				x = x + 1
+			time.sleep(.5)
+			time_waited = time_waited + 1
 
-	# Go home
-	print('Moving arm to home position...')
-	dexarm.go_home()	
 
-	# Press the appropriate row
-	if row_number == 1:
-		print('Row number is 1')
-		functions.screen_tap(12,280)
-	if row_number == 2:
-		print('Row number is 2')
-		functions.screen_tap(24,280)
-	if row_number == 3:
-		print('Row number is 3')
-		functions.screen_tap(38,280)
-	if row_number == 4:
-		print('Row number is 4')
-		functions.screen_tap(52,280)
-	if row_number == 5:
-		print('Row number is 5')
-		functions.screen_tap(64,280)
-	if row_number == 6:
-		print('Row number is 6')
-		functions.screen_tap(76,280)
-	if row_number == 7:
-		print('Row number is 7')
-		functions.screen_tap(88,280)
+		# Go home
+		print('Moving arm to home position...')
+		dexarm.go_home()	
 
-	# Check that we pressed the correct wifi network
-	# If the word lindisfarne is not found, press the back button
-	# Move arm to -68,348,-12
-	print('Checking that we pressed the right Wifi network')
-	dexarm.fast_move_to(-68,348,-12, 10000)
-	
-	# Pause 4 seconds
-	dexarm._send_cmd("G4 S4\n")
+		# Press the appropriate row
+		if row_number == 1:
+			print('Row number is 1')
+			functions.screen_tap(12,280)
+		if row_number == 2:
+			print('Row number is 2')
+			functions.screen_tap(24,280)
+		if row_number == 3:
+			print('Row number is 3')
+			functions.screen_tap(38,280)
+		if row_number == 4:
+			print('Row number is 4')
+			functions.screen_tap(52,280)
+		if row_number == 5:
+			print('Row number is 5')
+			functions.screen_tap(64,280)
+		if row_number == 6:
+			print('Row number is 6')
+			functions.screen_tap(76,280)
+		if row_number == 7:
+			print('Row number is 7')
+			functions.screen_tap(88,280)
 
-	print("Looking for the word 'Lindisfarne'")
-	cont = True
-	while cont:
-		for returned_strings in functions.get_ocr_text({"areas":[{"x1":110,"x2":900,"y1":560,"y2":650,"rotate":191}]}):
-		#for returned_strings in get_ocr_text({"areas":[{"x1":587,"x2":960,"y1":842,"y2":960,"rotate":180}]}):
-			print('Returned strings: ' + returned_strings)
-			if "Lindisfarne" not in returned_strings:
-				functions.screen_tap(-66,230)
-				# Pause 2 seconds
-				dexarm._send_cmd("G4 S2\n")
-				# Proceed
-				cont = False
-			else:
-				cont = False
-				connected_to_correct_wifi = True
+		# Check that we pressed the correct wifi network
+		# If the word lindisfarne is not found, press the back button
+		# Move arm to -68,348,-12
+		print('Checking that we pressed the right Wifi network')
+		dexarm.fast_move_to(-68,348,-12, 10000)
+		
+		# Pause 4 seconds
+		dexarm._send_cmd("G4 S4\n")
 
-# Type username
-functions.type_word(main_username)
+		print("Looking for the word 'Lindisfarne'")
+		cont = True
+		while cont:
+			for returned_strings in functions.get_ocr_text({"areas":[{"x1":110,"x2":900,"y1":560,"y2":650,"rotate":191}]}):
+				print('Returned strings: ' + returned_strings)
+				if "Lindisfarne" not in returned_strings:
+					functions.screen_tap(-66,230)
+					# Pause 2 seconds
+					dexarm._send_cmd("G4 S2\n")
+					# Proceed
+					cont = False
+				else:
+					cont = False
+					pressed_on_correct_wifi = True
 
-# Press the Next button
-functions.screen_tap(94,342)
+	# Type username
+	functions.type_word(main_username)
 
-# Type password
-functions.type_word(main_password)
+	# Press the Next button
+	functions.screen_tap(94,342)
 
-# Press the join button
-# 96,342
-functions.screen_tap(96,342)
+	# Type password
+	functions.type_word(main_password)
 
-# TEMP CODE
-functions.pause(60000)
+	# Press the join button
+	# 96,342
+	functions.screen_tap(96,342)
 
-# Look for the word "lindisfarne"
-# Send arm to 0,300,-12
-# Crop photo to 710, 1460, 555, 640, 180
-print("Looking for the word 'lindisfarne'")
-dexarm.fast_move_to(0,300,-12, 10000)
-x = 0
-while "lindisfarne" not in functions.get_single_string(710,1460,555,640,180):
-	if x > 10:
-		print('We don\'t seem to be connected to wifi, we need to try again')
-	functions.pause(1000)
-	x = x + 1
-	pass
+	# Look for the word "lindisfarne"
+	# Send arm to 0,300,-12
+	# Crop photo to 710, 1460, 555, 640, 180
+	print("Looking for the word 'lindisfarne'")
+	dexarm.fast_move_to(0,300,-12, 10000)
+	while "lindisfarne" not in functions.get_single_string(710,1460,555,640,180):
+		pass
 
-# Press the Trust button
-# -40 318
-functions.screen_tap(-40,318)
+	# Press the Trust button
+	# -40 318
+	functions.screen_tap(-40,318)
 
-# Look for the word "Transfer"
-# Send arm to 74,300,-12
-# Crop photo to 541, 1200, 720, 811, 166
-print("Looking for the word 'Transfer'")
-dexarm.fast_move_to(74,300,-12, 10000)
-while "Transfer" not in functions.get_single_string(541,1200,720,811,166):
-	pass
+	# Look for the word "Transfer"
+	# Send arm to 74,300,-12
+	# Crop photo to 541, 1200, 720, 811, 166
+	print("Looking for the word 'Transfer'")
+	dexarm.fast_move_to(74,300,-12, 10000)
+	x = 0
+	connected_to_correct_wifi = True
+	while "Transfer" not in functions.get_single_string(541,1200,720,811,166):
+		if x > 10:
+			# We haven't found the word Transfer for 10 seconds, it's probably not working
+			print('We don\'t seem to be connected to the internet, we need to try again')
+			connected_to_correct_wifi = False
+			break
+		functions.pause(1000)
+		x = x + 1
+	if connected_to_correct_wifi == True:
+		break
+	else:
+		# Press the OK button
+		functions.screen_tap(30,274)
+		# Turn off the iPad
+		functions.press_power_button(4)
+		functions.screen_drag(-74,-74,252,296)
+		# Wait for 10 seconds
+		functions.pause(10000)
+		# Turn on the iPad
+		functions.press_power_button(3)
+		# Wait 15 seconds
+		functions.pause(15000)
+		# Press on English
+		print('Pressing on english')
+		functions.screen_tap(2, 282)
+
+		# Look for the word "Australia"
+		# Send arm to 48,272,-12
+		# Crop photo to {"x1": 862, "x2": 1308, "y1": 541, "y2": 710, "rotate": 170}
+		print("Looking for the word 'Australia'")
+		dexarm.fast_move_to(48,272,-12, 10000)
+		while "Australia" not in functions.get_single_string(862,1308,541,710,170):
+			pass
+
+		# Press on Australia = 4,252
+		print('Pressing on Australia')
+		functions.screen_tap(22,290)
+
+		# Look for the word "Manually"
+		# Send arm to 112,298,-12
+		# Crop photo to {"x1": 895, "x2": 1380, "y1": 683, "y2": 820, "rotate": 159}
+		print("Looking for the word 'Manually'")
+		dexarm.fast_move_to(112,298,-12, 10000)
+		while "Manually" not in functions.get_single_string(895,1380,683,820,159):
+			pass
+
+		# Press Set up manually = 72,252
+		print('Pressing on Set Up Manually')
+		functions.screen_tap(90,280)		
+
 
 # Press on the Don't Transfer option
 functions.screen_tap(54,300)
