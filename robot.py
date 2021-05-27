@@ -212,7 +212,7 @@ while connected_to_correct_wifi == False:
 		# Look for the word "lindisfarne"
 		# Send arm to 0,300,-12
 		# Crop photo to 710, 1460, 555, 640, 180
-		print("Looking for the word 'lindisfarne'")
+		print("Looking for the word 'lindisfarne' so we can press the trust button")
 		dexarm.fast_move_to(0,300,-12, 10000)
 		while "lindisfarne" not in functions.get_single_string(710,1460,555,640,180):
 			pass
@@ -220,6 +220,7 @@ while connected_to_correct_wifi == False:
 		# Press the Trust button
 		# -40 318
 		functions.screen_tap(-40,318)
+		have_trusted_cert_already = True
 	else:
 		# This may be a subsequent attempt, look for the Next
 		# button, if we don't find that, look for the word "Lindisfarne"
@@ -228,7 +229,7 @@ while connected_to_correct_wifi == False:
 		# Look for the word "Next"
 		# Send arm to -52,364,-12
 		# Crop photo to {"x1": 934, "x2": 1130, "y1": 715, "y2": 804, "rotate": 188}
-		print("Looking for the word 'Next'")
+		print("Looking for the word 'Next', because we have already trusted")
 		dexarm.fast_move_to(-52,364,-12, 10000)
 		while "Next" not in functions.get_single_string(934,1130,715,804,188):
 			pass
@@ -276,6 +277,9 @@ while connected_to_correct_wifi == False:
 		dexarm.fast_move_to(1,294,-12, 10000)
 		while "English" not in functions.get_single_string(670,1501,853,958,180):
 			pass
+
+		print('Pressing on english')
+		functions.screen_tap(2, 282)
 
 		# Look for the word "Australia"
 		# Send arm to 48,272,-12
