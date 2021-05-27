@@ -330,13 +330,15 @@ while has_enrolled == False:
 	while "password" not in functions.get_single_string(408,1640,872,1016,172):
 		print('Wait time is ' + str(wait_time))
 		if wait_time == 20:
+			dexarm.go_home()
 			# we have waited too long, doesn't look like it has enroled properly
 			# Press the ok button
-			functions.screen_tap(32,368)
+			functions.screen_tap(30,274)
+
 			# tap in the username box
-			functions.screen_tap(-21,292)
-			functions.screen_tap(-21,292)
-			functions.screen_tap(-21,292)
+			functions.screen_tap(-22,302)
+			functions.screen_tap(-22,302)
+			functions.screen_tap(-22,302)
 
 			# press backspace a heap of times
 			press_count = 0
@@ -344,9 +346,9 @@ while has_enrolled == False:
 				functions.screen_tap(82,346)
 
 			# tap in the password box
-			functions.screen_tap(-8,292)
-			functions.screen_tap(-8,292)
-			functions.screen_tap(-8,292)
+			functions.screen_tap(-10,302)
+			functions.screen_tap(-10,302)
+			functions.screen_tap(-10,302)
 
 			# tap in the username box
 			functions.screen_tap(-21,292)
