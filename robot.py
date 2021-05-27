@@ -348,7 +348,7 @@ functions.screen_tap(118,272)
 # Press the home button
 functions.press_home_button()
 # Press settings
-functions.screen_tap(44,238)
+functions.screen_tap(44,238,-52,-40)
 # Press Display and Brightness
 functions.screen_tap(94,226)
 # Press auto lock
@@ -358,9 +358,9 @@ functions.screen_tap(-32,298)
 # Press Display and brightness
 functions.screen_tap(-86,274)
 # Press the brightness slider
+functions.screen_tap(-2,334)
 functions.screen_tap(0,334)
-functions.screen_tap(0,334)
-functions.screen_tap(0,334)
+functions.screen_tap(-1,334)
 # Press the home button
 functions.press_home_button()
 
@@ -429,6 +429,6 @@ functions.press_home_button()
 
 # Go home
 print('Going back home...')
-go_home()
+functions.go_home()
 
 print('Script finished')
