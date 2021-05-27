@@ -224,6 +224,18 @@ while connected_to_correct_wifi == False:
 		# This may be a subsequent attempt, look for the Next
 		# button, if we don't find that, look for the word "Lindisfarne"
 		# in the header again
+		
+		# Look for the word "Next"
+		# Send arm to -52,364,-12
+		# Crop photo to {"x1": 934, "x2": 1130, "y1": 715, "y2": 804, "rotate": 188}
+		print("Looking for the word 'Next'")
+		dexarm.fast_move_to(-52,364,-12, 10000)
+		while "Next" not in functions.get_single_string(934,1130,715,804,188):
+			pass
+
+		# Press Next
+		print('Pressing next')
+		functions.screen_tap(-52,326)
 
 
 	# Look for the word "Transfer"
