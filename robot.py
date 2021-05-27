@@ -328,7 +328,7 @@ while has_enrolled == False:
 	dexarm.fast_move_to(42,312,-12, 10000)
 	wait_time = 0
 	while "password" not in functions.get_single_string(408,1640,872,1016,172):
-		print('Wait time is ' + wait_time)
+		print('Wait time is ' + str(wait_time))
 		if wait_time == 20:
 			# we have waited too long, doesn't look like it has enroled properly
 			# Press the ok button
@@ -507,11 +507,12 @@ print('Waiting for Vivi to be installed...')
 wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Vivi") == False:
 	#print('Vivi not found. Waiting...')
-	print('Wait time is ' + wait_time)
+	print('Wait time is ' + str(wait_time))
 	functions.pause(1000)
 	# If we've waited longer than 30 seconds, press the home button to keep it awake
-	if wait_time > 30:
+	if wait_time == 30:
 		functions.press_home_button()
+		wait_time = 0
 	wait_time = wait_time + 1
 print('Vivi has been found!')
 
@@ -566,10 +567,10 @@ print('Waiting for Chrome to be installed...')
 wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Chrome") == False:
 	#print('Chrome not found. Waiting...')
-	print('Wait time is ' + wait_time)
+	print('Wait time is ' + str(wait_time))
 	functions.pause(1000)
 	# If we've waited longer than 30 seconds, press the home button to keep it awake
-	if wait_time > 30:
+	if wait_time == 30:
 		functions.press_home_button()
 		wait_time = 0
 	wait_time = wait_time + 1
@@ -624,10 +625,10 @@ print('Waiting for Classroom to be installed...')
 wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Classroom") == False:
 	#print('Classroom not found. Waiting...')
-	print('Wait time is ' + wait_time)
+	print('Wait time is ' + str(wait_time))
 	functions.pause(1000)
 	# If we've waited longer than 30 seconds, press the home button to keep it awake
-	if wait_time > 30:
+	if wait_time == 30:
 		functions.press_home_button()
 		wait_time = 0
 	wait_time = wait_time + 1
@@ -654,10 +655,10 @@ print('Waiting for Drive to be installed...')
 wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Drive") == False:
 	#print('Drive not found. Waiting...')
-	print('Wait time is ' + wait_time)
+	print('Wait time is ' + str(wait_time))
 	functions.pause(1000)
 	# If we've waited longer than 30 seconds, press the home button to keep it awake
-	if wait_time > 30:
+	if wait_time == 30:
 		functions.press_home_button()
 		wait_time = 0
 	wait_time = wait_time + 1
@@ -684,10 +685,10 @@ print('Waiting for Gmail to be installed...')
 wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Gmail") == False:
 	#print('Gmail not found. Waiting...')
-	print('Wait time is ' + wait_time)
+	print('Wait time is ' + str(wait_time))
 	functions.pause(1000)
 	# If we've waited longer than 30 seconds, press the home button to keep it awake
-	if wait_time > 30:
+	if wait_time == 30:
 		functions.press_home_button()
 		wait_time = 0
 	wait_time = wait_time + 1
@@ -714,10 +715,10 @@ print('Waiting for Docs to be installed...')
 wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Docs") == False:
 	#print('Docs not found. Waiting...')
-	print('Wait time is ' + wait_time)
+	print('Wait time is ' + str(wait_time))
 	functions.pause(1000)
 	# If we've waited longer than 30 seconds, press the home button to keep it awake
-	if wait_time > 30:
+	if wait_time == 30:
 		functions.press_home_button()
 		wait_time = 0
 	wait_time = wait_time + 1
@@ -744,10 +745,10 @@ print('Waiting for Sheets to be installed...')
 wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Sheets") == False:
 	#print('Sheets not found. Waiting...')
-	print('Wait time is ' + wait_time)
+	print('Wait time is ' + str(wait_time))
 	functions.pause(1000)
 	# If we've waited longer than 30 seconds, press the home button to keep it awake
-	if wait_time > 30:
+	if wait_time == 30:
 		functions.press_home_button()
 		wait_time = 0
 	wait_time = wait_time + 1
@@ -774,10 +775,10 @@ print('Waiting for Slides to be installed...')
 wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Slides") == False:
 	#print('Slides not found. Waiting...')
-	print('Wait time is ' + wait_time)
+	print('Wait time is ' + str(wait_time))
 	functions.pause(1000)
 	# If we've waited longer than 30 seconds, press the home button to keep it awake
-	if wait_time > 30:
+	if wait_time == 30:
 		functions.press_home_button()
 		wait_time = 0
 	wait_time = wait_time + 1
