@@ -365,3 +365,25 @@ def add_device_to_static_group(serial_number, group_name):
 	else:
 		print('API call failed with status code ' + str(response.status_code))
 		return False		
+
+def send_mdm_command(command, serial_number):
+
+	device_id = get_jamf_device_id_from_device_serial(serial_number)
+
+	url = "https://casper.lindisfarne.nsw.edu.au:8443/JSSResource/mobiledevicecommands/command"
+
+	payload = "<mobile_device_command>\n        <general>\n            <command>" + command + "</command>\n        </general>\n        <mobile_devices>\n            <mobile_device>\n                <id>" + device_id + "</id>\n            </mobile_device>\n        </mobile_devices>\n    </mobile_device_command>"
+	headers = {
+  		'Authorization': 'Basic aWRlbnRpdHk6c3lwaG9uLW1hbnRpbGxhLXN0eW1pZTgtb3V0bGV0',
+  		'Content-Type': 'application/xml'
+	}
+
+	response = requests.request("POST", url, headers=headers, data=payload)
+
+	if 200 <= response.status_code <= 299:
+		print('API call succeeded with status code ' + str(response.status_code))
+		return True
+
+	else:
+		print('API call failed with status code ' + str(response.status_code))
+		return False	

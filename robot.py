@@ -229,14 +229,14 @@ while connected_to_correct_wifi == False:
 		# Look for the word "Next"
 		# Send arm to -52,364,-12
 		# Crop photo to {"x1": 934, "x2": 1130, "y1": 715, "y2": 804, "rotate": 188}
-		print("Looking for the word 'Next', because we have already trusted")
-		dexarm.fast_move_to(-52,364,-12, 10000)
-		while "Next" not in functions.get_single_string(934,1130,715,804,188):
-			pass
+		#print("Looking for the word 'Next', because we have already trusted")
+		#dexarm.fast_move_to(-52,364,-12, 10000)
+		#while "Next" not in functions.get_single_string(934,1130,715,804,188):
+		#	pass
 
 		# Press Next
-		print('Pressing next')
-		functions.screen_tap(-52,326)
+		#print('Pressing next')
+		#functions.screen_tap(-52,326)
 
 
 	# Look for the word "Transfer"
@@ -420,8 +420,13 @@ while functions.add_device_to_static_group(serial_number, "Tier 1 Software That 
 	print('Adding to group failed, trying again')
 print('Added to the group')
 
+# Send a blank push
+functions.send_mdm_command("BlankPush", serial_number)
+# Update the inventory
+functions.send_mdm_command("UpdateInventory", serial_number)
+
 # Press Display and Brightness
-functions.screen_tap(94,226)
+functions.screen_tap(92,226)
 # Press auto lock
 functions.screen_tap(34,298)
 # Press Never
@@ -429,9 +434,9 @@ functions.screen_tap(-32,298)
 # Press Display and brightness
 functions.screen_tap(-86,274)
 # Press the brightness slider
-functions.screen_tap(-2,334)
 functions.screen_tap(0,334)
 functions.screen_tap(-1,334)
+functions.screen_tap(-3,334)
 # Press the home button
 functions.press_home_button()
 
@@ -454,10 +459,14 @@ functions.press_home_button()
 #functions.screen_tap(44,238,-52,-40)
 
 # Wait for the Vivi app to be installed
+wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Vivi") == False:
 	print('Vivi not found. Waiting...')
 	functions.pause(1000)
-	pass
+	# If we've waited longer than 30 seconds, press the home button to keep it awake
+	if wait_time > 30:
+		functions.press_home_button()
+	wait_time = wait_time + 1
 print('Vivi found!')
 
 # Drag down the home screen
@@ -507,10 +516,15 @@ functions.press_home_button()
 functions.press_home_button()
 
 # Wait for the Chrome app to be installed
+wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Chrome") == False:
 	print('Chrome not found. Waiting...')
 	functions.pause(1000)
-	pass
+	# If we've waited longer than 30 seconds, press the home button to keep it awake
+	if wait_time > 30:
+		functions.press_home_button()
+		wait_time = 0
+	wait_time = wait_time + 1
 print('Chrome found!')
 
 # Drag down the home screen
@@ -530,10 +544,15 @@ functions.press_home_button()
 functions.press_home_button()
 
 # Wait for the Classroom app to be installed
+wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Classroom") == False:
 	print('Classroom not found. Waiting...')
 	functions.pause(1000)
-	pass
+	# If we've waited longer than 30 seconds, press the home button to keep it awake
+	if wait_time > 30:
+		functions.press_home_button()
+		wait_time = 0
+	wait_time = wait_time + 1
 print('Classroom found!')
 
 # Drag down the home screen
@@ -553,10 +572,15 @@ functions.press_home_button()
 functions.press_home_button()
 
 # Wait for the Drive app to be installed
+wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Drive") == False:
 	print('Drive not found. Waiting...')
 	functions.pause(1000)
-	pass
+	# If we've waited longer than 30 seconds, press the home button to keep it awake
+	if wait_time > 30:
+		functions.press_home_button()
+		wait_time = 0
+	wait_time = wait_time + 1
 print('Drive found!')
 
 # Drag down the home screen
@@ -576,10 +600,15 @@ functions.press_home_button()
 functions.press_home_button()
 
 # Wait for the Gmail app to be installed
+wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Gmail") == False:
 	print('Gmail not found. Waiting...')
 	functions.pause(1000)
-	pass
+	# If we've waited longer than 30 seconds, press the home button to keep it awake
+	if wait_time > 30:
+		functions.press_home_button()
+		wait_time = 0
+	wait_time = wait_time + 1
 print('Gmail found!')
 
 # Drag down the home screen
@@ -599,10 +628,15 @@ functions.press_home_button()
 functions.press_home_button()
 
 # Wait for the Docs app to be installed
+wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Docs") == False:
 	print('Docs not found. Waiting...')
 	functions.pause(1000)
-	pass
+	# If we've waited longer than 30 seconds, press the home button to keep it awake
+	if wait_time > 30:
+		functions.press_home_button()
+		wait_time = 0
+	wait_time = wait_time + 1
 print('Docs found!')
 
 # Drag down the home screen
@@ -622,10 +656,15 @@ functions.press_home_button()
 functions.press_home_button()
 
 # Wait for the Sheets app to be installed
+wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Sheets") == False:
 	print('Sheets not found. Waiting...')
 	functions.pause(1000)
-	pass
+	# If we've waited longer than 30 seconds, press the home button to keep it awake
+	if wait_time > 30:
+		functions.press_home_button()
+		wait_time = 0
+	wait_time = wait_time + 1
 print('Sheets found!')
 
 # Drag down the home screen
@@ -645,10 +684,15 @@ functions.press_home_button()
 functions.press_home_button()
 
 # Wait for the Slides app to be installed
+wait_time = 0
 while functions.does_device_have_app_installed(serial_number, "Slides") == False:
 	print('Slides not found. Waiting...')
 	functions.pause(1000)
-	pass
+	# If we've waited longer than 30 seconds, press the home button to keep it awake
+	if wait_time > 30:
+		functions.press_home_button()
+		wait_time = 0
+	wait_time = wait_time + 1
 print('Slides found!')
 
 # Drag down the home screen
