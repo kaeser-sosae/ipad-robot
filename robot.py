@@ -369,6 +369,7 @@ while functions.does_device_have_app_installed(serial_number, "Vivi") == False:
 	print('Vivi not found. Waiting...')
 	functions.pause(1000)
 	pass
+print('Vivi found!')
 
 # Drag down the home screen
 functions.screen_drag(44,64,300,300)
@@ -413,12 +414,169 @@ else:
 
 # Press home button
 functions.press_home_button()
+functions.press_home_button()
+functions.press_home_button()
 
+# Wait for the Chrome app to be installed
+while functions.does_device_have_app_installed(serial_number, "Chrome") == False:
+	print('Chrome not found. Waiting...')
+	functions.pause(1000)
+	pass
+print('Chrome found!')
 
+# Drag down the home screen
+functions.screen_drag(44,64,300,300)
 
+# Search for the Chrome App
+functions.type_word("chrome")
 
+# Press go button
+functions.screen_tap(96,344)
 
+functions.pause(1000)
 
+# Press the home button
+functions.press_home_button()
+functions.press_home_button()
+functions.press_home_button()
+
+# Wait for the Classroom app to be installed
+while functions.does_device_have_app_installed(serial_number, "Classroom") == False:
+	print('Classroom not found. Waiting...')
+	functions.pause(1000)
+	pass
+print('Classroom found!')
+
+# Drag down the home screen
+functions.screen_drag(44,64,300,300)
+
+# Search for the Classroom App
+functions.type_word("class")
+
+# Press go button
+functions.screen_tap(96,344)
+
+functions.pause(1000)
+
+# Press the home button
+functions.press_home_button()
+functions.press_home_button()
+functions.press_home_button()
+
+# Wait for the Drive app to be installed
+while functions.does_device_have_app_installed(serial_number, "Drive") == False:
+	print('Drive not found. Waiting...')
+	functions.pause(1000)
+	pass
+print('Drive found!')
+
+# Drag down the home screen
+functions.screen_drag(44,64,300,300)
+
+# Search for the Drive App
+functions.type_word("drive")
+
+# Press go button
+functions.screen_tap(96,344)
+
+functions.pause(1000)
+
+# Press the home button
+functions.press_home_button()
+functions.press_home_button()
+functions.press_home_button()
+
+# Wait for the Gmail app to be installed
+while functions.does_device_have_app_installed(serial_number, "Gmail") == False:
+	print('Gmail not found. Waiting...')
+	functions.pause(1000)
+	pass
+print('Gmail found!')
+
+# Drag down the home screen
+functions.screen_drag(44,64,300,300)
+
+# Search for the Gmail App
+functions.type_word("gmail")
+
+# Press go button
+functions.screen_tap(96,344)
+
+functions.pause(1000)
+
+# Press the home button
+functions.press_home_button()
+functions.press_home_button()
+functions.press_home_button()
+
+# Wait for the Docs app to be installed
+while functions.does_device_have_app_installed(serial_number, "Docs") == False:
+	print('Docs not found. Waiting...')
+	functions.pause(1000)
+	pass
+print('Docs found!')
+
+# Drag down the home screen
+functions.screen_drag(44,64,300,300)
+
+# Search for the Docs App
+functions.type_word("docs")
+
+# Press go button
+functions.screen_tap(96,344)
+
+functions.pause(1000)
+
+# Press the home button
+functions.press_home_button()
+functions.press_home_button()
+functions.press_home_button()
+
+# Wait for the Sheets app to be installed
+while functions.does_device_have_app_installed(serial_number, "Sheets") == False:
+	print('Sheets not found. Waiting...')
+	functions.pause(1000)
+	pass
+print('Sheets found!')
+
+# Drag down the home screen
+functions.screen_drag(44,64,300,300)
+
+# Search for the Sheets App
+functions.type_word("sheets")
+
+# Press go button
+functions.screen_tap(96,344)
+
+functions.pause(1000)
+
+# Press the home button
+functions.press_home_button()
+functions.press_home_button()
+functions.press_home_button()
+
+# Wait for the Slides app to be installed
+while functions.does_device_have_app_installed(serial_number, "Slides") == False:
+	print('Slides not found. Waiting...')
+	functions.pause(1000)
+	pass
+print('Slides found!')
+
+# Drag down the home screen
+functions.screen_drag(44,64,300,300)
+
+# Search for the Slides App
+functions.type_word("slides")
+
+# Press go button
+functions.screen_tap(96,344)
+
+functions.pause(1000)
+
+# Press the home button
+functions.press_home_button()
+functions.press_home_button()
+functions.press_home_button()
 
 
 
